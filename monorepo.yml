@@ -1,0 +1,34 @@
+# URL or absolute path to the remote GIT repository of the monorepo
+monorepo_url: git@github.com:lagdo/html-ui-builder.git
+
+# All branches that match this regular expression will be split by default
+branch_filter: /^(main|develop|\d+\.\d+)$/
+
+# List of all split projects
+repositories:
+    ui-builder:
+        # URL or absolute path to the remote GIT repository
+        url: git@github.com:lagdo/ui-builder.git
+    ui-builder-bootstrap3:
+        # URL or absolute path to the remote GIT repository
+        url: git@github.com:lagdo/ui-builder-bootstrap3.git
+    ui-builder-bootstrap4:
+        # URL or absolute path to the remote GIT repository
+        url: git@github.com:lagdo/ui-builder-bootstrap4.git
+    ui-builder-bootstrap5:
+        # URL or absolute path to the remote GIT repository
+        url: git@github.com:lagdo/ui-builder-bootstrap5.git
+        # Optional mapping of commit hashes between the monorepo and split repo
+        # This is only relevant to projects that got merged from existing split repos in the past
+        # mapping:
+            # <commit-hash-in-the-monorepo>: <commit-hash-in-the-split>
+            # 86f7e437faa5a7fce15d1ddcb9eaeaea377667b8: e9d71f5ee7c92d6dc9e92ffdad17b8bd49418f98
+
+# Optional additional composer settings for the root composer.json
+composer:
+    require-dev:
+        contao/monorepo-tools: ^0.2
+    # require:
+    #     vendor/package: ^1.2.3
+    # conflict:
+    #     vendor/package: ^1.2.3
