@@ -1,0 +1,30 @@
+{
+    "name": "lagdo/jaxon-ui-builder",
+    "type": "library",
+    "description": "UI Builder helpers for Jaxon custom attributes.",
+    "authors": [
+        {
+            "name": "Thierry Feuzeu",
+            "email": "thierry.feuzeu@gmail.com"
+        }
+    ],
+    "homepage": "https://github.com/lagdo/jaxon-ui-builder",
+    "license": "MIT",
+    "keywords": ["HTML", "UI", "Builder", "Jaxon"],
+    "support": {
+        "issues": "https://github.com/lagdo/jaxon-ui-builder/issues",
+        "source": "https://github.com/lagdo/jaxon-ui-builder"
+    },
+    "require": {
+        "jaxon-php/jaxon-core": "v5.x-dev",
+        "lagdo/ui-builder": "dev-main"
+    },
+    "autoload": {
+        "psr-4": {
+            "Lagdo\\UiBuilder\\Jaxon\\": "src/"
+        },
+        "files": [
+            "src/start.php"
+        ]
+    }
+}
