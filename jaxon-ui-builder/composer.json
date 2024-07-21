@@ -26,5 +26,7 @@
         "files": [
             "src/start.php"
         ]
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
