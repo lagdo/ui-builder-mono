@@ -20,16 +20,19 @@
         "source": "https://github.com/lagdo/html-ui-builder"
     },
     "require": {
-        "avplab/php-html-builder": "^2.0"
+        "avplab/php-html-builder": "^2.0",
+        "jaxon-php/jaxon-core": "v5.x-dev"
     },
     "autoload": {
         "psr-4": {
             "Lagdo\\UiBuilder\\": "ui-builder/src/",
             "Lagdo\\UiBuilder\\Bootstrap3\\": "ui-builder-bootstrap3/src/",
             "Lagdo\\UiBuilder\\Bootstrap4\\": "ui-builder-bootstrap4/src/",
-            "Lagdo\\UiBuilder\\Bootstrap5\\": "ui-builder-bootstrap5/src/"
+            "Lagdo\\UiBuilder\\Bootstrap5\\": "ui-builder-bootstrap5/src/",
+            "Lagdo\\UiBuilder\\Jaxon\\": "jaxon-ui-builder/src/"
         },
         "files": [
+            "jaxon-ui-builder/src/start.php",
             "ui-builder-bootstrap3/src/start.php",
             "ui-builder-bootstrap4/src/start.php",
             "ui-builder-bootstrap5/src/start.php"
@@ -39,6 +42,7 @@
         "contao/monorepo-tools": "^0.2"
     },
     "replace": {
+        "lagdo/jaxon-ui-builder": "self.version",
         "lagdo/ui-builder": "self.version",
         "lagdo/ui-builder-bootstrap3": "self.version",
         "lagdo/ui-builder-bootstrap4": "self.version",
