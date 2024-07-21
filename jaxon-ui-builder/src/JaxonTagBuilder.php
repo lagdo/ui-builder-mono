@@ -24,6 +24,7 @@ class JaxonTagBuilder
     /**
      * Get the component HTML code
      *
+     * @param BuilderInterface $builder
      * @param JxnCall $xJsCall
      *
      * @return void
@@ -36,6 +37,7 @@ class JaxonTagBuilder
     /**
      * Attach a component to a DOM node
      *
+     * @param BuilderInterface $builder
      * @param JxnCall $xJsCall
      * @param string $item
      *
@@ -54,6 +56,7 @@ class JaxonTagBuilder
     /**
      * Set a node as a target for event handler definitions
      *
+     * @param BuilderInterface $builder
      * @param string $name
      *
      * @return void
@@ -77,6 +80,7 @@ class JaxonTagBuilder
     /**
      * Set an event handler
      *
+     * @param BuilderInterface $builder
      * @param string|array $on
      * @param JsExpr $xJsExpr
      * @param array $options
@@ -111,5 +115,19 @@ class JaxonTagBuilder
             $builder->setAttributes(['jxn-on', $event]);
         }
         $builder->setAttributes(['jxn-call', htmlentities(json_encode($xJsExpr->jsonSerialize()))]);
+    }
+
+    /**
+     * Set an event handler
+     *
+     * @param BuilderInterface $builder
+     * @param JsExpr $xJsExpr
+     * @param array $options
+     *
+     * @return void
+     */
+    public function jxnClick(BuilderInterface $builder, JsExpr $xJsExpr, array $options = [])
+    {
+        $this->jxnOn($builder, 'click', $xJsExpr, $options);
     }
 }
