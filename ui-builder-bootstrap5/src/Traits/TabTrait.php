@@ -24,10 +24,10 @@ trait TabTrait
      */
     public function tabNav(string $id = ''): self
     {
-        $this->createScope('ul', func_get_args());
-        $this->prependClass('nav nav-pills mb-3');
+        $this->builder->createScope('ul', func_get_args());
+        $this->builder->prependClass('nav nav-pills mb-3');
         if (($id)) {
-            $this->setAttributes(['id' => $id]);
+            $this->builder->setAttribute('id', $id);
             $this->options['tab-nav-id'] = $id;
         }
         return $this;
@@ -41,10 +41,10 @@ trait TabTrait
         $arguments = func_get_args();
         array_shift($arguments);
         array_shift($arguments);
-        $this->createWrapper('li', ['class' => 'nav-item', 'role' => 'presentation']);
-        $this->createScope('button', $arguments);
-        $this->prependClass($active ? 'nav-link active' : 'nav-link');
-        $this->setAttributes(['id' => "$target-tab", 'type' => 'button', 'role' => 'tab',
+        $this->builder->createWrapper('li', ['class' => 'nav-item', 'role' => 'presentation']);
+        $this->builder->createScope('button', $arguments);
+        $this->builder->prependClass($active ? 'nav-link active' : 'nav-link');
+        $this->builder->setAttributes(['id' => "$target-tab", 'type' => 'button', 'role' => 'tab',
             'aria-selected' => $active ? 'true' : 'false', 'data-bs-toggle' => 'tab', 'data-bs-target' => "#$target"]);
         return $this;
     }
@@ -54,10 +54,10 @@ trait TabTrait
      */
     public function tabContent(): self
     {
-        $this->createScope('div', func_get_args());
-        $this->prependClass('tab-content');
+        $this->builder->createScope('div', func_get_args());
+        $this->builder->prependClass('tab-content');
         if (isset($this->options['tab-nav-id'])) {
-            $this->setAttributes(['id' => $this->options['tab-nav-id'] . 'Content']);
+            $this->builder->setAttribute('id', $this->options['tab-nav-id'] . 'Content');
         }
         return $this;
     }
@@ -70,9 +70,9 @@ trait TabTrait
         $arguments = func_get_args();
         array_shift($arguments);
         array_shift($arguments);
-        $this->createScope('div', $arguments);
-        $this->prependClass($active ? 'tab-pane fade show active' : 'tab-pane fade');
-        $this->setAttributes(['id' => $id]);
+        $this->builder->createScope('div', $arguments);
+        $this->builder->prependClass($active ? 'tab-pane fade show active' : 'tab-pane fade');
+        $this->builder->setAttribute('id', $id);
         return $this;
     }
 }

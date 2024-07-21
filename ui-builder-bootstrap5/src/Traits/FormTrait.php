@@ -29,7 +29,7 @@ trait FormTrait
         $arguments = func_get_args();
         array_shift($arguments);
         array_shift($arguments);
-        $this->createScope('form', $arguments);
+        $this->builder->createScope('form', $arguments);
         return $this;
     }
 
@@ -38,8 +38,8 @@ trait FormTrait
      */
     public function formRow(): self
     {
-        $this->createScope('div', func_get_args());
-        $this->prependClass('row mb-3');
+        $this->builder->createScope('div', func_get_args());
+        $this->builder->prependClass('row mb-3');
         return $this;
     }
 
@@ -61,8 +61,8 @@ trait FormTrait
         }
         $arguments = func_get_args();
         array_shift($arguments);
-        $this->createScope('div', $arguments);
-        $this->prependClass("col-sm-$width");
+        $this->builder->createScope('div', $arguments);
+        $this->builder->prependClass("col-sm-$width");
         return $this;
     }
 

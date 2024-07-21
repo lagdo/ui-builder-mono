@@ -25,8 +25,8 @@ trait MenuTrait
      */
     public function menu(): self
     {
-        $this->createScope('div', func_get_args());
-        $this->prependClass('list-group');
+        $this->builder->createScope('div', func_get_args());
+        $this->builder->prependClass('list-group');
         return $this;
     }
 
@@ -35,9 +35,9 @@ trait MenuTrait
      */
     public function menuItem(): self
     {
-        $this->createScope('a', func_get_args());
-        $this->prependClass('list-group-item list-group-item-action');
-        $this->setAttributes(['href' => 'javascript:void(0)']);
+        $this->builder->createScope('a', func_get_args());
+        $this->builder->prependClass('list-group-item list-group-item-action');
+        $this->builder->setAttribute('href', 'javascript:void(0)');
         return $this;
     }
 
@@ -46,9 +46,9 @@ trait MenuTrait
      */
     public function menuActiveItem(): self
     {
-        $this->createScope('a', func_get_args());
-        $this->prependClass('list-group-item list-group-item-action active');
-        $this->setAttributes(['href' => 'javascript:void(0)']);
+        $this->builder->createScope('a', func_get_args());
+        $this->builder->prependClass('list-group-item list-group-item-action active');
+        $this->builder->setAttribute('href', 'javascript:void(0)');
         return $this;
     }
 
@@ -57,9 +57,9 @@ trait MenuTrait
      */
     public function menuDisabledItem(): self
     {
-        $this->createScope('a', func_get_args());
-        $this->prependClass('list-group-item list-group-item-action disabled');
-        $this->setAttributes(['href' => 'javascript:void(0)']);
+        $this->builder->createScope('a', func_get_args());
+        $this->builder->prependClass('list-group-item list-group-item-action disabled');
+        $this->builder->setAttribute('href', 'javascript:void(0)');
         return $this;
     }
 
@@ -68,9 +68,9 @@ trait MenuTrait
      */
     public function breadcrumb(): self
     {
-        $this->createWrapper('nav', ['aria-label' => 'breadcrumb']);
-        $this->createScope('ol', func_get_args());
-        $this->prependClass('breadcrumb');
+        $this->builder->createWrapper('nav', ['aria-label' => 'breadcrumb']);
+        $this->builder->createScope('ol', func_get_args());
+        $this->builder->prependClass('breadcrumb');
         return $this;
     }
 
@@ -81,8 +81,8 @@ trait MenuTrait
     {
         $arguments = func_get_args();
         array_shift($arguments);
-        $this->createScope('li', $arguments);
-        $this->prependClass($active ? 'breadcrumb-item active' : 'breadcrumb-item');
+        $this->builder->createScope('li', $arguments);
+        $this->builder->prependClass($active ? 'breadcrumb-item active' : 'breadcrumb-item');
         return $this;
     }
 
@@ -91,8 +91,8 @@ trait MenuTrait
      */
     public function dropdown(): self
     {
-        $this->createScope('div', func_get_args());
-        $this->prependClass('dropdown');
+        $this->builder->createScope('div', func_get_args());
+        $this->builder->prependClass('dropdown');
         return $this;
     }
 
@@ -104,9 +104,9 @@ trait MenuTrait
     {
         $arguments = func_get_args();
         array_shift($arguments);
-        $this->createScope('button', $arguments);
-        $this->prependClass("btn btn-$style dropdown-toggle");
-        $this->setAttributes(['type' => 'button', 'data-bs-toggle' => 'dropdown', 'aria-expanded' => 'false']);
+        $this->builder->createScope('button', $arguments);
+        $this->builder->prependClass("btn btn-$style dropdown-toggle");
+        $this->builder->setAttributes(['type' => 'button', 'data-bs-toggle' => 'dropdown', 'aria-expanded' => 'false']);
         return $this;
     }
 
@@ -115,8 +115,8 @@ trait MenuTrait
      */
     public function dropdownMenu(): self
     {
-        $this->createScope('ul', func_get_args());
-        $this->prependClass('dropdown-menu');
+        $this->builder->createScope('ul', func_get_args());
+        $this->builder->prependClass('dropdown-menu');
         return $this;
     }
 
@@ -125,10 +125,10 @@ trait MenuTrait
      */
     public function dropdownMenuItem(): self
     {
-        $this->createWrapper('li');
-        $this->createScope('a', func_get_args());
-        $this->prependClass('dropdown-item');
-        $this->setAttributes(['href' => '#']);
+        $this->builder->createWrapper('li');
+        $this->builder->createScope('a', func_get_args());
+        $this->builder->prependClass('dropdown-item');
+        $this->builder->setAttribute('href', '#');
         return $this;
     }
 }

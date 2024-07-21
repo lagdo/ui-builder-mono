@@ -36,9 +36,9 @@ trait ButtonTrait
     {
         $arguments = func_get_args();
         array_shift($arguments);
-        $this->createScope('div', $arguments);
-        $this->prependClass($fullWidth ? 'btn-group d-flex' : 'btn-group');
-        $this->setAttributes(['role' => 'group']);
+        $this->builder->createScope('div', $arguments);
+        $this->builder->prependClass($fullWidth ? 'btn-group d-flex' : 'btn-group');
+        $this->builder->setAttribute('role', 'group');
         $this->scope->isButtonGroup = true;
         return $this;
     }
@@ -84,9 +84,9 @@ trait ButtonTrait
     {
         $arguments = func_get_args();
         array_shift($arguments);
-        $this->createScope('button', $arguments);
-        $this->prependClass($this->buttonClass($flags));
-        $this->setAttributes(['type' => 'button']);
+        $this->builder->createScope('button', $arguments);
+        $this->builder->prependClass($this->buttonClass($flags));
+        $this->builder->setAttribute('type', 'button');
         return $this;
     }
 }
