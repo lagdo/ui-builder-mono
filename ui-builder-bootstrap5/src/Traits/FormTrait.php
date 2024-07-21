@@ -11,20 +11,20 @@ use function ltrim;
 
 trait FormTrait
 {
-    abstract protected function createScope(string $name, array $arguments = []): BuilderInterface;
+    abstract protected function createScope(string $name, array $arguments = []): self;
 
-    abstract protected function createWrapper(string $name, array $arguments = []): BuilderInterface;
+    abstract protected function createWrapper(string $name, array $arguments = []): self;
 
-    abstract protected function prependClass(string $class): BuilderInterface;
+    abstract protected function prependClass(string $class): self;
 
-    abstract protected function setAttributes(array $attributes): BuilderInterface;
+    abstract protected function setAttributes(array $attributes): self;
 
-    abstract public function end(): BuilderInterface;
+    abstract public function end(): self;
 
     /**
      * @inheritDoc
      */
-    public function form(bool $horizontal = false, bool $wrapped = false): BuilderInterface
+    public function form(bool $horizontal = false, bool $wrapped = false): self
     {
         $arguments = func_get_args();
         array_shift($arguments);
@@ -36,7 +36,7 @@ trait FormTrait
     /**
      * @inheritDoc
      */
-    public function formRow(): BuilderInterface
+    public function formRow(): self
     {
         $this->createScope('div', func_get_args());
         $this->prependClass('row mb-3');
@@ -54,7 +54,7 @@ trait FormTrait
     /**
      * @inheritDoc
      */
-    public function formCol(int $width = 12): BuilderInterface
+    public function formCol(int $width = 12): self
     {
         if ($width < 1 || $width > 12) {
             $width = 12; // Full width by default.

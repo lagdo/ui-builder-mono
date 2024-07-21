@@ -10,20 +10,20 @@ use function func_get_args;
 
 trait MenuTrait
 {
-    abstract protected function createScope(string $name, array $arguments = []): BuilderInterface;
+    abstract protected function createScope(string $name, array $arguments = []): self;
 
-    abstract protected function createWrapper(string $name, array $arguments = []): BuilderInterface;
+    abstract protected function createWrapper(string $name, array $arguments = []): self;
 
-    abstract protected function prependClass(string $class): BuilderInterface;
+    abstract protected function prependClass(string $class): self;
 
-    abstract protected function setAttributes(array $attributes): BuilderInterface;
+    abstract protected function setAttributes(array $attributes): self;
 
-    abstract public function end(): BuilderInterface;
+    abstract public function end(): self;
 
     /**
      * @inheritDoc
      */
-    public function menu(): BuilderInterface
+    public function menu(): self
     {
         $this->createScope('div', func_get_args());
         $this->prependClass('list-group');
@@ -33,7 +33,7 @@ trait MenuTrait
     /**
      * @inheritDoc
      */
-    public function menuItem(): BuilderInterface
+    public function menuItem(): self
     {
         $this->createScope('a', func_get_args());
         $this->prependClass('list-group-item list-group-item-action');
@@ -44,7 +44,7 @@ trait MenuTrait
     /**
      * @inheritDoc
      */
-    public function menuActiveItem(): BuilderInterface
+    public function menuActiveItem(): self
     {
         $this->createScope('a', func_get_args());
         $this->prependClass('list-group-item list-group-item-action active');
@@ -55,7 +55,7 @@ trait MenuTrait
     /**
      * @inheritDoc
      */
-    public function menuDisabledItem(): BuilderInterface
+    public function menuDisabledItem(): self
     {
         $this->createScope('a', func_get_args());
         $this->prependClass('list-group-item list-group-item-action disabled');
@@ -66,7 +66,7 @@ trait MenuTrait
     /**
      * @inheritDoc
      */
-    public function breadcrumb(): BuilderInterface
+    public function breadcrumb(): self
     {
         $this->createWrapper('nav', ['aria-label' => 'breadcrumb']);
         $this->createScope('ol', func_get_args());
@@ -77,7 +77,7 @@ trait MenuTrait
     /**
      * @inheritDoc
      */
-    public function breadcrumbItem(bool $active): BuilderInterface
+    public function breadcrumbItem(bool $active): self
     {
         $arguments = func_get_args();
         array_shift($arguments);
@@ -89,7 +89,7 @@ trait MenuTrait
     /**
      * @inheritDoc
      */
-    public function dropdown(): BuilderInterface
+    public function dropdown(): self
     {
         $this->createScope('div', func_get_args());
         $this->prependClass('dropdown');
@@ -100,7 +100,7 @@ trait MenuTrait
      * @inheritDoc
      * @throws Exception
      */
-    public function dropdownItem(string $style = 'default'): BuilderInterface
+    public function dropdownItem(string $style = 'default'): self
     {
         $arguments = func_get_args();
         array_shift($arguments);
@@ -113,7 +113,7 @@ trait MenuTrait
     /**
      * @inheritDoc
      */
-    public function dropdownMenu(): BuilderInterface
+    public function dropdownMenu(): self
     {
         $this->createScope('ul', func_get_args());
         $this->prependClass('dropdown-menu');
@@ -123,7 +123,7 @@ trait MenuTrait
     /**
      * @inheritDoc
      */
-    public function dropdownMenuItem(): BuilderInterface
+    public function dropdownMenuItem(): self
     {
         $this->createWrapper('li');
         $this->createScope('a', func_get_args());
