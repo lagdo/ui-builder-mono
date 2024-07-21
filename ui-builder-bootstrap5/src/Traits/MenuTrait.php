@@ -6,14 +6,6 @@ use Exception;
 
 trait MenuTrait
 {
-    abstract protected function createScope(string $name, array $arguments = []): self;
-
-    abstract protected function createWrapper(string $name, array $arguments = []): self;
-
-    abstract protected function prependClass(string $class): self;
-
-    abstract protected function setAttributes(array $attributes): self;
-
     abstract public function end(): self;
 
     /**
