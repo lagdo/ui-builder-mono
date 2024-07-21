@@ -3,10 +3,6 @@
 namespace Lagdo\UiBuilder\Bootstrap5;
 
 use Lagdo\UiBuilder\AbstractBuilder;
-use Lagdo\UiBuilder\BuilderInterface;
-
-use function array_shift;
-use function func_get_args;
 
 class Builder extends AbstractBuilder
 {
@@ -45,15 +41,14 @@ class Builder extends AbstractBuilder
     /**
      * @inheritDoc
      */
-    public function checkbox(bool $checked = false): self
+    public function checkbox(bool $checked = false, ...$arguments): self
     {
         $class = 'form-check-input';
         if ($this->builder->isInputGroup()) {
             $this->builder->createWrapper('div', ['class' => 'input-group-text']);
             $class .= ' mt-0';
         }
-        $arguments = func_get_args();
-        parent::checkbox(...$arguments);
+        parent::checkbox($checked, ...$arguments);
         $this->builder->prependClass($class);
         return $this;
     }
@@ -61,15 +56,14 @@ class Builder extends AbstractBuilder
     /**
      * @inheritDoc
      */
-    public function radio(bool $checked = false): self
+    public function radio(bool $checked = false, ...$arguments): self
     {
         $class = 'form-check-input';
         if ($this->builder->isInputGroup()) {
             $this->builder->createWrapper('div', ['class' => 'input-group-text']);
             $class .= ' mt-0';
         }
-        $arguments = func_get_args();
-        parent::radio(...$arguments);
+        parent::radio($checked, ...$arguments);
         $this->builder->prependClass($class);
         return $this;
     }
@@ -77,12 +71,12 @@ class Builder extends AbstractBuilder
     /**
      * @inheritDoc
      */
-    public function text(): self
+    public function text(...$arguments): self
     {
         // A label in an input group must be wrapped into a span with class "input-group-addon".
         // Check the parent scope.
         $isInGroup = ($this->builder->isInputGroup());
-        $this->builder->createScope('span', func_get_args());
+        $this->builder->createScope('span', $arguments);
         if ($isInGroup) {
             $this->builder->prependClass('input-group-text');
         }
@@ -92,9 +86,9 @@ class Builder extends AbstractBuilder
     /**
      * @inheritDoc
      */
-    public function inputGroup(): self
+    public function inputGroup(...$arguments): self
     {
-        $this->builder->createScope('div', func_get_args());
+        $this->builder->createScope('div', $arguments);
         $this->builder->prependClass('input-group mb-3');
         $this->scope->isInputGroup = true;
         return $this;
@@ -103,14 +97,11 @@ class Builder extends AbstractBuilder
     /**
      * @inheritDoc
      */
-    public function table(bool $responsive, string $style = ''): self
+    public function table(bool $responsive, string $style = '', ...$arguments): self
     {
         if ($responsive) {
             $this->builder->createWrapper('div', ['class' => 'table-responsive']);
         }
-        $arguments = func_get_args();
-        array_shift($arguments);
-        array_shift($arguments);
         $this->builder->createScope('table', $arguments);
         $this->builder->prependClass($style ? "table table-$style" : 'table');
         return $this;

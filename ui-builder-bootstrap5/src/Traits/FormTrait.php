@@ -24,11 +24,8 @@ trait FormTrait
     /**
      * @inheritDoc
      */
-    public function form(bool $horizontal = false, bool $wrapped = false): self
+    public function form(bool $horizontal = false, bool $wrapped = false, ...$arguments): self
     {
-        $arguments = func_get_args();
-        array_shift($arguments);
-        array_shift($arguments);
         $this->builder->createScope('form', $arguments);
         return $this;
     }
@@ -36,9 +33,9 @@ trait FormTrait
     /**
      * @inheritDoc
      */
-    public function formRow(): self
+    public function formRow(...$arguments): self
     {
-        $this->builder->createScope('div', func_get_args());
+        $this->builder->createScope('div', $arguments);
         $this->builder->prependClass('row mb-3');
         return $this;
     }
@@ -54,13 +51,11 @@ trait FormTrait
     /**
      * @inheritDoc
      */
-    public function formCol(int $width = 12): self
+    public function formCol(int $width = 12, ...$arguments): self
     {
         if ($width < 1 || $width > 12) {
             $width = 12; // Full width by default.
         }
-        $arguments = func_get_args();
-        array_shift($arguments);
         $this->builder->createScope('div', $arguments);
         $this->builder->prependClass("col-sm-$width");
         return $this;
