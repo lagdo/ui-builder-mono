@@ -4,7 +4,7 @@ namespace Lagdo\UiBuilder\Jaxon;
 
 use Jaxon\Script\JsExpr;
 use Jaxon\Script\JxnCall;
-use Lagdo\UiBuilder\Scope\UiBuilder;
+use Lagdo\UiBuilder\Html\UiBuilder;
 
 use function count;
 use function htmlentities;

@@ -4,7 +4,7 @@ namespace Lagdo\UiBuilder\Jaxon;
 
 use Lagdo\UiBuilder\BuilderInterface;
 use Lagdo\UiBuilder\BuilderSetup;
-use Lagdo\UiBuilder\Scope\UiBuilder;
+use Lagdo\UiBuilder\Html\UiBuilder;
 
 use function Jaxon\jaxon;
 
