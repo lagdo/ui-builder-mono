@@ -4,7 +4,7 @@ namespace Lagdo\UiBuilder\Jaxon;
 
 use Jaxon\Script\JsExpr;
 use Jaxon\Script\JxnCall;
-use Lagdo\UiBuilder\BuilderInterface;
+use Lagdo\UiBuilder\Scope\UiBuilder;
 
 use function count;
 use function htmlentities;
@@ -16,7 +16,14 @@ use function trim;
 
 class JaxonTagBuilder
 {
-    public function tag(BuilderInterface $builder, string $method, array $arguments)
+    /**
+     * @param UiBuilder $builder
+     * @param string $method
+     * @param array $arguments
+     *
+     * @return void
+     */
+    public function tag(UiBuilder $builder, string $method, array $arguments)
     {
         $this->$method($builder, ...$arguments);
     }
@@ -24,12 +31,12 @@ class JaxonTagBuilder
     /**
      * Get the component HTML code
      *
-     * @param BuilderInterface $builder
+     * @param UiBuilder $builder
      * @param JxnCall $xJsCall
      *
      * @return void
      */
-    public function jxnHtml(BuilderInterface $builder, JxnCall $xJsCall)
+    private function jxnHtml(UiBuilder $builder, JxnCall $xJsCall)
     {
         $builder->addHtml(attr()->html($xJsCall));
     }
@@ -37,33 +44,33 @@ class JaxonTagBuilder
     /**
      * Attach a component to a DOM node
      *
-     * @param BuilderInterface $builder
+     * @param UiBuilder $builder
      * @param JxnCall $xJsCall
      * @param string $item
      *
      * @return void
      */
-    public function jxnShow(BuilderInterface $builder, JxnCall $xJsCall, string $item = '')
+    private function jxnShow(UiBuilder $builder, JxnCall $xJsCall, string $item = '')
     {
         $item = trim($item);
-        $builder->setAttributes(['jxn-show', $xJsCall->_class()]);
+        $builder->setAttribute('jxn-show', $xJsCall->_class());
         if($item !== '')
         {
-            $builder->setAttributes(['jxn-item', $item]);
+            $builder->setAttribute('jxn-item', $item);
         }
     }
 
     /**
      * Set a node as a target for event handler definitions
      *
-     * @param BuilderInterface $builder
+     * @param UiBuilder $builder
      * @param string $name
      *
      * @return void
      */
-    public function jxnTarget(BuilderInterface $builder, string $name = '')
+    private function jxnTarget(UiBuilder $builder, string $name = '')
     {
-        $builder->setAttributes(['jxn-target', trim($name)]);
+        $builder->setAttribute('jxn-target', trim($name));
     }
 
     /**
@@ -80,14 +87,14 @@ class JaxonTagBuilder
     /**
      * Set an event handler
      *
-     * @param BuilderInterface $builder
+     * @param UiBuilder $builder
      * @param string|array $on
      * @param JsExpr $xJsExpr
      * @param array $options
      *
      * @return void
      */
-    public function jxnOn(BuilderInterface $builder, string|array $on, JsExpr $xJsExpr, array $options = [])
+    private function jxnOn(UiBuilder $builder, string|array $on, JsExpr $xJsExpr, array $options = [])
     {
         $select = '';
         $event = $on;
@@ -95,7 +102,7 @@ class JaxonTagBuilder
         {
             if(!$this->checkOn($on))
             {
-                return $this;
+                return;
             }
             $select = trim($on[0]);
             $event = $on[1];
@@ -104,29 +111,22 @@ class JaxonTagBuilder
 
         if($select !== '')
         {
-            $builder->setAttributes(['jxn-select', $select]);
+            $builder->setAttribute('jxn-select', $select);
         }
-        if(isset($options['target']))
-        {
-            $builder->setAttributes(['jxn-event', $event]);
-        }
-        else
-        {
-            $builder->setAttributes(['jxn-on', $event]);
-        }
-        $builder->setAttributes(['jxn-call', htmlentities(json_encode($xJsExpr->jsonSerialize()))]);
+        $builder->setAttribute(isset($options['target']) ? 'jxn-event' : 'jxn-on', $event);
+        $builder->setAttribute('jxn-call', htmlentities(json_encode($xJsExpr->jsonSerialize())));
     }
 
     /**
      * Set an event handler
      *
-     * @param BuilderInterface $builder
+     * @param UiBuilder $builder
      * @param JsExpr $xJsExpr
      * @param array $options
      *
      * @return void
      */
-    public function jxnClick(BuilderInterface $builder, JsExpr $xJsExpr, array $options = [])
+    private function jxnClick(UiBuilder $builder, JsExpr $xJsExpr, array $options = [])
     {
         $this->jxnOn($builder, 'click', $xJsExpr, $options);
     }

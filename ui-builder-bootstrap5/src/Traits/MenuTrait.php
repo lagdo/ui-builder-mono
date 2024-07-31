@@ -3,15 +3,16 @@
 namespace Lagdo\UiBuilder\Bootstrap5\Traits;
 
 use Exception;
+use Lagdo\UiBuilder\BuilderInterface;
 
 trait MenuTrait
 {
-    abstract public function end(): self;
+    abstract public function end(): BuilderInterface;
 
     /**
      * @inheritDoc
      */
-    public function menu(...$arguments): self
+    public function menu(...$arguments): BuilderInterface
     {
         $this->builder->createScope('div', $arguments);
         $this->builder->prependClass('list-group');
@@ -21,7 +22,7 @@ trait MenuTrait
     /**
      * @inheritDoc
      */
-    public function menuItem(...$arguments): self
+    public function menuItem(...$arguments): BuilderInterface
     {
         $this->builder->createScope('a', $arguments);
         $this->builder->prependClass('list-group-item list-group-item-action');
@@ -32,7 +33,7 @@ trait MenuTrait
     /**
      * @inheritDoc
      */
-    public function menuActiveItem(...$arguments): self
+    public function menuActiveItem(...$arguments): BuilderInterface
     {
         $this->builder->createScope('a', $arguments);
         $this->builder->prependClass('list-group-item list-group-item-action active');
@@ -43,7 +44,7 @@ trait MenuTrait
     /**
      * @inheritDoc
      */
-    public function menuDisabledItem(...$arguments): self
+    public function menuDisabledItem(...$arguments): BuilderInterface
     {
         $this->builder->createScope('a', $arguments);
         $this->builder->prependClass('list-group-item list-group-item-action disabled');
@@ -54,7 +55,7 @@ trait MenuTrait
     /**
      * @inheritDoc
      */
-    public function breadcrumb(...$arguments): self
+    public function breadcrumb(...$arguments): BuilderInterface
     {
         $this->builder->createWrapper('nav', ['aria-label' => 'breadcrumb']);
         $this->builder->createScope('ol', $arguments);
@@ -65,7 +66,7 @@ trait MenuTrait
     /**
      * @inheritDoc
      */
-    public function breadcrumbItem(bool $active, ...$arguments): self
+    public function breadcrumbItem(bool $active, ...$arguments): BuilderInterface
     {
         $this->builder->createScope('li', $arguments);
         $this->builder->prependClass($active ? 'breadcrumb-item active' : 'breadcrumb-item');
@@ -75,7 +76,7 @@ trait MenuTrait
     /**
      * @inheritDoc
      */
-    public function dropdown(...$arguments): self
+    public function dropdown(...$arguments): BuilderInterface
     {
         $this->builder->createScope('div', $arguments);
         $this->builder->prependClass('dropdown');
@@ -86,7 +87,7 @@ trait MenuTrait
      * @inheritDoc
      * @throws Exception
      */
-    public function dropdownItem(string $style = 'default', ...$arguments): self
+    public function dropdownItem(string $style = 'default', ...$arguments): BuilderInterface
     {
         $this->builder->createScope('button', $arguments);
         $this->builder->prependClass("btn btn-$style dropdown-toggle");
@@ -97,7 +98,7 @@ trait MenuTrait
     /**
      * @inheritDoc
      */
-    public function dropdownMenu(...$arguments): self
+    public function dropdownMenu(...$arguments): BuilderInterface
     {
         $this->builder->createScope('ul', $arguments);
         $this->builder->prependClass('dropdown-menu');
@@ -107,7 +108,7 @@ trait MenuTrait
     /**
      * @inheritDoc
      */
-    public function dropdownMenuItem(...$arguments): self
+    public function dropdownMenuItem(...$arguments): BuilderInterface
     {
         $this->builder->createWrapper('li');
         $this->builder->createScope('a', $arguments);

@@ -2,17 +2,19 @@
 
 namespace Lagdo\UiBuilder\Bootstrap5\Traits;
 
+use Lagdo\UiBuilder\BuilderInterface;
+
 use function rtrim;
 use function ltrim;
 
 trait FormTrait
 {
-    abstract public function end(): self;
+    abstract public function end(): BuilderInterface;
 
     /**
      * @inheritDoc
      */
-    public function form(bool $horizontal = false, bool $wrapped = false, ...$arguments): self
+    public function form(bool $horizontal = false, bool $wrapped = false, ...$arguments): BuilderInterface
     {
         $this->builder->createScope('form', $arguments);
         return $this;
@@ -21,7 +23,7 @@ trait FormTrait
     /**
      * @inheritDoc
      */
-    public function formRow(...$arguments): self
+    public function formRow(...$arguments): BuilderInterface
     {
         $this->builder->createScope('div', $arguments);
         $this->builder->prependClass('row mb-3');
@@ -39,7 +41,7 @@ trait FormTrait
     /**
      * @inheritDoc
      */
-    public function formCol(int $width = 12, ...$arguments): self
+    public function formCol(int $width = 12, ...$arguments): BuilderInterface
     {
         if ($width < 1 || $width > 12) {
             $width = 12; // Full width by default.
