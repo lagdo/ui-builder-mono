@@ -32,10 +32,7 @@
             "Lagdo\\UiBuilder\\Jaxon\\": "jaxon-ui-builder/src/"
         },
         "files": [
-            "jaxon-ui-builder/src/start.php",
-            "ui-builder-bootstrap3/src/start.php",
-            "ui-builder-bootstrap4/src/start.php",
-            "ui-builder-bootstrap5/src/start.php"
+            "jaxon-ui-builder/src/start.php"
         ]
     },
     "require-dev": {
