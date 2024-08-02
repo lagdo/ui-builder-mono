@@ -5,6 +5,7 @@ namespace Lagdo\UiBuilder\Jaxon;
 use Jaxon\Script\JsExpr;
 use Jaxon\Script\JxnCall;
 use Lagdo\UiBuilder\Html\UiBuilder;
+use RuntimeException;
 
 use function count;
 use function htmlentities;
@@ -114,7 +115,7 @@ class JaxonTagBuilder
             $builder->setAttribute('jxn-select', $select);
         }
         $builder->setAttribute(isset($options['target']) ? 'jxn-event' : 'jxn-on', $event);
-        $builder->setAttribute('jxn-call', htmlentities(json_encode($xJsExpr->jsonSerialize())));
+        $builder->setAttribute('jxn-call', htmlentities(json_encode($xJsExpr->jsonSerialize())), false);
     }
 
     /**
