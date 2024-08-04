@@ -77,7 +77,7 @@ class Builder
      *
      * @return BuilderInterface
      */
-    public static function make(): BuilderInterface
+    public static function new(): BuilderInterface
     {
         return jaxon()->di()->g(BuilderInterface::class);
     }

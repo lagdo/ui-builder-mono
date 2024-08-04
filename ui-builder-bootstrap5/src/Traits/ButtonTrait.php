@@ -2,33 +2,10 @@
 
 namespace Lagdo\UiBuilder\Bootstrap5\Traits;
 
-use Lagdo\UiBuilder\Builder as AbstractBuilder;
 use Lagdo\UiBuilder\BuilderInterface;
 
 trait ButtonTrait
 {
-    /**
-     * @var array
-     */
-    protected $mainStyles = [
-        AbstractBuilder::BTN_PRIMARY => 'primary',
-        AbstractBuilder::BTN_SECONDARY => 'secondary',
-        AbstractBuilder::BTN_SUCCESS => 'success',
-        AbstractBuilder::BTN_INFO => 'info',
-        AbstractBuilder::BTN_WARNING => 'warning',
-        AbstractBuilder::BTN_DANGER => 'danger',
-    ];
-
-    /**
-     * @var array
-     */
-    protected $sizeStyles = [
-        AbstractBuilder::BTN_LARGE => 'lg',
-        AbstractBuilder::BTN_SMALL => 'sm',
-    ];
-
-    abstract public function end(): BuilderInterface;
-
     /**
      * @inheritDoc
      */
@@ -42,50 +19,106 @@ trait ButtonTrait
     }
 
     /**
-     * @param integer $flags
-     *
-     * @return string
-     */
-    private function mainClass(int $flags): string
-    {
-        foreach ($this->mainStyles as $mask => $value) {
-            if ($flags & $mask) {
-                return ($flags & AbstractBuilder::BTN_OUTLINE) ? "outline-$value" : $value;
-            }
-        }
-        // The default style is "secondary"
-        return ($flags & AbstractBuilder::BTN_OUTLINE) ? 'outline-secondary' : 'secondary';
-    }
-
-    /**
-     * @param integer $flags
-     * @param boolean $isInButtonGroup
-     *
-     * @return string
-     */
-    private function buttonClass(int $flags, bool $isInButtonGroup): string
-    {
-        $btnClass = $this->mainClass($flags);
-        foreach ($this->sizeStyles as $mask => $value) {
-            if ($flags & $mask) {
-                $btnClass .= " btn-$value";
-            }
-        }
-        if (($flags & AbstractBuilder::BTN_FULL_WIDTH) && !$isInButtonGroup) {
-            $btnClass .= ' w-100';
-        }
-        return $btnClass;
-    }
-
-    /**
      * @inheritDoc
      */
-    public function button(int $flags = 0, ...$arguments): BuilderInterface
+    public function button(...$arguments): BuilderInterface
     {
-        $isInButtonGroup = $this->builder->scope()?->isButtonGroup ?? false;
         $this->builder->createScope('button', $arguments);
-        $this->builder->prependClass($this->buttonClass($flags, $isInButtonGroup));
+        $this->builder->prependClass('btn');
         $this->builder->setAttribute('type', 'button');
+        return $this;
+    }
+
+    /**
+     * @return BuilderInterface
+     */
+    public function btnOutline(): BuilderInterface
+    {
+        $this->builder->scope()->btnOutline = true;
+        return $this;
+    }
+
+    /**
+     * @return BuilderInterface
+     */
+    public function btnFullWidth(): BuilderInterface
+    {
+        if($this->builder->scope()?->isButtonGroup ?? false)
+        {
+            $this->builder->appendClass('w-100');
+        }
+        return $this;
+    }
+
+    /**
+     * @return BuilderInterface
+     */
+    public function btnLarge(): BuilderInterface
+    {
+        $this->builder->appendClass('btn-lg');
+        return $this;
+    }
+
+    /**
+     * @return BuilderInterface
+     */
+    public function btnSmall(): BuilderInterface
+    {
+        $this->builder->appendClass('btn-sm');
+        return $this;
+    }
+
+    /**
+     * @return BuilderInterface
+     */
+    public function btnPrimary(): BuilderInterface
+    {
+        $this->builder->appendClass($this->builder->scope()->btnOutline ? 'btn-outline-primary' : 'btn-primary');
+        return $this;
+    }
+
+    /**
+     * @return BuilderInterface
+     */
+    public function btnSecondary(): BuilderInterface
+    {
+        $this->builder->appendClass($this->builder->scope()->btnOutline ? 'btn-outline-secondary' : 'btn-secondary');
+        return $this;
+    }
+
+    /**
+     * @return BuilderInterface
+     */
+    public function btnSuccess(): BuilderInterface
+    {
+        $this->builder->appendClass($this->builder->scope()->btnOutline ? 'btn-outline-success' : 'btn-success');
+        return $this;
+    }
+
+    /**
+     * @return BuilderInterface
+     */
+    public function btnInfo(): BuilderInterface
+    {
+        $this->builder->appendClass($this->builder->scope()->btnOutline ? 'btn-outline-info' : 'btn-info');
+        return $this;
+    }
+
+    /**
+     * @return BuilderInterface
+     */
+    public function btnWarning(): BuilderInterface
+    {
+        $this->builder->appendClass($this->builder->scope()->btnOutline ? 'btn-outline-warning' : 'btn-warning');
+        return $this;
+    }
+
+    /**
+     * @return BuilderInterface
+     */
+    public function btnDanger(): BuilderInterface
+    {
+        $this->builder->appendClass($this->builder->scope()->btnOutline ? 'btn-outline-danger' : 'btn-danger');
         return $this;
     }
 }
