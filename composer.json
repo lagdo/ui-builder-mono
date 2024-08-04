@@ -21,7 +21,7 @@
     },
     "require": {
         "avplab/php-html-builder": "^2.0",
-        "jaxon-php/jaxon-core": "v5.x-dev"
+        "jaxon-php/jaxon-core": "dev-main"
     },
     "autoload": {
         "psr-4": {
