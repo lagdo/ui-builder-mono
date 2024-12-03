@@ -61,12 +61,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jaxon-php/jaxon-core.git",
-                "reference": "25f4d1db97e8c9a94c4e338c36c73af517d64eec"
+                "reference": "1a1251ab197bd2aab13739d3903f2fdccb8fbef9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jaxon-php/jaxon-core/zipball/25f4d1db97e8c9a94c4e338c36c73af517d64eec",
-                "reference": "25f4d1db97e8c9a94c4e338c36c73af517d64eec",
+                "url": "https://api.github.com/repos/jaxon-php/jaxon-core/zipball/1a1251ab197bd2aab13739d3903f2fdccb8fbef9",
+                "reference": "1a1251ab197bd2aab13739d3903f2fdccb8fbef9",
                 "shasum": ""
             },
             "require": {
@@ -134,7 +134,7 @@
                 "issues": "https://github.com/jaxon-php/jaxon-core/issues",
                 "source": "https://github.com/jaxon-php/jaxon-core"
             },
-            "time": "2024-08-04T00:20:34+00:00"
+            "time": "2024-12-02T18:30:15+00:00"
         },
         {
             "name": "jaxon-php/jaxon-utils",

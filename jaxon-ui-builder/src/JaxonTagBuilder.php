@@ -50,10 +50,10 @@ class JaxonTagBuilder
      *
      * @return void
      */
-    private function jxnShow(UiBuilder $builder, JxnCall $xJsCall, string $item = '')
+    private function jxnBind(UiBuilder $builder, JxnCall $xJsCall, string $item = '')
     {
         $item = trim($item);
-        $builder->setAttribute('jxn-show', $xJsCall->_class());
+        $builder->setAttribute('jxn-bind', $xJsCall->_class());
         if($item !== '')
         {
             $builder->setAttribute('jxn-item', $item);
@@ -80,8 +80,23 @@ class JaxonTagBuilder
      */
     private function checkOn(array $on)
     {
-        return count($on) === 2 && isset($on[0]) && isset($on[1])
-            && is_string($on[0]) && is_string($on[1]);
+        // Only accept arrays of 2 entries.
+        $count = count($on);
+        if($count !== 2)
+        {
+            return false;
+        }
+
+        // Only accept arrays with int index from 0, and string value.
+        for($i = 0; $i < $count; $i++)
+        {
+            if(!isset($on[$i]) || !is_string($on[$i]))
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     /**
@@ -90,11 +105,10 @@ class JaxonTagBuilder
      * @param UiBuilder $builder
      * @param string|array $on
      * @param JsExpr $xJsExpr
-     * @param array $options
      *
      * @return void
      */
-    private function jxnOn(UiBuilder $builder, string|array $on, JsExpr $xJsExpr, array $options = [])
+    private function jxnOn(UiBuilder $builder, string|array $on, JsExpr $xJsExpr)
     {
         $select = '';
         $event = $on;
@@ -104,6 +118,7 @@ class JaxonTagBuilder
             {
                 return;
             }
+
             $select = trim($on[0]);
             $event = $on[1];
         }
@@ -113,8 +128,9 @@ class JaxonTagBuilder
         {
             $builder->setAttribute('jxn-select', $select);
         }
-        $builder->setAttribute(isset($options['target']) ? 'jxn-event' : 'jxn-on', $event);
-        $builder->setAttribute('jxn-call', htmlentities(json_encode($xJsExpr->jsonSerialize())), false);
+        $builder->setAttribute('jxn-on', $event);
+        $sCall = json_encode($xJsExpr->jsonSerialize());
+        $builder->setAttribute('jxn-call', htmlentities($sCall), false);
     }
 
     /**
@@ -122,12 +138,33 @@ class JaxonTagBuilder
      *
      * @param UiBuilder $builder
      * @param JsExpr $xJsExpr
-     * @param array $options
      *
      * @return void
      */
-    private function jxnClick(UiBuilder $builder, JsExpr $xJsExpr, array $options = [])
+    private function jxnClick(UiBuilder $builder, JsExpr $xJsExpr)
     {
-        $this->jxnOn($builder, 'click', $xJsExpr, $options);
+        $this->jxnOn($builder, 'click', $xJsExpr);
+    }
+
+    /**
+     * Set an event handler
+     *
+     * @param UiBuilder $builder
+     * @param array $on
+     * @param JsExpr $xJsExpr
+     *
+     * @return void
+     */
+    private function jxnEvent(UiBuilder $builder, array $on, JsExpr $xJsExpr)
+    {
+        if(!$this->checkOn($on))
+        {
+            return;
+        }
+
+        $builder->setAttribute('jxn-select', trim($on[0]));
+        $builder->setAttribute('jxn-event', trim($on[1]));
+        $sCall = json_encode($xJsExpr->jsonSerialize());
+        $builder->setAttribute('jxn-call', htmlentities($sCall), false);
     }
 }
