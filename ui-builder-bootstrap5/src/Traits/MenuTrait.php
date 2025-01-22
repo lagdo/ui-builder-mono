@@ -26,7 +26,6 @@ trait MenuTrait
     {
         $this->builder->createScope('a', $arguments);
         $this->builder->prependClass('list-group-item list-group-item-action');
-        $this->builder->setAttribute('href', 'javascript:void(0)');
         return $this;
     }
 
@@ -37,7 +36,6 @@ trait MenuTrait
     {
         $this->builder->createScope('a', $arguments);
         $this->builder->prependClass('list-group-item list-group-item-action active');
-        $this->builder->setAttribute('href', 'javascript:void(0)');
         return $this;
     }
 
@@ -48,7 +46,6 @@ trait MenuTrait
     {
         $this->builder->createScope('a', $arguments);
         $this->builder->prependClass('list-group-item list-group-item-action disabled');
-        $this->builder->setAttribute('href', 'javascript:void(0)');
         return $this;
     }
 

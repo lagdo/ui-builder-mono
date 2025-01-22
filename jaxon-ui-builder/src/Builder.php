@@ -28,7 +28,7 @@ class Builder
      */
     protected static function getClass(): string
     {
-        return self::$aLibraries[jaxon()->app()->getAppOption('ui.template', '')] ?? '';
+        return self::$aLibraries[jaxon()->app()->getOption('ui.template', '')] ?? '';
     }
 
     /**
