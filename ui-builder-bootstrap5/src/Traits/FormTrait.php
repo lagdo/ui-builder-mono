@@ -26,7 +26,7 @@ trait FormTrait
     public function formRow(...$arguments): BuilderInterface
     {
         $this->builder->createScope('div', $arguments);
-        $this->builder->prependClass('row mb-3');
+        $this->builder->prependClass('row');
         return $this;
     }
 

@@ -14,7 +14,7 @@ trait TabTrait
     public function tabNav(string $id = '', ...$arguments): BuilderInterface
     {
         $this->builder->createScope('ul', [$id, ...$arguments]);
-        $this->builder->prependClass('nav nav-pills mb-3');
+        $this->builder->prependClass('nav nav-pills');
         if (($id)) {
             $this->builder->setAttribute('id', $id);
             $this->options['tab-nav-id'] = $id;

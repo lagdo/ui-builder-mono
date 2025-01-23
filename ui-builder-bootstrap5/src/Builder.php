@@ -90,7 +90,7 @@ class Builder extends AbstractBuilder
     public function inputGroup(...$arguments): BuilderInterface
     {
         $this->builder->createScope('div', $arguments);
-        $this->builder->prependClass('input-group mb-3');
+        $this->builder->prependClass('input-group');
         $this->builder->scope()->isInputGroup = true;
         return $this;
     }
