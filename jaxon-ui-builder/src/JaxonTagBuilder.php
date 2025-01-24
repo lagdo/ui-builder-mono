@@ -2,6 +2,7 @@
 
 namespace Lagdo\UiBuilder\Jaxon;
 
+use Jaxon\App\Pagination;
 use Jaxon\Script\JsExpr;
 use Jaxon\Script\JxnCall;
 use Lagdo\UiBuilder\Html\UiBuilder;
@@ -11,6 +12,7 @@ use function htmlentities;
 use function is_array;
 use function is_string;
 use function Jaxon\attr;
+use function Jaxon\rq;
 use function json_encode;
 use function trim;
 
@@ -58,6 +60,20 @@ class JaxonTagBuilder
         {
             $builder->setAttribute('jxn-item', $item);
         }
+    }
+
+    /**
+     * Attach the pagination component to a DOM node
+     *
+     * @param UiBuilder $builder
+     * @param JxnCall $xJsCall
+     *
+     * @return void
+     */
+    private function jxnPagination(UiBuilder $builder, JxnCall $xJsCall)
+    {
+        $builder->setAttribute('jxn-bind', rq(Pagination::class)->_class());
+        $builder->setAttribute('jxn-item', $xJsCall->_class());
     }
 
     /**
