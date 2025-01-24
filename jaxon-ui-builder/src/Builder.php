@@ -46,12 +46,12 @@ class Builder
      *
      * @return void
      */
-    public static function init()
+    public static function register()
     {
         $di = jaxon()->di();
     
         // Register the Jaxon tag builder.
-        $di->auto(JaxonTagBuilder::class);
+        $di->auto(TagBuilder::class);
     
         // Register the UI builder, which is not a singleton.
         $di->set(BuilderInterface::class, function($di) {
@@ -62,7 +62,7 @@ class Builder
     
             $sLibraryClass = self::getClass();
             $xLibraryInstance = new $sLibraryClass();
-            $jaxonTagBuilder = $di->g(JaxonTagBuilder::class);
+            $jaxonTagBuilder = $di->g(TagBuilder::class);
             $xLibraryInstance->addTagBuilder('jxn', function(UiBuilder $builder, string $tagName,
                 string $method, array $arguments) use($jaxonTagBuilder) {
                 $jaxonTagBuilder->tag($builder, $method, $arguments);

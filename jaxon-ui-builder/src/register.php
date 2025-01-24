@@ -2,4 +2,4 @@
 
 namespace Lagdo\UiBuilder\Jaxon;
 
-Builder::init();
+Builder::register();

@@ -16,7 +16,7 @@ use function Jaxon\rq;
 use function json_encode;
 use function trim;
 
-class JaxonTagBuilder
+class TagBuilder
 {
     /**
      * @param UiBuilder $builder
