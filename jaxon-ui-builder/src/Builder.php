@@ -2,6 +2,7 @@
 
 namespace Lagdo\UiBuilder\Jaxon;
 
+use Jaxon\App\Pagination\RendererInterface;
 use Lagdo\UiBuilder\BuilderInterface;
 use Lagdo\UiBuilder\Html\UiBuilder;
 
@@ -52,14 +53,19 @@ class Builder
     
         // Register the Jaxon tag builder.
         $di->auto(TagBuilder::class);
-    
+
+        // Register the pagination renderer.
+        $di->set(RendererInterface::class, function() {
+            return new PaginationRenderer();
+        });
+
         // Register the UI builder, which is not a singleton.
         $di->set(BuilderInterface::class, function($di) {
             if(!self::isDefined())
             {
                 return null;
             }
-    
+
             $sLibraryClass = self::getClass();
             $xLibraryInstance = new $sLibraryClass();
             $jaxonTagBuilder = $di->g(TagBuilder::class);
@@ -67,7 +73,6 @@ class Builder
                 string $method, array $arguments) use($jaxonTagBuilder) {
                 $jaxonTagBuilder->tag($builder, $method, $arguments);
             });
-    
             return $xLibraryInstance;
         }, false);
     }
