@@ -2,7 +2,7 @@
 
 namespace Lagdo\UiBuilder\Jaxon;
 
-use Jaxon\App\Pagination;
+use Jaxon\App\Component\Pagination;
 use Jaxon\Script\JsExpr;
 use Jaxon\Script\JxnCall;
 use Lagdo\UiBuilder\Html\UiBuilder;
