@@ -20,6 +20,7 @@
         "source": "https://github.com/lagdo/html-ui-builder"
     },
     "require": {
+        "php": ">=8.0",
         "avplab/php-html-builder": "^2.0",
         "jaxon-php/jaxon-core": "dev-main"
     },
