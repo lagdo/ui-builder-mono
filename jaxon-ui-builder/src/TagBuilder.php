@@ -4,7 +4,7 @@ namespace Lagdo\UiBuilder\Jaxon;
 
 use Jaxon\App\Component\Pagination;
 use Jaxon\Script\JsExpr;
-use Jaxon\Script\JxnCall;
+use Jaxon\Script\Call\JxnCall;
 use Lagdo\UiBuilder\Html\UiBuilder;
 
 use function count;

@@ -29,7 +29,7 @@ class Builder
      */
     protected static function getClass(): string
     {
-        return self::$aLibraries[jaxon()->app()->getOption('ui.template', '')] ?? '';
+        return self::$aLibraries[jaxon()->getAppOption('ui.template', '')] ?? '';
     }
 
     /**
