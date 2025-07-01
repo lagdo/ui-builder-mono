@@ -7,7 +7,7 @@ use Lagdo\UiBuilder\BuilderInterface;
 use Lagdo\UiBuilder\Html\UiBuilder;
 
 use function class_exists;
-use function Jaxon\jaxon;
+use function jaxon;
 
 class Builder
 {
