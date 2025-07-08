@@ -60,7 +60,7 @@ class Builder
 
             $xLibraryInstance = new $sLibraryClass();
             $xTagBuilder = $di->g(TagBuilder::class);
-            $xLibraryInstance->addTagBuilder('jxn', function(Element|null $element,
+            $xLibraryInstance->addElementBuilder('jxn', function(Element|null $element,
                 string $tagName, string $method, array $arguments) use($xTagBuilder) {
                 if ($element === null) {
                     throw new LogicException('Attributes can be set for elements only');
