@@ -54,14 +54,14 @@ class View
     /**
      * @var BuilderInterface
      */
-    protected $uiBuilder;
+    protected $html;
 
     /**
      * @param BuilderInterface
      */
-    public function __construct(BuilderInterface $uiBuilder)
+    public function __construct(BuilderInterface $html)
     {
-        $this->html = $uiBuilder;
+        $this->html = $html;
     }
 
     /**
@@ -135,7 +135,7 @@ the `getSimpleForm()` function will generate code for Bootstrap 3.
             <label class="control-label" for="name">Name</label>
         </div>
         <div class="col-md-8">
-            <input class="form-control" type="text" name="name" placeholder="Name" value="" />
+            <input class="form-control" type="text" name="name" placeholder="Name" value="The name" />
         </div>
     </div>
     <div class="form-group">
@@ -143,7 +143,9 @@ the `getSimpleForm()` function will generate code for Bootstrap 3.
             <label class="control-label" for="description">Description</label>
         </div>
         <div class="col-md-8">
-            <textarea class="form-control" rows="10" name="description" wrap="on" spellcheck="false"></textarea>
+            <textarea class="form-control" rows="10" name="description" wrap="on" spellcheck="false">
+                The description
+            </textarea>
         </div>
     </div>
 </form>
@@ -168,7 +170,7 @@ the same `getSimpleForm()` function will generate code for Bootstrap 4.
             <label class="col-form-label" for="name">Name</label>
         </div>
         <div class="col-md-8">
-            <input class="form-control" type="text" name="name" placeholder="Name" value="" />
+            <input class="form-control" type="text" name="name" placeholder="Name" value="The name" />
         </div>
     </div>
     <div class="form-group row">
@@ -176,7 +178,9 @@ the same `getSimpleForm()` function will generate code for Bootstrap 4.
             <label class="col-form-label" for="description">Description</label>
         </div>
         <div class="col-md-8">
-            <textarea class="form-control" rows="10" name="description" wrap="on" spellcheck="false"></textarea>
+            <textarea class="form-control" rows="10" name="description" wrap="on" spellcheck="false">
+                The description
+            </textarea>
         </div>
     </div>
 </form>
