@@ -5,11 +5,13 @@ namespace Lagdo\UiBuilder\Jaxon;
 use Jaxon\App\Component\Pagination;
 use Jaxon\Script\JsExpr;
 use Jaxon\Script\Call\JxnCall;
-use Lagdo\UiBuilder\Html\UiBuilder;
+use Lagdo\UiBuilder\Builder\Html\Element;
 
+use function array_filter;
+use function array_map;
 use function count;
 use function htmlentities;
-use function is_array;
+use function is_a;
 use function is_string;
 use function Jaxon\attr;
 use function Jaxon\rq;
@@ -19,168 +21,139 @@ use function trim;
 class TagBuilder
 {
     /**
-     * @param UiBuilder $builder
+     * @param Element $element
      * @param string $method
      * @param array $arguments
      *
      * @return void
      */
-    public function tag(UiBuilder $builder, string $method, array $arguments)
+    public function tag(Element $element, string $method, array $arguments)
     {
-        $this->$method($builder, ...$arguments);
-    }
-
-    /**
-     * Get the component HTML code
-     *
-     * @param UiBuilder $builder
-     * @param JxnCall $xJsCall
-     *
-     * @return void
-     */
-    private function jxnHtml(UiBuilder $builder, JxnCall $xJsCall)
-    {
-        $builder->addHtml(attr()->html($xJsCall));
+        $this->$method($element, ...$arguments);
     }
 
     /**
      * Attach a component to a DOM node
      *
-     * @param UiBuilder $builder
+     * @param Element $element
      * @param JxnCall $xJsCall
      * @param string $item
      *
      * @return void
      */
-    private function jxnBind(UiBuilder $builder, JxnCall $xJsCall, string $item = '')
+    private function jxnBind(Element $element, JxnCall $xJsCall, string $item = '')
     {
         $item = trim($item);
-        $builder->setAttribute('jxn-bind', $xJsCall->_class());
+        $element->setAttribute('jxn-bind', $xJsCall->_class(), false);
         if($item !== '')
         {
-            $builder->setAttribute('jxn-item', $item);
+            $element->setAttribute('jxn-item', $item, false);
         }
+    }
+
+    /**
+     * Get the component HTML code
+     *
+     * @param Element $element
+     * @param JxnCall $xJsCall
+     *
+     * @return void
+     */
+    private function jxnHtml(Element $element, JxnCall $xJsCall)
+    {
+        $element->addHtml(attr()->html($xJsCall));
     }
 
     /**
      * Attach the pagination component to a DOM node
      *
-     * @param UiBuilder $builder
+     * @param Element $element
      * @param JxnCall $xJsCall
      *
      * @return void
      */
-    private function jxnPagination(UiBuilder $builder, JxnCall $xJsCall)
+    private function jxnPagination(Element $element, JxnCall $xJsCall)
     {
-        $builder->setAttribute('jxn-bind', rq(Pagination::class)->_class());
-        $builder->setAttribute('jxn-item', $xJsCall->_class());
+        $element->setAttribute('jxn-bind', rq(Pagination::class)->_class(), false);
+        $element->setAttribute('jxn-item', $xJsCall->_class(), false);
     }
 
     /**
-     * Set a node as a target for event handler definitions
+     * Set an event handler
      *
-     * @param UiBuilder $builder
-     * @param string $name
+     * @param Element $element
+     * @param string $event
+     * @param JsExpr $xJsExpr
      *
      * @return void
      */
-    private function jxnTarget(UiBuilder $builder, string $name = '')
+    private function jxnOn(Element $element, string $event, JsExpr $xJsExpr)
     {
-        $builder->setAttribute('jxn-target', trim($name));
+        $element->setAttributes([
+            'jxn-on' => trim($event),
+            'jxn-call' => htmlentities(json_encode($xJsExpr->jsonSerialize())),
+        ], false);
     }
 
     /**
-     * @param array $on
+     * Set an event handler
+     *
+     * @param Element $element
+     * @param JsExpr $xJsExpr
+     *
+     * @return void
+     */
+    private function jxnClick(Element $element, JsExpr $xJsExpr)
+    {
+        $this->jxnOn($element, 'click', $xJsExpr);
+    }
+
+    /**
+     * @param array $event
      *
      * @return bool
      */
-    private function checkOn(array $on)
+    private function eventIsValid(array $event): bool
     {
-        // Only accept arrays of 2 entries.
-        $count = count($on);
-        if($count !== 2)
-        {
-            return false;
+        return count($event) === 3 &&
+            isset($event[0]) && isset($event[1]) && isset($event[2]) &&
+            is_string($event[0]) && is_string($event[1]) &&
+            is_a($event[2], JsExpr::class);
+    }
+
+    /**
+     * Filter an convert the event handlers
+     *
+     * @param array $events
+     *
+     * @return array
+     */
+    private function handlers(array $events): array
+    {
+        if (isset($events[0]) && is_string($events[0])) {
+            $events = [$events];
         }
 
-        // Only accept arrays with int index from 0, and string value.
-        for($i = 0; $i < $count; $i++)
-        {
-            if(!isset($on[$i]) || !is_string($on[$i]))
-            {
-                return false;
-            }
-        }
-
-        return true;
+        $filterCb = fn($event) => $this->eventIsValid($event);
+        $convertCb = fn(array $event) => [
+            'select' => $event[0],
+            'event' => trim($event[1]),
+            'handler' => $event[2],
+        ];
+        return array_map($convertCb, array_filter($events, $filterCb));
     }
 
     /**
      * Set an event handler
      *
-     * @param UiBuilder $builder
-     * @param string|array $on
-     * @param JsExpr $xJsExpr
+     * @param Element $element
+     * @param array $events
      *
      * @return void
      */
-    private function jxnOn(UiBuilder $builder, string|array $on, JsExpr $xJsExpr)
+    private function jxnEvent(Element $element, array $events)
     {
-        $select = '';
-        $event = $on;
-        if(is_array($on))
-        {
-            if(!$this->checkOn($on))
-            {
-                return;
-            }
-
-            $select = trim($on[0]);
-            $event = $on[1];
-        }
-        $event = trim($event);
-
-        if($select !== '')
-        {
-            $builder->setAttribute('jxn-select', $select);
-        }
-        $builder->setAttribute('jxn-on', $event);
-        $sCall = json_encode($xJsExpr->jsonSerialize());
-        $builder->setAttribute('jxn-call', htmlentities($sCall), false);
-    }
-
-    /**
-     * Set an event handler
-     *
-     * @param UiBuilder $builder
-     * @param JsExpr $xJsExpr
-     *
-     * @return void
-     */
-    private function jxnClick(UiBuilder $builder, JsExpr $xJsExpr)
-    {
-        $this->jxnOn($builder, 'click', $xJsExpr);
-    }
-
-    /**
-     * Set an event handler
-     *
-     * @param UiBuilder $builder
-     * @param array $on
-     * @param JsExpr $xJsExpr
-     *
-     * @return void
-     */
-    private function jxnEvent(UiBuilder $builder, array $on, JsExpr $xJsExpr)
-    {
-        if(!$this->checkOn($on))
-        {
-            return;
-        }
-
-        $builder->setAttribute('jxn-select', trim($on[0]));
-        $builder->setAttribute('jxn-event', trim($on[1]));
-        $sCall = json_encode($xJsExpr->jsonSerialize());
-        $builder->setAttribute('jxn-call', htmlentities($sCall), false);
+        $encoded = htmlentities(json_encode($this->handlers($events)));
+        $element->setAttribute('jxn-event', $encoded, false);
     }
 }

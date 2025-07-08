@@ -4,7 +4,8 @@ namespace Lagdo\UiBuilder\Jaxon;
 
 use Jaxon\App\Pagination\RendererInterface;
 use Lagdo\UiBuilder\BuilderInterface;
-use Lagdo\UiBuilder\Html\UiBuilder;
+use Lagdo\UiBuilder\Builder\Html\Element;
+use LogicException;
 
 use function class_exists;
 use function jaxon;
@@ -33,16 +34,6 @@ class Builder
     }
 
     /**
-     * Check if the UI builder is well-defined
-     * @return bool
-     */
-    public static function isDefined(): bool
-    {
-        $sLibraryClass = self::getClass();
-        return $sLibraryClass !== '' && class_exists($sLibraryClass);
-    }
-
-    /**
      * Initialize the UI builder library
      *
      * @return void
@@ -55,35 +46,30 @@ class Builder
         $di->auto(TagBuilder::class);
 
         // Register the pagination renderer.
-        $di->set(RendererInterface::class, function() {
-            return new PaginationRenderer();
+        $di->set(RendererInterface::class, function($di) {
+            return new PaginationRenderer($di->g(BuilderInterface::class));
         });
 
         // Register the UI builder, which is not a singleton.
         $di->set(BuilderInterface::class, function($di) {
-            if(!self::isDefined())
+            $sLibraryClass = self::getClass();
+            if($sLibraryClass === '' || !class_exists($sLibraryClass))
             {
                 return null;
             }
 
-            $sLibraryClass = self::getClass();
             $xLibraryInstance = new $sLibraryClass();
-            $jaxonTagBuilder = $di->g(TagBuilder::class);
-            $xLibraryInstance->addTagBuilder('jxn', function(UiBuilder $builder, string $tagName,
-                string $method, array $arguments) use($jaxonTagBuilder) {
-                $jaxonTagBuilder->tag($builder, $method, $arguments);
+            $xTagBuilder = $di->g(TagBuilder::class);
+            $xLibraryInstance->addTagBuilder('jxn', function(Element|null $element,
+                string $tagName, string $method, array $arguments) use($xTagBuilder) {
+                if ($element === null) {
+                    throw new LogicException('Attributes can be set for elements only');
+                }
+
+                $xTagBuilder->tag($element, $method, $arguments);
+                return $element;
             });
             return $xLibraryInstance;
         }, false);
-    }
-    
-    /**
-     * Return a new instance of the UI builder
-     *
-     * @return BuilderInterface
-     */
-    public static function new(): BuilderInterface
-    {
-        return jaxon()->di()->g(BuilderInterface::class);
     }
 }

@@ -8,7 +8,7 @@
 A customizable and extensible HTML UI builder
 =============================================
 
-This package provides a unified API in PHP to create UI for CSS frameworks like Bootstrap.
+This package provides a unified API in PHP to create UI components for CSS frameworks like Bootstrap.
 
 It extends the [PHP HTML builder](https://github.com/avplab/php-html-builder) with functions to create UI components like menus, forms, tabs and so on.
 
@@ -61,7 +61,7 @@ class View
      */
     public function __construct(BuilderInterface $uiBuilder)
     {
-        $this->uiBuilder = $uiBuilder;
+        $this->html = $uiBuilder;
     }
 
     /**
@@ -72,32 +72,44 @@ class View
      */
     public function getSimpleForm(array $formData)
     {
-        $this->uiBuilder->clear()
-            ->form(true)->setId('form-id')
-                ->formRow()
-                    ->formCol(4)
-                        ->formLabel()->setFor('name')->addText('Name')
-                        ->end()
-                    ->end()
-                    ->formCol(8)
-                        ->formInput()->setType('text')->setName('name')->setPlaceholder('Name')
+        return $this->html->build(
+            $this->html->form(
+                $this->html->formRow(
+                    $this->html->formCol(
+                        $this->html->formLabel()
+                            ->setFor('name')
+                            ->addText('Name')
+                    )
+                    ->width(4),
+                    $this->html->formCol(
+                        $this->html->formInput()
+                            ->setType('text')
+                            ->setName('name')
+                            ->setPlaceholder('Name')
                             ->setValue($formData['name'])
-                        ->endShorted()
-                    ->end()
-                ->end()
-                ->formRow()
-                    ->formCol(4)
-                        ->formLabel()->setFor('description')->addText('Description')
-                        ->end()
-                    ->end()
-                    ->formCol(8)
-                        ->formTextarea()->setRows('10')->setName('description')->setWrap('on')
-                            ->setSpellcheck('false')->addText($formData['description'])
-                        ->end()
-                    ->end()
-                ->end()
-            ->end();
-        return $this->uiBuilder->build();
+                    )
+                    ->width(8)
+                ),
+                $this->html->formRow(
+                    $this->html->formCol(
+                        $this->html->formLabel()
+                            ->setFor('description')
+                            ->addText('Description')
+                    )
+                    ->width(4),
+                    $this->html->formCol(
+                        $this->html->formTextarea()
+                            ->setRows('10')
+                            ->setName('description')
+                            ->setWrap('on')
+                            ->setSpellcheck('false')
+                            ->addText($formData['description'])
+                    )
+                    ->width(8)
+                )
+            )
+            ->responsive(true)->setId('form-id')
+        );
     }
 }
 ```

@@ -2,109 +2,35 @@
 
 namespace Lagdo\UiBuilder\Bootstrap5;
 
-use Lagdo\UiBuilder\Builder as AbstractBuilder;
-use Lagdo\UiBuilder\BuilderInterface;
+use Lagdo\UiBuilder\AbstractBuilder;
+use Lagdo\UiBuilder\Bootstrap5\Element\TableElement;
+use Lagdo\UiBuilder\Bootstrap5\Element\TextElement;
+use Lagdo\UiBuilder\Element\TextInterface;
+use Lagdo\UiBuilder\Element\TableInterface;
 
 class Builder extends AbstractBuilder
 {
-    use Traits\LayoutTrait;
-    use Traits\ButtonTrait;
-    use Traits\PanelTrait;
-    use Traits\FormTrait;
-    use Traits\MenuTrait;
-    use Traits\TabTrait;
-    use Traits\PaginationTrait;
+    use Builder\LayoutTrait;
+    use Builder\ButtonTrait;
+    use Builder\PanelTrait;
+    use Builder\FormTrait;
+    use Builder\MenuTrait;
+    use Builder\TabTrait;
+    use Builder\PaginationTrait;
 
     /**
      * @inheritDoc
      */
-    public function addIcon(string $icon): BuilderInterface
+    public function text(...$arguments): TextInterface
     {
-        if ($icon === 'remove') {
-            $icon = 'x';
-        } elseif ($icon === 'edit') {
-            $icon = 'pencil';
-        } elseif ($icon === 'ok') {
-            $icon = 'check';
-        }
-        return $this->addHtml('<i class="fa fa-' . $icon . '"></i>');
+        return $this->createElementOfClass(TextElement::class, $arguments);
     }
 
     /**
      * @inheritDoc
      */
-    public function addCaret(): BuilderInterface
+    public function table(...$arguments): TableInterface
     {
-        // Nothing to do.
-        return $this;
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function checkbox(bool $checked = false, ...$arguments): BuilderInterface
-    {
-        $class = 'form-check-input';
-        if ($this->builder->isInputGroup()) {
-            $this->builder->createWrapper('div', ['class' => 'input-group-text']);
-            $class .= ' mt-0';
-        }
-        parent::checkbox($checked, ...$arguments);
-        $this->builder->prependClass($class);
-        return $this;
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function radio(bool $checked = false, ...$arguments): BuilderInterface
-    {
-        $class = 'form-check-input';
-        if ($this->builder->isInputGroup()) {
-            $this->builder->createWrapper('div', ['class' => 'input-group-text']);
-            $class .= ' mt-0';
-        }
-        parent::radio($checked, ...$arguments);
-        $this->builder->prependClass($class);
-        return $this;
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function text(...$arguments): BuilderInterface
-    {
-        // A label in an input group must be wrapped into a span with class "input-group-addon".
-        // Check the parent scope.
-        $isInGroup = ($this->builder->isInputGroup());
-        $this->builder->createScope('span', $arguments);
-        if ($isInGroup) {
-            $this->builder->prependClass('input-group-text');
-        }
-        return $this;
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function inputGroup(...$arguments): BuilderInterface
-    {
-        $this->builder->createScope('div', $arguments);
-        $this->builder->prependClass('input-group');
-        $this->builder->scope()->isInputGroup = true;
-        return $this;
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function table(bool $responsive, string $style = '', ...$arguments): BuilderInterface
-    {
-        if ($responsive) {
-            $this->builder->createWrapper('div', ['class' => 'table-responsive']);
-        }
-        $this->builder->createScope('table', $arguments);
-        $this->builder->prependClass($style ? "table table-$style" : 'table');
-        return $this;
+        return $this->createElementOfClass(TableElement::class, $arguments);
     }
 }
