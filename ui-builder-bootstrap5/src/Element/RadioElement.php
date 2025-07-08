@@ -13,7 +13,7 @@ class RadioElement extends BaseElement
      */
     protected function onCreate(): void
     {
-        $this->prependClass('form-check-input');
+        $this->addBaseClass('form-check-input');
         $this->setAttribute('type', 'radio');
     }
 
@@ -26,7 +26,7 @@ class RadioElement extends BaseElement
     {
         if (is_a($parent, InputGroupElement::class)) {
             $this->addWrapper('div', ['class' => 'input-group-text']);
-            $this->appendClass('mt-0');
+            $this->addClass('mt-0');
         }
     }
 }

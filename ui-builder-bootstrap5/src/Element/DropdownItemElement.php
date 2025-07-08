@@ -11,8 +11,8 @@ class DropdownItemElement extends BaseElement
      */
     protected function onCreate(): void
     {
-        $this->prependClass('btn');
-        $this->appendClass('dropdown-toggle');
+        $this->addBaseClass('btn');
+        $this->addClass('dropdown-toggle');
         $this->setAttributes(['type' => 'button',
             'data-bs-toggle' => 'dropdown', 'aria-expanded' => 'false']);
     }
@@ -24,7 +24,7 @@ class DropdownItemElement extends BaseElement
      */
     public function style(string $style): static
     {
-        $this->prependClass("btn-$style");
+        $this->addBaseClass("btn-$style");
         return $this;
     }
 }

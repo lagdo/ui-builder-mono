@@ -11,6 +11,6 @@ class DropdownElement extends BaseElement
      */
     protected function onCreate(): void
     {
-        $this->prependClass('dropdown');
+        $this->addBaseClass('dropdown');
     }
 }
