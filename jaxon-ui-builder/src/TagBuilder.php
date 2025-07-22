@@ -134,13 +134,13 @@ class TagBuilder
             $events = [$events];
         }
 
-        $filterCb = fn($event) => $this->eventIsValid($event);
-        $convertCb = fn(array $event) => [
+        $filterCallback = fn(array $event) => $this->eventIsValid($event);
+        $convertCallback = fn(array $event) => [
             'select' => $event[0],
             'event' => trim($event[1]),
             'handler' => $event[2],
         ];
-        return array_map($convertCb, array_filter($events, $filterCb));
+        return array_map($convertCallback, array_filter($events, $filterCallback));
     }
 
     /**
