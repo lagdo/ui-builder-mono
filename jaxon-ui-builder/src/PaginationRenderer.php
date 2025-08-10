@@ -23,16 +23,19 @@ class PaginationRenderer implements RendererInterface
     {
         return $this->html->build(
             $this->html->pagination(
-                $this->html->paginationItem(['role' => 'link'])
-                    ->addHtml($xPrevPage->sText)->number($xPrevPage->nNumber),
+                $this->html->paginationItem(['role' => 'link'],
+                    $this->html->html($xPrevPage->sText))
+                    ->number($xPrevPage->nNumber),
                 $this->html->each($aPages, fn($xPage) =>
-                    $this->html->paginationItem(['role' => 'link'])
-                        ->addHtml($xPage->sText)->number($xPage->nNumber)
+                    $this->html->paginationItem(['role' => 'link'],
+                        $this->html->html($xPage->sText))
+                        ->number($xPage->nNumber)
                         ->active($xPage->sType === 'current')
                         ->enabled($xPage->sType !== 'disabled')
                 ),
-                $this->html->paginationItem(['role' => 'link'])
-                    ->addHtml($xNextPage->sText)->number($xNextPage->nNumber)
+                $this->html->paginationItem(['role' => 'link'],
+                    $this->html->html($xNextPage->sText))
+                    ->number($xNextPage->nNumber)
             )
         );
     }

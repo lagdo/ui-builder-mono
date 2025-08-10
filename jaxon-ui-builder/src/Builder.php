@@ -50,7 +50,7 @@ class Builder
             return new PaginationRenderer($di->g(BuilderInterface::class));
         });
 
-        // Register the UI builder, which is not a singleton.
+        // Register the UI builder.
         $di->set(BuilderInterface::class, function($di) {
             $sLibraryClass = self::getClass();
             if($sLibraryClass === '' || !class_exists($sLibraryClass))
@@ -62,6 +62,10 @@ class Builder
             $xTagBuilder = $di->g(TagBuilder::class);
             $xLibraryInstance->addElementBuilder('jxn', function(Element|null $element,
                 string $tagName, string $method, array $arguments) use($xTagBuilder) {
+                if ($method === 'jxnHtml') {
+                    return $xTagBuilder->html($arguments[0]);
+                }
+
                 if ($element === null) {
                     throw new LogicException('Attributes can be set for elements only');
                 }
@@ -70,6 +74,6 @@ class Builder
                 return $element;
             });
             return $xLibraryInstance;
-        }, false);
+        });
     }
 }

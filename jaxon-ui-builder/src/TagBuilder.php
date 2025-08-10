@@ -21,6 +21,18 @@ use function trim;
 class TagBuilder
 {
     /**
+     * Get the component HTML code
+     *
+     * @param JxnCall $xJsCall
+     *
+     * @return string
+     */
+    public function html(JxnCall $xJsCall): string
+    {
+        return attr()->html($xJsCall);
+    }
+
+    /**
      * @param Element $element
      * @param string $method
      * @param array $arguments
@@ -49,19 +61,6 @@ class TagBuilder
         {
             $element->setAttribute('jxn-item', $item, false);
         }
-    }
-
-    /**
-     * Get the component HTML code
-     *
-     * @param Element $element
-     * @param JxnCall $xJsCall
-     *
-     * @return void
-     */
-    private function jxnHtml(Element $element, JxnCall $xJsCall)
-    {
-        $element->addHtml(attr()->html($xJsCall));
     }
 
     /**

@@ -76,9 +76,8 @@ class View
             $this->html->form(
                 $this->html->formRow(
                     $this->html->formCol(
-                        $this->html->formLabel()
+                        $this->html->formLabel($this->html->text('Name'))
                             ->setFor('name')
-                            ->addText('Name')
                     )
                     ->width(4),
                     $this->html->formCol(
@@ -92,18 +91,16 @@ class View
                 ),
                 $this->html->formRow(
                     $this->html->formCol(
-                        $this->html->formLabel()
+                        $this->html->formLabel($this->html->text('Description'))
                             ->setFor('description')
-                            ->addText('Description')
                     )
                     ->width(4),
                     $this->html->formCol(
-                        $this->html->formTextarea()
+                        $this->html->formTextarea($this->html->text($formData['description']))
                             ->setRows('10')
                             ->setName('description')
                             ->setWrap('on')
                             ->setSpellcheck('false')
-                            ->addText($formData['description'])
                     )
                     ->width(8)
                 )
