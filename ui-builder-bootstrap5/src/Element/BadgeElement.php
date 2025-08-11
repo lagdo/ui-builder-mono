@@ -50,9 +50,9 @@ class BadgeElement extends BaseElement
      *
      * @return static
      */
-    public function type(int $type): static
+    public function type(string $type): static
     {
-        $this->addClass("badge-$type");
+        $this->addClass("bg-$type");
         return $this;
     }
 
