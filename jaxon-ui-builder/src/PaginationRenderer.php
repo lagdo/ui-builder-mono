@@ -25,7 +25,8 @@ class PaginationRenderer implements RendererInterface
             $this->html->pagination(
                 $this->html->paginationItem(['role' => 'link'],
                     $this->html->html($xPrevPage->sText))
-                    ->number($xPrevPage->nNumber),
+                    ->number($xPrevPage->nNumber)
+                    ->enabled($xPrevPage->sType !== 'disabled'),
                 $this->html->each($aPages, fn($xPage) =>
                     $this->html->paginationItem(['role' => 'link'],
                         $this->html->html($xPage->sText))
@@ -36,6 +37,7 @@ class PaginationRenderer implements RendererInterface
                 $this->html->paginationItem(['role' => 'link'],
                     $this->html->html($xNextPage->sText))
                     ->number($xNextPage->nNumber)
+                    ->enabled($xNextPage->sType !== 'disabled')
             )
         );
     }
