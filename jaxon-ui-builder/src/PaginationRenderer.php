@@ -11,9 +11,9 @@ class PaginationRenderer implements RendererInterface
     /**
      * The constructor
      *
-     * @param BuilderInterface $html
+     * @param BuilderInterface $ui
      */
-    public function __construct(private BuilderInterface $html)
+    public function __construct(private BuilderInterface $ui)
     {}
 
     /**
@@ -21,21 +21,21 @@ class PaginationRenderer implements RendererInterface
      */
     public function render(array $aPages, Page $xPrevPage, Page $xNextPage): string
     {
-        return $this->html->build(
-            $this->html->pagination(
-                $this->html->paginationItem(['role' => 'link'],
-                    $this->html->html($xPrevPage->sText))
+        return $this->ui->build(
+            $this->ui->pagination(
+                $this->ui->paginationItem(['role' => 'link'],
+                    $this->ui->html($xPrevPage->sText))
                     ->number($xPrevPage->nNumber)
                     ->enabled($xPrevPage->sType !== 'disabled'),
-                $this->html->each($aPages, fn($xPage) =>
-                    $this->html->paginationItem(['role' => 'link'],
-                        $this->html->html($xPage->sText))
+                $this->ui->each($aPages, fn($xPage) =>
+                    $this->ui->paginationItem(['role' => 'link'],
+                        $this->ui->html($xPage->sText))
                         ->number($xPage->nNumber)
                         ->active($xPage->sType === 'current')
                         ->enabled($xPage->sType !== 'disabled')
                 ),
-                $this->html->paginationItem(['role' => 'link'],
-                    $this->html->html($xNextPage->sText))
+                $this->ui->paginationItem(['role' => 'link'],
+                    $this->ui->html($xNextPage->sText))
                     ->number($xNextPage->nNumber)
                     ->enabled($xNextPage->sType !== 'disabled')
             )
