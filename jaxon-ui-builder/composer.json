@@ -18,7 +18,7 @@
     "require": {
         "php": ">=8.0",
         "jaxon-php/jaxon-core": "^5.0",
-        "lagdo/ui-builder": "dev-main"
+        "lagdo/ui-builder": "^0.2"
     },
     "autoload": {
         "psr-4": {
@@ -28,6 +28,6 @@
             "src/register.php"
         ]
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    "minimum-stability": "stable",
+    "prefer-stable": false
 }
