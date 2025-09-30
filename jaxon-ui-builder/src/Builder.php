@@ -60,19 +60,19 @@ class Builder
 
             $xLibraryInstance = new $sLibraryClass();
             $xTagBuilder = $di->g(TagBuilder::class);
-            $xLibraryInstance->addElementBuilder('jxn', function(
-                Element|null $element, string $tagName, string $method,
-                array $arguments) use($xLibraryInstance, $xTagBuilder) {
-                if ($method === 'jxnHtml') {
-                    return $xLibraryInstance->html($xTagBuilder->html($arguments[0]));
-                }
-                if ($element === null) {
-                    throw new LogicException('Attributes can be set for elements only');
-                }
+            $xLibraryInstance->addElementBuilder('jxn',
+                function(Element|null $element, string $tagName, string $method, array $arguments)
+                    use($xLibraryInstance, $xTagBuilder) {
+                    if ($method === 'jxnHtml') {
+                        return $xLibraryInstance->html($xTagBuilder->html($arguments[0]));
+                    }
+                    if ($element === null) {
+                        throw new LogicException('Attributes can be set for elements only');
+                    }
 
-                $xTagBuilder->tag($element, $method, $arguments);
-                return $element;
-            });
+                    $xTagBuilder->tag($element, $method, $arguments);
+                    return $element;
+                });
             return $xLibraryInstance;
         });
     }
