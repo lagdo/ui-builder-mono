@@ -2,7 +2,7 @@
 monorepo_url: git@github.com:lagdo/ui-builder-mono.git
 
 # All branches that match this regular expression will be split by default
-branch_filter: /^(main|develop|\d+\.\d+)$/
+branch_filter: /^(main)$/
 
 # List of all split projects
 repositories:
