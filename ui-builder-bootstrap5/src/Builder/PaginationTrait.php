@@ -2,10 +2,10 @@
 
 namespace Lagdo\UiBuilder\Bootstrap5\Builder;
 
-use Lagdo\UiBuilder\Bootstrap5\Element\PaginationElement;
-use Lagdo\UiBuilder\Bootstrap5\Element\PaginationItemElement;
-use Lagdo\UiBuilder\Element\PaginationInterface;
-use Lagdo\UiBuilder\Element\PaginationItemInterface;
+use Lagdo\UiBuilder\Bootstrap5\Component\PaginationElement;
+use Lagdo\UiBuilder\Bootstrap5\Component\PaginationItemElement;
+use Lagdo\UiBuilder\Component\PaginationInterface;
+use Lagdo\UiBuilder\Component\PaginationItemInterface;
 
 trait PaginationTrait
 {

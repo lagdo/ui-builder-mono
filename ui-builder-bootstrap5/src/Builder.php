@@ -3,10 +3,10 @@
 namespace Lagdo\UiBuilder\Bootstrap5;
 
 use Lagdo\UiBuilder\AbstractBuilder;
-use Lagdo\UiBuilder\Bootstrap5\Element\LabelElement;
-use Lagdo\UiBuilder\Bootstrap5\Element\TableElement;
-use Lagdo\UiBuilder\Element\LabelInterface;
-use Lagdo\UiBuilder\Element\TableInterface;
+use Lagdo\UiBuilder\Bootstrap5\Component\LabelElement;
+use Lagdo\UiBuilder\Bootstrap5\Component\TableElement;
+use Lagdo\UiBuilder\Component\LabelInterface;
+use Lagdo\UiBuilder\Component\TableInterface;
 
 class Builder extends AbstractBuilder
 {

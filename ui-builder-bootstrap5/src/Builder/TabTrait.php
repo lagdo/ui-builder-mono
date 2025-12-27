@@ -2,14 +2,14 @@
 
 namespace Lagdo\UiBuilder\Bootstrap5\Builder;
 
-use Lagdo\UiBuilder\Bootstrap5\Element\TabNavElement;
-use Lagdo\UiBuilder\Bootstrap5\Element\TabNavItemElement;
-use Lagdo\UiBuilder\Bootstrap5\Element\TabContentElement;
-use Lagdo\UiBuilder\Bootstrap5\Element\TabContentItemElement;
-use Lagdo\UiBuilder\Element\TabNavInterface;
-use Lagdo\UiBuilder\Element\TabNavItemInterface;
-use Lagdo\UiBuilder\Element\TabContentInterface;
-use Lagdo\UiBuilder\Element\TabContentItemInterface;
+use Lagdo\UiBuilder\Bootstrap5\Component\TabNavElement;
+use Lagdo\UiBuilder\Bootstrap5\Component\TabNavItemElement;
+use Lagdo\UiBuilder\Bootstrap5\Component\TabContentElement;
+use Lagdo\UiBuilder\Bootstrap5\Component\TabContentItemElement;
+use Lagdo\UiBuilder\Component\TabNavInterface;
+use Lagdo\UiBuilder\Component\TabNavItemInterface;
+use Lagdo\UiBuilder\Component\TabContentInterface;
+use Lagdo\UiBuilder\Component\TabContentItemInterface;
 
 trait TabTrait
 {

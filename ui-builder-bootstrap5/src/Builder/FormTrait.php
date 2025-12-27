@@ -2,17 +2,17 @@
 
 namespace Lagdo\UiBuilder\Bootstrap5\Builder;
 
-use Lagdo\UiBuilder\Bootstrap5\Element\CheckboxElement;
-use Lagdo\UiBuilder\Bootstrap5\Element\FormElement;
-use Lagdo\UiBuilder\Bootstrap5\Element\InputGroupElement;
-use Lagdo\UiBuilder\Bootstrap5\Element\OptionElement;
-use Lagdo\UiBuilder\Bootstrap5\Element\RadioElement;
-use Lagdo\UiBuilder\Element\CheckboxInterface;
-use Lagdo\UiBuilder\Element\ElementInterface;
-use Lagdo\UiBuilder\Element\FormInterface;
-use Lagdo\UiBuilder\Element\InputGroupInterface;
-use Lagdo\UiBuilder\Element\OptionInterface;
-use Lagdo\UiBuilder\Element\RadioInterface;
+use Lagdo\UiBuilder\Bootstrap5\Component\CheckboxElement;
+use Lagdo\UiBuilder\Bootstrap5\Component\FormElement;
+use Lagdo\UiBuilder\Bootstrap5\Component\InputGroupElement;
+use Lagdo\UiBuilder\Bootstrap5\Component\OptionElement;
+use Lagdo\UiBuilder\Bootstrap5\Component\RadioElement;
+use Lagdo\UiBuilder\Component\CheckboxInterface;
+use Lagdo\UiBuilder\Component\ElementInterface;
+use Lagdo\UiBuilder\Component\FormInterface;
+use Lagdo\UiBuilder\Component\InputGroupInterface;
+use Lagdo\UiBuilder\Component\OptionInterface;
+use Lagdo\UiBuilder\Component\RadioInterface;
 
 trait FormTrait
 {

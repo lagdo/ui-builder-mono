@@ -2,14 +2,14 @@
 
 namespace Lagdo\UiBuilder\Bootstrap5\Builder;
 
-use Lagdo\UiBuilder\Bootstrap5\Element\PanelElement;
-use Lagdo\UiBuilder\Bootstrap5\Element\PanelBodyElement;
-use Lagdo\UiBuilder\Bootstrap5\Element\PanelFooterElement;
-use Lagdo\UiBuilder\Bootstrap5\Element\PanelHeaderElement;
-use Lagdo\UiBuilder\Element\PanelInterface;
-use Lagdo\UiBuilder\Element\PanelBodyInterface;
-use Lagdo\UiBuilder\Element\PanelFooterInterface;
-use Lagdo\UiBuilder\Element\PanelHeaderInterface;
+use Lagdo\UiBuilder\Bootstrap5\Component\PanelElement;
+use Lagdo\UiBuilder\Bootstrap5\Component\PanelBodyElement;
+use Lagdo\UiBuilder\Bootstrap5\Component\PanelFooterElement;
+use Lagdo\UiBuilder\Bootstrap5\Component\PanelHeaderElement;
+use Lagdo\UiBuilder\Component\PanelInterface;
+use Lagdo\UiBuilder\Component\PanelBodyInterface;
+use Lagdo\UiBuilder\Component\PanelFooterInterface;
+use Lagdo\UiBuilder\Component\PanelHeaderInterface;
 
 trait PanelTrait
 {

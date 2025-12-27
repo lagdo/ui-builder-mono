@@ -1,0 +1,17 @@
+<?php
+
+namespace Lagdo\UiBuilder\Bootstrap4\Component;
+
+use Lagdo\UiBuilder\Component\Html\DropdownElement as BaseElement;
+
+class DropdownElement extends BaseElement
+{
+    /**
+     * @inheritDoc
+     */
+    protected function onCreate(): void
+    {
+        $this->addBaseClass('btn-group');
+        $this->setAttribute('role', 'group');
+    }
+}

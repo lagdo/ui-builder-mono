@@ -2,10 +2,10 @@
 
 namespace Lagdo\UiBuilder\Bootstrap5\Builder;
 
-use Lagdo\UiBuilder\Bootstrap5\Element\ColElement;
-use Lagdo\UiBuilder\Bootstrap5\Element\RowElement;
-use Lagdo\UiBuilder\Element\ColInterface;
-use Lagdo\UiBuilder\Element\RowInterface;
+use Lagdo\UiBuilder\Bootstrap5\Component\ColElement;
+use Lagdo\UiBuilder\Bootstrap5\Component\RowElement;
+use Lagdo\UiBuilder\Component\ColInterface;
+use Lagdo\UiBuilder\Component\RowInterface;
 
 trait LayoutTrait
 {
