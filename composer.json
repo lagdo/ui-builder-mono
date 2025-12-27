@@ -21,7 +21,6 @@
     },
     "require": {
         "php": ">=8.0",
-        "avplab/php-html-builder": "^2.0",
         "jaxon-php/jaxon-core": "^5.0"
     },
     "autoload": {
