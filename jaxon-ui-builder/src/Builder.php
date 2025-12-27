@@ -4,7 +4,7 @@ namespace Lagdo\UiBuilder\Jaxon;
 
 use Jaxon\App\Pagination\RendererInterface;
 use Lagdo\UiBuilder\BuilderInterface;
-use Lagdo\UiBuilder\Builder\Html\Element;
+use Lagdo\UiBuilder\Component\Base\HtmlComponent;
 use LogicException;
 
 use function class_exists;
@@ -61,7 +61,7 @@ class Builder
             $xLibraryInstance = new $sLibraryClass();
             $xTagBuilder = $di->g(TagBuilder::class);
             $xLibraryInstance->addElementBuilder('jxn',
-                function(Element|null $element, string $tagName, string $method, array $arguments)
+                function(HtmlComponent|null $element, string $tagName, string $method, array $arguments)
                     use($xLibraryInstance, $xTagBuilder) {
                     if ($method === 'jxnHtml') {
                         return $xLibraryInstance->html($xTagBuilder->html($arguments[0]));

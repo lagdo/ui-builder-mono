@@ -1,0 +1,34 @@
+<?php
+
+namespace Lagdo\UiBuilder\Bootstrap4\Component;
+
+use Lagdo\UiBuilder\Component\Base\HtmlComponent;
+use Lagdo\UiBuilder\Component\InputGroupComponent;
+use Lagdo\UiBuilder\Component\LabelComponent as BaseComponent;
+
+use function is_a;
+
+class LabelComponent extends BaseComponent
+{
+    /**
+     * @return void
+     */
+    protected function onCreate(): void
+    {
+        $this->name = 'label';
+    }
+
+    /**
+     * @param HtmlComponent $parent
+     *
+     * @return void
+     */
+    public function onBuild(HtmlComponent $parent): void
+    {
+        // A label in an input group must be wrapped into a span with class "input-group-prepend".
+        if (is_a($parent, InputGroupComponent::class)) {
+            $this->addBaseClass('input-group-text');
+            $this->addWrapper('div', ['class' => 'input-group-prepend']);
+        }
+    }
+}

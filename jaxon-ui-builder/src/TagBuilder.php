@@ -5,7 +5,7 @@ namespace Lagdo\UiBuilder\Jaxon;
 use Jaxon\App\Component\Pagination;
 use Jaxon\Script\JsExpr;
 use Jaxon\Script\Call\JxnCall;
-use Lagdo\UiBuilder\Builder\Html\Element;
+use Lagdo\UiBuilder\Component\Base\HtmlComponent;
 
 use function array_filter;
 use function array_map;
@@ -33,13 +33,13 @@ class TagBuilder
     }
 
     /**
-     * @param Element $element
+     * @param HtmlComponent $element
      * @param string $method
      * @param array $arguments
      *
      * @return void
      */
-    public function tag(Element $element, string $method, array $arguments)
+    public function tag(HtmlComponent $element, string $method, array $arguments)
     {
         $this->$method($element, ...$arguments);
     }
@@ -47,13 +47,13 @@ class TagBuilder
     /**
      * Attach a component to a DOM node
      *
-     * @param Element $element
+     * @param HtmlComponent $element
      * @param JxnCall $xJsCall
      * @param string $item
      *
      * @return void
      */
-    private function jxnBind(Element $element, JxnCall $xJsCall, string $item = '')
+    private function jxnBind(HtmlComponent $element, JxnCall $xJsCall, string $item = '')
     {
         $item = trim($item);
         $element->setAttribute('jxn-bind', $xJsCall->_class(), false);
@@ -66,12 +66,12 @@ class TagBuilder
     /**
      * Attach the pagination component to a DOM node
      *
-     * @param Element $element
+     * @param HtmlComponent $element
      * @param JxnCall $xJsCall
      *
      * @return void
      */
-    private function jxnPagination(Element $element, JxnCall $xJsCall)
+    private function jxnPagination(HtmlComponent $element, JxnCall $xJsCall)
     {
         $element->setAttribute('jxn-bind', rq(Pagination::class)->_class(), false);
         $element->setAttribute('jxn-item', $xJsCall->_class(), false);
@@ -80,13 +80,13 @@ class TagBuilder
     /**
      * Set an event handler
      *
-     * @param Element $element
+     * @param HtmlComponent $element
      * @param string $event
      * @param JsExpr $xJsExpr
      *
      * @return void
      */
-    private function jxnOn(Element $element, string $event, JsExpr $xJsExpr)
+    private function jxnOn(HtmlComponent $element, string $event, JsExpr $xJsExpr)
     {
         $element->setAttributes([
             'jxn-on' => trim($event),
@@ -97,12 +97,12 @@ class TagBuilder
     /**
      * Set an event handler
      *
-     * @param Element $element
+     * @param HtmlComponent $element
      * @param JsExpr $xJsExpr
      *
      * @return void
      */
-    private function jxnClick(Element $element, JsExpr $xJsExpr)
+    private function jxnClick(HtmlComponent $element, JsExpr $xJsExpr)
     {
         $this->jxnOn($element, 'click', $xJsExpr);
     }
@@ -145,12 +145,12 @@ class TagBuilder
     /**
      * Set an event handler
      *
-     * @param Element $element
+     * @param HtmlComponent $element
      * @param array $events
      *
      * @return void
      */
-    private function jxnEvent(Element $element, array $events)
+    private function jxnEvent(HtmlComponent $element, array $events)
     {
         $encoded = htmlentities(json_encode($this->handlers($events)));
         $element->setAttribute('jxn-event', $encoded, false);

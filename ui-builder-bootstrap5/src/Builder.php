@@ -3,10 +3,8 @@
 namespace Lagdo\UiBuilder\Bootstrap5;
 
 use Lagdo\UiBuilder\AbstractBuilder;
-use Lagdo\UiBuilder\Bootstrap5\Component\LabelElement;
-use Lagdo\UiBuilder\Bootstrap5\Component\TableElement;
-use Lagdo\UiBuilder\Component\LabelInterface;
-use Lagdo\UiBuilder\Component\TableInterface;
+use Lagdo\UiBuilder\Bootstrap5\Component\LabelComponent;
+use Lagdo\UiBuilder\Bootstrap5\Component\TableComponent;
 
 class Builder extends AbstractBuilder
 {
@@ -21,16 +19,16 @@ class Builder extends AbstractBuilder
     /**
      * @inheritDoc
      */
-    public function label(...$arguments): LabelInterface
+    public function label(...$arguments): LabelComponent
     {
-        return $this->createElementOfClass(LabelElement::class, $arguments);
+        return $this->createElementOfClass(LabelComponent::class, $arguments);
     }
 
     /**
      * @inheritDoc
      */
-    public function table(...$arguments): TableInterface
+    public function table(...$arguments): TableComponent
     {
-        return $this->createElementOfClass(TableElement::class, $arguments);
+        return $this->createElementOfClass(TableComponent::class, $arguments);
     }
 }
