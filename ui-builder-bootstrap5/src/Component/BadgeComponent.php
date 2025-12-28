@@ -27,7 +27,7 @@ class BadgeComponent extends BaseComponent
      *
      * @return void
      */
-    public function onBuild(HtmlComponent $parent): void
+    protected function onBuild(HtmlComponent $parent): void
     {
         // A badge is moved on top only if its parent is a button.
         if ($this->onTop && is_a($parent, ButtonComponent::class)) {
