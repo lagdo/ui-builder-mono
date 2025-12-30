@@ -16,7 +16,7 @@ class ColComponent extends BaseComponent
         if ($width < 1 || $width > 12) {
             $width = 12; // Full width by default.
         }
-        $this->addBaseClass("col-$width");
+        $this->element()->addBaseClass("col-$width");
         return $this;
     }
 }

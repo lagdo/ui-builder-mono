@@ -19,7 +19,7 @@ class BadgeComponent extends BaseComponent
      */
     protected function onCreate(): void
     {
-        $this->addBaseClass('badge');
+        $this->element()->addBaseClass('badge');
     }
 
     /**
@@ -31,8 +31,8 @@ class BadgeComponent extends BaseComponent
     {
         // A badge is moved on top only if its parent is a button.
         if ($this->onTop && is_a($parent, ButtonComponent::class)) {
-            $parent->addClass('position-relative');
-            $this->addClass('position-absolute top-0 start-100 translate-middle p-2');
+            $parent->element()->addClass('position-relative');
+            $this->element()->addClass('position-absolute top-0 start-100 translate-middle p-2');
         }
     }
 
@@ -52,7 +52,7 @@ class BadgeComponent extends BaseComponent
      */
     public function type(string $type): static
     {
-        $this->addClass("bg-$type");
+        $this->element()->addClass("bg-$type");
         return $this;
     }
 
@@ -63,7 +63,7 @@ class BadgeComponent extends BaseComponent
      */
     public function rounded(string $rounded): static
     {
-        $this->addClass("rounded-$rounded");
+        $this->element()->addClass("rounded-$rounded");
         return $this;
     }
 
@@ -74,7 +74,7 @@ class BadgeComponent extends BaseComponent
      */
     public function border(string $border): static
     {
-        $this->addClass("border border-$border");
+        $this->element()->addClass("border border-$border");
         return $this;
     }
 }

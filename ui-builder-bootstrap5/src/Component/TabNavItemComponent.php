@@ -16,8 +16,8 @@ class TabNavItemComponent extends BaseComponent
      */
     protected function onCreate(): void
     {
-        $this->addBaseClass('nav-link');
-        $this->setAttributes(['type' => 'button', 'role' => 'tab', 'data-bs-toggle' => 'tab']);
+        $this->element()->addBaseClass('nav-link');
+        $this->element()->setAttributes(['type' => 'button', 'role' => 'tab', 'data-bs-toggle' => 'tab']);
         $this->addWrapper('li', ['class' => 'nav-item', 'role' => 'presentation']);
     }
 
@@ -28,7 +28,7 @@ class TabNavItemComponent extends BaseComponent
      */
     public function target(string $target): static
     {
-        $this->setAttribute('data-bs-target', "#$target");
+        $this->element()->setAttribute('data-bs-target', "#$target");
         return $this;
     }
 
@@ -39,8 +39,8 @@ class TabNavItemComponent extends BaseComponent
      */
     public function active(bool $active = false): static
     {
-        $active && $this->addClass('active');
-        $this->setAttribute('aria-selected', $active ? 'true' : 'false');
+        $active && $this->element()->addClass('active');
+        $this->element()->setAttribute('aria-selected', $active ? 'true' : 'false');
         return $this;
     }
 
@@ -51,7 +51,7 @@ class TabNavItemComponent extends BaseComponent
      */
     public function enabled(bool $enabled): static
     {
-        !$enabled && $this->setAttribute('disabled', 'disabled');
+        !$enabled && $this->element()->setAttribute('disabled', 'disabled');
         return $this;
     }
 }

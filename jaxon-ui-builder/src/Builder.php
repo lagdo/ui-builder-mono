@@ -4,8 +4,9 @@ namespace Lagdo\UiBuilder\Jaxon;
 
 use Jaxon\App\Pagination\RendererInterface;
 use Lagdo\UiBuilder\BuilderInterface;
+use Lagdo\UiBuilder\Builder\Html\HtmlBuilder;
 use Lagdo\UiBuilder\Component\Base\HtmlComponent;
-use LogicException;
+use Lagdo\UiBuilder\Component\Base\HtmlElement;
 
 use function class_exists;
 use function jaxon;
@@ -43,12 +44,11 @@ class Builder
         $di = jaxon()->di();
     
         // Register the Jaxon tag builder.
-        $di->auto(TagBuilder::class);
+        $di->auto(Factory::class);
 
         // Register the pagination renderer.
-        $di->set(RendererInterface::class, function($di) {
-            return new PaginationRenderer($di->g(BuilderInterface::class));
-        });
+        $di->set(RendererInterface::class, fn($di) =>
+            new PaginationRenderer($di->g(BuilderInterface::class)));
 
         // Register the UI builder.
         $di->set(BuilderInterface::class, function($di) {
@@ -58,21 +58,31 @@ class Builder
                 return null;
             }
 
+            /** @var BuilderInterface */
             $xLibraryInstance = new $sLibraryClass();
-            $xTagBuilder = $di->g(TagBuilder::class);
-            $xLibraryInstance->addElementBuilder('jxn',
-                function(HtmlComponent|null $element, string $tagName, string $method, array $arguments)
-                    use($xLibraryInstance, $xTagBuilder) {
-                    if ($method === 'jxnHtml') {
-                        return $xLibraryInstance->html($xTagBuilder->html($arguments[0]));
-                    }
-                    if ($element === null) {
-                        throw new LogicException('Attributes can be set for elements only');
-                    }
+            $xFactory = $di->g(Factory::class);
 
-                    $xTagBuilder->tag($element, $method, $arguments);
+            $xLibraryInstance->registerFactory('jxn', HtmlBuilder::TARGET_BUILDER,
+                function(string $tagName, string $method, array $arguments)
+                    use($xLibraryInstance, $xFactory) {
+                    return $method !== 'jxnHtml' ? '' :
+                        $xLibraryInstance->html($xFactory->html($arguments[0]));
+                });
+            $xLibraryInstance->registerFactory('jxn', HtmlBuilder::TARGET_COMPONENT,
+                function(HtmlComponent $component, string $tagName, string $method, array $arguments)
+                    use($xFactory) {
+                    $xFactory->setJxnAttr($component->element(), $method, $arguments);
+
+                    return $component;
+                });
+            $xLibraryInstance->registerFactory('jxn', HtmlBuilder::TARGET_ELEMENT,
+                function(HtmlElement $element, string $tagName, string $method, array $arguments)
+                    use($xFactory) {
+                    $xFactory->setJxnAttr($element, $method, $arguments);
+
                     return $element;
                 });
+
             return $xLibraryInstance;
         });
     }

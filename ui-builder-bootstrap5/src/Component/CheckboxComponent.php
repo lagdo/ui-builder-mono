@@ -13,8 +13,8 @@ class CheckboxComponent extends BaseComponent
      */
     protected function onCreate(): void
     {
-        $this->addBaseClass('form-check-input');
-        $this->setAttribute('type', 'checkbox');
+        $this->element()->addBaseClass('form-check-input');
+        $this->element()->setAttribute('type', 'checkbox');
     }
 
     /**
@@ -26,7 +26,7 @@ class CheckboxComponent extends BaseComponent
     {
         if (is_a($parent, InputGroupComponent::class)) {
             $this->addWrapper('div', ['class' => 'input-group-text']);
-            $this->addClass('mt-0');
+            $this->element()->addClass('mt-0');
         }
     }
 }
