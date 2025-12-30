@@ -34,14 +34,14 @@ class Factory
 
     /**
      * @param HtmlElement $element
-     * @param string $method
+     * @param string $tagName
      * @param array $arguments
      *
      * @return void
      */
-    public function setJxnAttr(HtmlElement $element, string $method, array $arguments): void
+    public function setAttr(HtmlElement $element, string $tagName, array $arguments): void
     {
-        $this->$method($element, ...$arguments);
+        $this->$tagName($element, ...$arguments);
     }
 
     /**
@@ -53,7 +53,7 @@ class Factory
      *
      * @return void
      */
-    private function jxnBind(HtmlElement $element, JxnCall $xJsCall, string $item = '')
+    private function bind(HtmlElement $element, JxnCall $xJsCall, string $item = '')
     {
         $element->setAttribute('jxn-bind', $xJsCall->_class(), false);
         if(($item = trim($item)) !== '')
@@ -70,7 +70,7 @@ class Factory
      *
      * @return void
      */
-    private function jxnPagination(HtmlElement $element, JxnCall $xJsCall)
+    private function pagination(HtmlElement $element, JxnCall $xJsCall)
     {
         $element->setAttributes([
             'jxn-bind' => rq(Pagination::class)->_class(),
@@ -87,7 +87,7 @@ class Factory
      *
      * @return void
      */
-    private function jxnOn(HtmlElement $element, string $event, JsExpr $xJsExpr)
+    private function on(HtmlElement $element, string $event, JsExpr $xJsExpr)
     {
         $element->setAttributes([
             'jxn-on' => trim($event),
@@ -103,9 +103,9 @@ class Factory
      *
      * @return void
      */
-    private function jxnClick(HtmlElement $element, JsExpr $xJsExpr)
+    private function click(HtmlElement $element, JsExpr $xJsExpr)
     {
-        $this->jxnOn($element, 'click', $xJsExpr);
+        $this->on($element, 'click', $xJsExpr);
     }
 
     /**
@@ -151,7 +151,7 @@ class Factory
      *
      * @return void
      */
-    private function jxnEvent(HtmlElement $element, array $events)
+    private function event(HtmlElement $element, array $events)
     {
         $encoded = htmlentities(json_encode($this->handlers($events)));
         $element->setAttribute('jxn-event', $encoded, false);

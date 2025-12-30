@@ -71,14 +71,14 @@ class Builder
             $xLibraryInstance->registerFactory('jxn', HtmlBuilder::TARGET_COMPONENT,
                 function(HtmlComponent $component, string $tagName, string $method, array $arguments)
                     use($xFactory) {
-                    $xFactory->setJxnAttr($component->element(), $method, $arguments);
+                    $xFactory->setAttr($component->element(), $tagName, $arguments);
 
                     return $component;
                 });
             $xLibraryInstance->registerFactory('jxn', HtmlBuilder::TARGET_ELEMENT,
                 function(HtmlElement $element, string $tagName, string $method, array $arguments)
                     use($xFactory) {
-                    $xFactory->setJxnAttr($element, $method, $arguments);
+                    $xFactory->setAttr($element, $tagName, $arguments);
 
                     return $element;
                 });
