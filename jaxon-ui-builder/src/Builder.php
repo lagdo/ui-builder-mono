@@ -4,9 +4,9 @@ namespace Lagdo\UiBuilder\Jaxon;
 
 use Jaxon\App\Pagination\RendererInterface;
 use Lagdo\UiBuilder\BuilderInterface;
-use Lagdo\UiBuilder\Builder\Html\HtmlBuilder;
 use Lagdo\UiBuilder\Component\Base\HtmlComponent;
 use Lagdo\UiBuilder\Component\Base\HtmlElement;
+use Lagdo\UiBuilder\Html\HtmlBuilder;
 
 use function class_exists;
 use function jaxon;
