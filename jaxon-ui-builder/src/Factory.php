@@ -37,11 +37,28 @@ class Factory
      * @param string $tagName
      * @param array $arguments
      *
-     * @return void
+     * @return bool
      */
-    public function setAttr(HtmlElement $element, string $tagName, array $arguments): void
+    public function setAttr(HtmlElement $element, string $tagName, array $arguments): bool
     {
-        $this->$tagName($element, ...$arguments);
+        switch ($tagName) {
+        case 'bind':
+            $this->bind($element, ...$arguments);
+            return true;
+        case 'on':
+            $this->on($element, ...$arguments);
+            return true;
+        case 'click':
+            $this->click($element, ...$arguments);
+            return true;
+        case 'event':
+            $this->event($element, ...$arguments);
+            return true;
+        case 'pagination':
+            $this->pagination($element, ...$arguments);
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -96,7 +113,7 @@ class Factory
     }
 
     /**
-     * Set an event handler
+     * Set a click handler
      *
      * @param HtmlElement $element
      * @param JsExpr $xJsExpr
@@ -122,8 +139,6 @@ class Factory
     }
 
     /**
-     * Filter an convert the event handlers
-     *
      * @param array $events
      *
      * @return array
@@ -144,7 +159,7 @@ class Factory
     }
 
     /**
-     * Set an event handler
+     * Set multiple event handlers
      *
      * @param HtmlElement $element
      * @param array $events

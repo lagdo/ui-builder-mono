@@ -7,6 +7,7 @@ use Lagdo\UiBuilder\BuilderInterface;
 use Lagdo\UiBuilder\Component\Base\HtmlComponent;
 use Lagdo\UiBuilder\Component\Base\HtmlElement;
 use Lagdo\UiBuilder\Html\HtmlBuilder;
+use LogicException;
 
 use function class_exists;
 use function jaxon;
@@ -14,24 +15,26 @@ use function jaxon;
 class Builder
 {
     /**
-     * The UI builder libraries
-     *
-     * @var array
+     * @var Factory
      */
-    protected static $aLibraries = [
-        'bootstrap3' => \Lagdo\UiBuilder\Bootstrap3\Builder::class,
-        'bootstrap4' => \Lagdo\UiBuilder\Bootstrap4\Builder::class,
-        'bootstrap5' => \Lagdo\UiBuilder\Bootstrap5\Builder::class,
-    ];
+    private static Factory $xFactory;
 
     /**
-     * Get the configured UI builder class name
+     * Get the builder instance depending on the Jaxon library config.
      *
-     * @return string
+     * @return BuilderInterface|null
      */
-    protected static function getClass(): string
+    protected static function createBuilder(): BuilderInterface|null
     {
-        return self::$aLibraries[jaxon()->getAppOption('ui.template', '')] ?? '';
+        return match(jaxon()->getAppOption('ui.template', '')) {
+            'bootstrap3' => class_exists(\Lagdo\UiBuilder\Bootstrap3\Builder::class) ?
+                new \Lagdo\UiBuilder\Bootstrap3\Builder() : null,
+            'bootstrap4' => class_exists(\Lagdo\UiBuilder\Bootstrap4\Builder::class) ?
+                new \Lagdo\UiBuilder\Bootstrap4\Builder() : null,
+            'bootstrap5' => class_exists(\Lagdo\UiBuilder\Bootstrap5\Builder::class) ?
+                new \Lagdo\UiBuilder\Bootstrap5\Builder() : null,
+            default => null,
+        };
     }
 
     /**
@@ -42,9 +45,6 @@ class Builder
     public static function register()
     {
         $di = jaxon()->di();
-    
-        // Register the Jaxon tag builder.
-        $di->auto(Factory::class);
 
         // Register the pagination renderer.
         $di->set(RendererInterface::class, fn($di) =>
@@ -52,38 +52,43 @@ class Builder
 
         // Register the UI builder.
         $di->set(BuilderInterface::class, function($di) {
-            $sLibraryClass = self::getClass();
-            if($sLibraryClass === '' || !class_exists($sLibraryClass))
+            if(($xBuilder = self::createBuilder()) === null)
             {
                 return null;
             }
 
-            /** @var BuilderInterface */
-            $xLibraryInstance = new $sLibraryClass();
-            $xFactory = $di->g(Factory::class);
+            // Create the factory instance.
+            self::$xFactory = new Factory();
 
-            $xLibraryInstance->registerFactory('jxn', HtmlBuilder::TARGET_BUILDER,
-                function(string $tagName, string $method, array $arguments)
-                    use($xLibraryInstance, $xFactory) {
-                    return $method !== 'jxnHtml' ? '' :
-                        $xLibraryInstance->html($xFactory->html($arguments[0]));
+            // This factory adds the Jaxon jxnHtml() function to the builder interface.
+            $xBuilder->registerFactory('jxn', HtmlBuilder::TARGET_BUILDER,
+                function(string $tagName, string $method, array $arguments) use($xBuilder) {
+                    if ($method === 'jxnHtml') {
+                        return $xBuilder->html(self::$xFactory->html($arguments[0]));
+                    }
+
+                    throw new LogicException("No \"{$method}()\" method defined in the HTML UI builder.");
                 });
-            $xLibraryInstance->registerFactory('jxn', HtmlBuilder::TARGET_COMPONENT,
-                function(HtmlComponent $component, string $tagName, string $method, array $arguments)
-                    use($xFactory) {
-                    $xFactory->setAttr($component->element(), $tagName, $arguments);
+            // This factory adds functions to set Jaxon attributes on HTML components.
+            $xBuilder->registerFactory('jxn', HtmlBuilder::TARGET_COMPONENT,
+                function(HtmlComponent $component, string $tagName, string $method, array $arguments) {
+                    if (self::$xFactory->setAttr($component->element(), $tagName, $arguments)) {
+                        return $component;
+                    }
 
-                    return $component;
+                    throw new LogicException("No \"{$method}()\" method defined in the HTML component builder.");
                 });
-            $xLibraryInstance->registerFactory('jxn', HtmlBuilder::TARGET_ELEMENT,
-                function(HtmlElement $element, string $tagName, string $method, array $arguments)
-                    use($xFactory) {
-                    $xFactory->setAttr($element, $tagName, $arguments);
+            // This factory adds functions to set Jaxon attributes on HTML elements.
+            $xBuilder->registerFactory('jxn', HtmlBuilder::TARGET_ELEMENT,
+                function(HtmlElement $element, string $tagName, string $method, array $arguments) {
+                    if (self::$xFactory->setAttr($element, $tagName, $arguments)) {
+                        return $element;
+                    }
 
-                    return $element;
+                    throw new LogicException("No \"{$method}()\" method defined in the HTML element builder.");
                 });
 
-            return $xLibraryInstance;
+            return $xBuilder;
         });
     }
 }
