@@ -2,7 +2,7 @@
 
 namespace Lagdo\UiBuilder\Bootstrap5\Component;
 
-use Lagdo\UiBuilder\Component\PanelBodyComponent as BaseComponent;
+use Lagdo\UiBuilder\Component\Base\PanelBodyComponent as BaseComponent;
 
 class PanelBodyComponent extends BaseComponent
 {

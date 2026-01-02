@@ -5,7 +5,7 @@ namespace Lagdo\UiBuilder\Jaxon;
 use Jaxon\App\Component\Pagination;
 use Jaxon\Script\JsExpr;
 use Jaxon\Script\Call\JxnCall;
-use Lagdo\UiBuilder\Component\Base\HtmlElement;
+use Lagdo\UiBuilder\Component\HtmlElement;
 
 use function array_filter;
 use function array_map;

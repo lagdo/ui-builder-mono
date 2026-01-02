@@ -2,9 +2,9 @@
 
 namespace Lagdo\UiBuilder\Bootstrap5\Component;
 
-use Lagdo\UiBuilder\Component\Base\HtmlComponent;
-use Lagdo\UiBuilder\Component\RadioComponent as BaseComponent;
-use Lagdo\UiBuilder\Component\InputGroupComponent;
+use Lagdo\UiBuilder\Component\Base\RadioComponent as BaseComponent;
+use Lagdo\UiBuilder\Component\Base\InputGroupComponent;
+use Lagdo\UiBuilder\Component\HtmlComponent;
 
 class RadioComponent extends BaseComponent
 {

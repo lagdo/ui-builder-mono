@@ -4,8 +4,8 @@ namespace Lagdo\UiBuilder\Jaxon;
 
 use Jaxon\App\Pagination\RendererInterface;
 use Lagdo\UiBuilder\BuilderInterface;
-use Lagdo\UiBuilder\Component\Base\HtmlComponent;
-use Lagdo\UiBuilder\Component\Base\HtmlElement;
+use Lagdo\UiBuilder\Component\HtmlComponent;
+use Lagdo\UiBuilder\Component\HtmlElement;
 use Lagdo\UiBuilder\Engine\Engine;
 use LogicException;
 
