@@ -67,7 +67,7 @@ class Builder
                         return $xBuilder->html(self::$xFactory->html($arguments[0]));
                     }
 
-                    throw new LogicException("No \"{$method}()\" method defined in the HTML UI builder.");
+                    throw new LogicException("Call to undefined method \"{$method}()\" in the HTML UI builder.");
                 });
             // This factory adds functions to set Jaxon attributes on HTML components.
             $xBuilder->registerHelper('jxn', Engine::TARGET_COMPONENT,
@@ -76,7 +76,7 @@ class Builder
                         return $component;
                     }
 
-                    throw new LogicException("No \"{$method}()\" method defined in the HTML component.");
+                    throw new LogicException("Call to undefined method \"{$method}()\" in the HTML component.");
                 });
             // This factory adds functions to set Jaxon attributes on HTML elements.
             $xBuilder->registerHelper('jxn', Engine::TARGET_ELEMENT,
@@ -85,7 +85,7 @@ class Builder
                         return $element;
                     }
 
-                    throw new LogicException("No \"{$method}()\" method defined in the HTML element.");
+                    throw new LogicException("Call to undefined method \"{$method}()\" in the HTML element.");
                 });
 
             return $xBuilder;
