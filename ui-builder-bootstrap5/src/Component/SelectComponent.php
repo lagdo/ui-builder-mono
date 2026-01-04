@@ -3,8 +3,19 @@
 namespace Lagdo\UiBuilder\Bootstrap5\Component;
 
 use Lagdo\UiBuilder\Component\Base\SelectComponent as BaseComponent;
+use Lagdo\UiBuilder\Component\HtmlComponent;
 
 class SelectComponent extends BaseComponent
 {
-    use Traits\FormElementTrait;
+    /**
+     * @param HtmlComponent $parent
+     *
+     * @return void
+     */
+    protected function onBuild(HtmlComponent $parent): void
+    {
+        if ($this->inForm()) {
+            $this->element()->addBaseClass('form-select');
+        }
+    }
 }

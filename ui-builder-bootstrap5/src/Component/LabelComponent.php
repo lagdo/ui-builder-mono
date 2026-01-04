@@ -17,9 +17,14 @@ class LabelComponent extends BaseComponent
      */
     protected function onBuild(HtmlComponent $parent): void
     {
-        // A label in an input group must be wrapped into a span with class "input-group-addon".
-        if (is_a($parent, InputGroupComponent::class)) {
+        // Only one of these label should be added.
+        switch(true) {
+        case is_a($parent, InputGroupComponent::class):
             $this->element()->addBaseClass('input-group-text');
-        }
+            break;
+        case $this->inForm():
+            $this->element()->addBaseClass('form-label');
+            // break;
+        };
     }
 }

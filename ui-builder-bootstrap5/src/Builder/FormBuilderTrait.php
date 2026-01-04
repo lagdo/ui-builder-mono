@@ -3,7 +3,6 @@
 namespace Lagdo\UiBuilder\Bootstrap5\Builder;
 
 use Lagdo\UiBuilder\Bootstrap5\Component;
-use Lagdo\UiBuilder\Component\HtmlComponent;
 
 trait FormBuilderTrait
 {
@@ -14,23 +13,12 @@ trait FormBuilderTrait
     {
         $this->formComponentClass = Component\FormComponent::class;
         $this->labelComponentClass = Component\LabelComponent::class;
-        $this->inputGroupComponentClass = Component\InputGroupComponent::class;
+        $this->inputComponentClass = Component\InputComponent::class;
+        $this->textareaComponentClass = Component\TextareaComponent::class;
         $this->checkboxComponentClass = Component\CheckboxComponent::class;
         $this->radioComponentClass = Component\RadioComponent::class;
+        $this->selectComponentClass = Component\SelectComponent::class;
         $this->optionComponentClass = Component\OptionComponent::class;
-    }
-
-    /**
-     * @param string $tagName
-     * @param array $arguments
-     *
-     * @return HtmlComponent
-     */
-    protected function createFormComponent(string $tagName, $arguments): HtmlComponent
-    {
-        $component = $this->createComponent($tagName, $arguments);
-        $component->element()->addBaseClass($tagName === 'label' || $tagName === 'select' ?
-            "form-$tagName" : 'form-control');
-        return $component;
+        $this->inputGroupComponentClass = Component\InputGroupComponent::class;
     }
 }
