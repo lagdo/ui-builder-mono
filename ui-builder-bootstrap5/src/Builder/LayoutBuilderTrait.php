@@ -2,8 +2,7 @@
 
 namespace Lagdo\UiBuilder\Bootstrap5\Builder;
 
-use Lagdo\UiBuilder\Bootstrap5\Component\ColComponent;
-use Lagdo\UiBuilder\Bootstrap5\Component\RowComponent;
+use Lagdo\UiBuilder\Bootstrap5\Component;
 
 trait LayoutBuilderTrait
 {
@@ -12,7 +11,7 @@ trait LayoutBuilderTrait
      */
     protected function _initLayoutBuilder(): void
     {
-        $this->rowComponentClass = RowComponent::class;
-        $this->colComponentClass = ColComponent::class;
+        $this->rowComponentClass = Component\RowComponent::class;
+        $this->colComponentClass = Component\ColComponent::class;
     }
 }
