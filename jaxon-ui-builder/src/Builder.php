@@ -3,10 +3,10 @@
 namespace Lagdo\UiBuilder\Jaxon;
 
 use Jaxon\App\Pagination\RendererInterface;
+use Lagdo\UiBuilder\Builder as AbstractBuilder;
 use Lagdo\UiBuilder\BuilderInterface;
 use Lagdo\UiBuilder\Component\HtmlComponent;
 use Lagdo\UiBuilder\Component\HtmlElement;
-use Lagdo\UiBuilder\Engine\Engine;
 use LogicException;
 
 use function class_exists;
@@ -61,7 +61,7 @@ class Builder
             self::$xFactory = new Factory();
 
             // This factory adds the Jaxon jxnHtml() function to the builder interface.
-            $xBuilder->registerHelper('jxn', Engine::TARGET_BUILDER,
+            $xBuilder->registerHelper('jxn', AbstractBuilder::TARGET_BUILDER,
                 function(string $tagName, string $method, array $arguments) use($xBuilder) {
                     if ($method === 'jxnHtml') {
                         return $xBuilder->html(self::$xFactory->html($arguments[0]));
@@ -70,7 +70,7 @@ class Builder
                     throw new LogicException("Call to undefined method \"{$method}()\" in the HTML UI builder.");
                 });
             // This factory adds functions to set Jaxon attributes on HTML components.
-            $xBuilder->registerHelper('jxn', Engine::TARGET_COMPONENT,
+            $xBuilder->registerHelper('jxn', AbstractBuilder::TARGET_COMPONENT,
                 function(HtmlComponent $component, string $tagName, string $method, array $arguments) {
                     if (self::$xFactory->setAttr($component->element(), $tagName, $arguments)) {
                         return $component;
@@ -79,7 +79,7 @@ class Builder
                     throw new LogicException("Call to undefined method \"{$method}()\" in the HTML component.");
                 });
             // This factory adds functions to set Jaxon attributes on HTML elements.
-            $xBuilder->registerHelper('jxn', Engine::TARGET_ELEMENT,
+            $xBuilder->registerHelper('jxn', AbstractBuilder::TARGET_ELEMENT,
                 function(HtmlElement $element, string $tagName, string $method, array $arguments) {
                     if (self::$xFactory->setAttr($element, $tagName, $arguments)) {
                         return $element;
