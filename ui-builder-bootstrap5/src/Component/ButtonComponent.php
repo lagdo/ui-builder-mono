@@ -57,15 +57,6 @@ class ButtonComponent extends BaseComponent
     }
 
     /**
-     * @inheritDoc
-     */
-    public function addCaret(): static
-    {
-        // Nothing to do.
-        return $this;
-    }
-
-    /**
      * @return static
      */
     public function large(): static

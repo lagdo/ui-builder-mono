@@ -39,8 +39,13 @@ class TabNavItemComponent extends BaseComponent
      */
     public function active(bool $active = false): static
     {
-        $active && $this->element()->addClass('active');
-        $this->element()->setAttribute('aria-selected', $active ? 'true' : 'false');
+        if ($active) {
+            $this->element()->addClass('active');
+            $this->element()->setAttribute('aria-selected', 'true');
+            return $this;
+        }
+
+        $this->element()->setAttribute('aria-selected', 'false');
         return $this;
     }
 
@@ -51,7 +56,9 @@ class TabNavItemComponent extends BaseComponent
      */
     public function enabled(bool $enabled): static
     {
-        !$enabled && $this->element()->setAttribute('disabled', 'disabled');
+        if (!$enabled) {
+            $this->element()->setAttribute('disabled', 'disabled');
+        }
         return $this;
     }
 }

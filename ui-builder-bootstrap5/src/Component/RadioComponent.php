@@ -6,6 +6,8 @@ use Lagdo\UiBuilder\Component\Base\RadioComponent as BaseComponent;
 use Lagdo\UiBuilder\Component\Base\InputGroupComponent;
 use Lagdo\UiBuilder\Component\HtmlComponent;
 
+use function is_a;
+
 class RadioComponent extends BaseComponent
 {
     use Traits\InputValidationTrait;
