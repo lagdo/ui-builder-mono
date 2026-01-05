@@ -7,6 +7,8 @@ use Lagdo\UiBuilder\Component\HtmlComponent;
 
 class InputComponent extends BaseComponent
 {
+    use Traits\InputValidationTrait;
+
     /**
      * @param HtmlComponent $parent
      *
@@ -17,5 +19,7 @@ class InputComponent extends BaseComponent
         if ($this->inForm()) {
             $this->element()->addBaseClass('form-control');
         }
+
+        $this->setForLabelAttr();
     }
 }

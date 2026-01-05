@@ -8,6 +8,8 @@ use Lagdo\UiBuilder\Component\HtmlComponent;
 
 class CheckboxComponent extends BaseComponent
 {
+    use Traits\InputValidationTrait;
+
     /**
      * @return void
      */
@@ -28,5 +30,7 @@ class CheckboxComponent extends BaseComponent
             $this->addWrapper('div', ['class' => 'input-group-text']);
             $this->element()->addClass('mt-0');
         }
+
+        $this->setForLabelAttr();
     }
 }

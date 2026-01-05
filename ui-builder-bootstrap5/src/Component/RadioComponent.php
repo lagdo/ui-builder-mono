@@ -8,6 +8,8 @@ use Lagdo\UiBuilder\Component\HtmlComponent;
 
 class RadioComponent extends BaseComponent
 {
+    use Traits\InputValidationTrait;
+
     /**
      * @return void
      */
@@ -24,13 +26,11 @@ class RadioComponent extends BaseComponent
      */
     protected function onBuild(HtmlComponent $parent): void
     {
-        if ($this->inForm()) {
-            $this->element()->addBaseClass('form-control');
-        }
-
         if (is_a($parent, InputGroupComponent::class)) {
             $this->addWrapper('div', ['class' => 'input-group-text']);
             $this->element()->addClass('mt-0');
         }
+
+        $this->setForLabelAttr();
     }
 }
