@@ -1,5 +1,5 @@
 {
-    "name": "lagdo/ui-builder-bootstrap5",
+    "name": "lagdo/ui-builder-daisyui",
     "type": "library",
     "description": "UI Builder extensions for the Bootstrap 5 framework.",
     "authors": [
@@ -8,12 +8,12 @@
             "email": "thierry.feuzeu@gmail.com"
         }
     ],
-    "homepage": "https://github.com/lagdo/ui-builder-bootstrap5",
+    "homepage": "https://github.com/lagdo/ui-builder-daisyui",
     "license": "MIT",
-    "keywords": ["HTML", "UI Builder", "Bootstrap"],
+    "keywords": ["HTML", "UI Builder", "DaisyUi", "Tailwind CSS"],
     "support": {
-        "issues": "https://github.com/lagdo/ui-builder-bootstrap5/issues",
-        "source": "https://github.com/lagdo/ui-builder-bootstrap5"
+        "issues": "https://github.com/lagdo/ui-builder-daisyui/issues",
+        "source": "https://github.com/lagdo/ui-builder-daisyui"
     },
     "require": {
         "php": ">=8.0",
@@ -21,7 +21,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Lagdo\\UiBuilder\\Bootstrap5\\": "src/"
+            "Lagdo\\UiBuilder\\DaisyUi\\": "src/"
         }
     },
     "minimum-stability": "stable",
