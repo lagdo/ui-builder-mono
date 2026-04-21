@@ -21,15 +21,18 @@
     },
     "require": {
         "php": ">=8.0",
-        "jaxon-php/jaxon-core": "^5.0"
+        "jaxon-php/jaxon-core": "^5.4"
     },
     "autoload": {
         "psr-4": {
             "Lagdo\\UiBuilder\\": "ui-builder/src/",
+            "Lagdo\\UiBuilder\\Jaxon\\": "jaxon-ui-builder/src/",
             "Lagdo\\UiBuilder\\Bootstrap3\\": "ui-builder-bootstrap3/src/",
             "Lagdo\\UiBuilder\\Bootstrap4\\": "ui-builder-bootstrap4/src/",
             "Lagdo\\UiBuilder\\Bootstrap5\\": "ui-builder-bootstrap5/src/",
-            "Lagdo\\UiBuilder\\Jaxon\\": "jaxon-ui-builder/src/"
+            "Lagdo\\UiBuilder\\DaisyUi\\": "ui-builder-daisyui/src/",
+            "Lagdo\\UiBuilder\\Flowbite\\": "ui-builder-flowbite/src/",
+            "Lagdo\\UiBuilder\\Preline\\": "ui-builder-preline/src/"
         },
         "files": [
             "jaxon-ui-builder/src/register.php"
@@ -39,11 +42,14 @@
         "contao/monorepo-tools": "^0.2"
     },
     "replace": {
-        "lagdo/jaxon-ui-builder": "self.version",
         "lagdo/ui-builder": "self.version",
+        "lagdo/jaxon-ui-builder": "self.version",
         "lagdo/ui-builder-bootstrap3": "self.version",
         "lagdo/ui-builder-bootstrap4": "self.version",
-        "lagdo/ui-builder-bootstrap5": "self.version"
+        "lagdo/ui-builder-bootstrap5": "self.version",
+        "lagdo/ui-builder-daisyui": "self.version",
+        "lagdo/ui-builder-flowbite": "self.version",
+        "lagdo/ui-builder-preline": "self.version"
     },
     "extra": {
         "contao-manager-plugin": []

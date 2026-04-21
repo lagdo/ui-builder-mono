@@ -1,0 +1,29 @@
+{
+    "name": "lagdo/ui-builder-preline",
+    "type": "library",
+    "description": "UI Builder extensions for the Preline framework.",
+    "authors": [
+        {
+            "name": "Thierry Feuzeu",
+            "email": "thierry.feuzeu@gmail.com"
+        }
+    ],
+    "homepage": "https://github.com/lagdo/ui-builder-preline",
+    "license": "MIT",
+    "keywords": ["HTML", "UI Builder", "Preline", "Tailwind CSS"],
+    "support": {
+        "issues": "https://github.com/lagdo/ui-builder-preline/issues",
+        "source": "https://github.com/lagdo/ui-builder-preline"
+    },
+    "require": {
+        "php": ">=8.0",
+        "lagdo/ui-builder": "0.6.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Lagdo\\UiBuilder\\Preline\\": "src/"
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": false
+}

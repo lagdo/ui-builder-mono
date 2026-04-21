@@ -16,6 +16,12 @@ repositories:
         url: git@github.com:lagdo/ui-builder-bootstrap4.git
     ui-builder-bootstrap5:
         url: git@github.com:lagdo/ui-builder-bootstrap5.git
+    ui-builder-daisyui:
+        url: git@github.com:lagdo/ui-builder-daisyui.git
+    ui-builder-flowbite:
+        url: git@github.com:lagdo/ui-builder-flowbite.git
+    ui-builder-preline:
+        url: git@github.com:lagdo/ui-builder-preline.git
 
 # Additional composer settings for the root composer.json
 composer:

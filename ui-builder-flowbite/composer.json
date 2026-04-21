@@ -1,0 +1,29 @@
+{
+    "name": "lagdo/ui-builder-flowbite",
+    "type": "library",
+    "description": "UI Builder extensions for the Flowbite framework.",
+    "authors": [
+        {
+            "name": "Thierry Feuzeu",
+            "email": "thierry.feuzeu@gmail.com"
+        }
+    ],
+    "homepage": "https://github.com/lagdo/ui-builder-flowbite",
+    "license": "MIT",
+    "keywords": ["HTML", "UI Builder", "Flowbite", "Tailwind CSS"],
+    "support": {
+        "issues": "https://github.com/lagdo/ui-builder-flowbite/issues",
+        "source": "https://github.com/lagdo/ui-builder-flowbite"
+    },
+    "require": {
+        "php": ">=8.0",
+        "lagdo/ui-builder": "0.6.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Lagdo\\UiBuilder\\Flowbite\\": "src/"
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": false
+}
