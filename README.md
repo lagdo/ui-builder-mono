@@ -1,10 +1,3 @@
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/lagdo/ui-builder/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/lagdo/ui-builder/?branch=main)
-[![StyleCI](https://styleci.io/repos/449479108/shield?branch=main)](https://styleci.io/repos/449479108)
-
-[![Latest Stable Version](https://poser.pugx.org/lagdo/ui-builder/v/stable)](https://packagist.org/packages/lagdo/ui-builder)
-[![Total Downloads](https://poser.pugx.org/lagdo/ui-builder/downloads)](https://packagist.org/packages/lagdo/ui-builder)
-[![License](https://poser.pugx.org/lagdo/ui-builder/license)](https://packagist.org/packages/lagdo/ui-builder)
-
 A customizable and extensible HTML UI builder
 =============================================
 
