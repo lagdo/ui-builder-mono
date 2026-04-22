@@ -5,6 +5,8 @@ namespace Lagdo\UiBuilder\Bootstrap5\Component;
 use Lagdo\UiBuilder\Component\Base\RadioComponent as BaseComponent;
 use Lagdo\UiBuilder\Component\Base\InputGroupComponent;
 use Lagdo\UiBuilder\Component\HtmlComponent;
+use Lagdo\UiBuilder\Component\HtmlElement;
+use Lagdo\UiBuilder\Component\Html\Text;
 
 use function is_a;
 
@@ -17,8 +19,8 @@ class RadioComponent extends BaseComponent
      */
     protected function onCreate(): void
     {
-        $this->element()->addBaseClass('form-check-input');
-        $this->element()->setAttribute('type', 'radio');
+        $this->element()->addBaseClass('form-check-input')
+            ->setAttribute('type', 'radio');
     }
 
     /**
@@ -29,10 +31,20 @@ class RadioComponent extends BaseComponent
     protected function onBuild(HtmlComponent $parent): void
     {
         if (is_a($parent, InputGroupComponent::class)) {
-            $this->addWrapper('div', ['class' => 'input-group-text']);
+            $this->addWrapper($this->newElement('div', ['class' => 'input-group-text']));
             $this->element()->addClass('mt-0');
         }
+    }
 
-        $this->setForLabelAttr();
+    /**
+     * @param HtmlElement $label
+     * @param Text $text
+     *
+     * @return void
+     */
+    protected function setLabel(HtmlElement $label, Text $text): void
+    {
+        $label->addBaseClass('form-label')->addChild($text);
+        $this->addNextSibling($label);
     }
 }

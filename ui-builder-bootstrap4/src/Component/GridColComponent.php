@@ -1,10 +1,10 @@
 <?php
 
-namespace Lagdo\UiBuilder\Bootstrap3\Component;
+namespace Lagdo\UiBuilder\Bootstrap4\Component;
 
-use Lagdo\UiBuilder\Component\Base\ColComponent as BaseComponent;
+use Lagdo\UiBuilder\Component\Base\GridColComponent as BaseComponent;
 
-class ColComponent extends BaseComponent
+class GridColComponent extends BaseComponent
 {
     /**
      * @param int $width

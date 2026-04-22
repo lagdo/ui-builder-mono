@@ -3,6 +3,7 @@
 namespace Lagdo\UiBuilder\Jaxon;
 
 use Jaxon\App\Pagination\RendererInterface;
+use Jaxon\Di\Container;
 use Lagdo\UiBuilder\Builder as AbstractBuilder;
 use Lagdo\UiBuilder\BuilderInterface;
 use Lagdo\UiBuilder\Component\HtmlComponent;
@@ -47,13 +48,12 @@ class Builder
         $di = jaxon()->di();
 
         // Register the pagination renderer.
-        $di->set(RendererInterface::class, fn($di) =>
+        $di->set(RendererInterface::class, fn(Container $di) =>
             new PaginationRenderer($di->g(BuilderInterface::class)));
 
         // Register the UI builder.
-        $di->set(BuilderInterface::class, function($di) {
-            if(($xBuilder = self::createBuilder()) === null)
-            {
+        $di->set(BuilderInterface::class, function(Container $di) {
+            if (($xBuilder = self::createBuilder()) === null) {
                 return null;
             }
 

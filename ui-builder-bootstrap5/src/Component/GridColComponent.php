@@ -1,10 +1,10 @@
 <?php
 
-namespace Lagdo\UiBuilder\Bootstrap4\Component;
+namespace Lagdo\UiBuilder\Bootstrap5\Component;
 
-use Lagdo\UiBuilder\Component\Base\ColComponent as BaseComponent;
+use Lagdo\UiBuilder\Component\Base\GridColComponent as BaseComponent;
 
-class ColComponent extends BaseComponent
+class GridColComponent extends BaseComponent
 {
     /**
      * @param int $width
@@ -16,7 +16,7 @@ class ColComponent extends BaseComponent
         if ($width < 1 || $width > 12) {
             $width = 12; // Full width by default.
         }
-        $this->element()->addBaseClass("col-md-$width");
+        $this->element()->addBaseClass("col-$width");
         return $this;
     }
 }

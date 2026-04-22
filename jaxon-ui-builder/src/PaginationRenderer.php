@@ -9,8 +9,6 @@ use Lagdo\UiBuilder\BuilderInterface;
 class PaginationRenderer implements RendererInterface
 {
     /**
-     * The constructor
-     *
      * @param BuilderInterface $ui
      */
     public function __construct(private BuilderInterface $ui)
@@ -21,21 +19,19 @@ class PaginationRenderer implements RendererInterface
      */
     public function render(array $aPages, Page $xPrevPage, Page $xNextPage): string
     {
+        $attrs = ['role' => 'link'];
         return $this->ui->build(
             $this->ui->pagination(
-                $this->ui->paginationItem(['role' => 'link'],
-                    $this->ui->html($xPrevPage->sText))
+                $this->ui->paginationItem($attrs, $this->ui->html($xPrevPage->sText))
                     ->number($xPrevPage->nNumber)
                     ->enabled($xPrevPage->sType !== 'disabled'),
-                $this->ui->each($aPages, fn($xPage) =>
-                    $this->ui->paginationItem(['role' => 'link'],
-                        $this->ui->html($xPage->sText))
+                $this->ui->each($aPages, fn(Page $xPage) =>
+                    $this->ui->paginationItem($attrs, $this->ui->html($xPage->sText))
                         ->number($xPage->nNumber)
                         ->active($xPage->sType === 'current')
                         ->enabled($xPage->sType !== 'disabled')
                 ),
-                $this->ui->paginationItem(['role' => 'link'],
-                    $this->ui->html($xNextPage->sText))
+                $this->ui->paginationItem($attrs, $this->ui->html($xNextPage->sText))
                     ->number($xNextPage->nNumber)
                     ->enabled($xNextPage->sType !== 'disabled')
             )

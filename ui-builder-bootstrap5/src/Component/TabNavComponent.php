@@ -16,8 +16,8 @@ class TabNavComponent extends BaseComponent
      */
     protected function onCreate(): void
     {
-        $this->element()->addBaseClass('nav');
-        $this->element()->addBaseClass('nav-tabs');
+        $this->element()->addBaseClass('nav')
+            ->addBaseClass('nav-tabs');
     }
 
     /**

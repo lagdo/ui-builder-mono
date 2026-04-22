@@ -16,8 +16,8 @@ class DropdownMenuItemComponent extends BaseComponent
      */
     protected function onCreate(): void
     {
-        $this->element()->addBaseClass('dropdown-item');
-        $this->element()->setAttribute('href', '#');
-        $this->addWrapper('li');
+        $this->element()->addBaseClass('dropdown-item')
+            ->setAttribute('href', '#');
+        $this->addWrapper($this->newElement('li'));
     }
 }

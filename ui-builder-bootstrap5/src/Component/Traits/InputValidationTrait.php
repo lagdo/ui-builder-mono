@@ -16,7 +16,7 @@ trait InputValidationTrait
     {
         $this->addClass($valid ? 'is-valid' : 'is-invalid');
         if ($message !== '') {
-            $element = $this->addSiblingNext('div',  [
+            $element = $this->addNextSibling('div',  [
                 'class' => $valid ? 'valid-feedback' : 'invalid-feedback',
             ]);
             $element->addChild(new Html($message));
@@ -34,7 +34,7 @@ trait InputValidationTrait
     {
         $this->addClass($valid ? 'is-valid' : 'is-invalid');
         if ($message !== '') {
-            $element = $this->addSiblingNext('div',  [
+            $element = $this->addNextSibling('div',  [
                 'class' => $valid ? 'valid-tooltip' : 'invalid-tooltip',
             ]);
             $element->addChild(new Html($message));
