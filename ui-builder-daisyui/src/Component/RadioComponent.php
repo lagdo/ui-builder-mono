@@ -6,6 +6,8 @@ use Lagdo\UiBuilder\Component\Base\RadioComponent as BaseComponent;
 use Lagdo\UiBuilder\Component\HtmlElement;
 use Lagdo\UiBuilder\Component\Html\Text;
 
+use function is_a;
+
 class RadioComponent extends BaseComponent
 {
     // use Traits\InputValidationTrait;
@@ -17,6 +19,16 @@ class RadioComponent extends BaseComponent
     {
         $this->element()->addBaseClass('radio')
             ->setAttribute('type', 'radio');
+    }
+
+    /**
+     * @return void
+     */
+    protected function onBuild(): void
+    {
+        if (is_a($this->parent(), InputGroupComponent::class)) {
+            $this->element()->addClass('join-item');
+        }
     }
 
     /**

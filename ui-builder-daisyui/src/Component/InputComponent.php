@@ -2,22 +2,22 @@
 
 namespace Lagdo\UiBuilder\DaisyUi\Component;
 
-use Lagdo\UiBuilder\Component\Base\SelectComponent as BaseComponent;
+use Lagdo\UiBuilder\Component\Base\InputComponent as BaseComponent;
 use Lagdo\UiBuilder\Component\HtmlElement;
 use Lagdo\UiBuilder\Component\Html\Text;
 
 use function is_a;
 
-class SelectComponent extends BaseComponent
+class InputComponent extends BaseComponent
 {
-    // use Traits\InputValidationTrait;
+    use Traits\InputValidationTrait;
 
     /**
      * @return void
      */
     protected function onCreate(): void
     {
-        $this->element()->addBaseClass('select');
+        $this->element()->addBaseClass('input');
     }
 
     /**
