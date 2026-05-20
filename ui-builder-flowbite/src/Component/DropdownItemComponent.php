@@ -3,7 +3,6 @@
 namespace Lagdo\UiBuilder\Flowbite\Component;
 
 use Lagdo\UiBuilder\Component\Base\DropdownItemComponent as BaseComponent;
-use Lagdo\UiBuilder\Component\HtmlComponent;
 
 class DropdownItemComponent extends BaseComponent
 {
@@ -24,11 +23,9 @@ class DropdownItemComponent extends BaseComponent
     }
 
     /**
-     * @param HtmlComponent $parent
-     *
      * @return void
      */
-    protected function onBuild(HtmlComponent $parent): void
+    protected function onBuild(): void
     {
         $this->addHtml('<svg class="w-4 h-4 ms-1.5 -me-0.5" aria-hidden="true" ' .
             'xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" ' .

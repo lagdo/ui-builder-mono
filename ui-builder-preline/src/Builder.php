@@ -2,7 +2,7 @@
 
 namespace Lagdo\UiBuilder\Preline;
 
-use Lagdo\UiBuilder\Builder as AbstractBuilder;
+use Lagdo\UiBuilder\AbstractBuilder;
 
 class Builder extends AbstractBuilder
 {

@@ -17,13 +17,11 @@ class MenuItemComponent extends BaseComponent
     }
 
     /**
-     * @param MenuComponent $parent
-     *
      * @return void
      */
-    protected function onBuild(MenuComponent $parent): void
+    protected function onBuild(): void
     {
-        $style = $parent->isVertical ? 'gap-x-2' :
+        $style = $this->parent()->isVertical ? 'gap-x-2' :
             'gap-x-2.5 sm:-ms-px sm:mt-0 sm:first:rounded-se-none ' .
             'sm:first:rounded-es-lg sm:last:rounded-es-none sm:last:rounded-se-lg';
         $this->element()->addClass($style);

@@ -3,7 +3,6 @@
 namespace Lagdo\UiBuilder\Bootstrap5\Component;
 
 use Lagdo\UiBuilder\Component\Base\BadgeComponent as BaseComponent;
-use Lagdo\UiBuilder\Component\HtmlComponent;
 
 use function is_a;
 
@@ -23,12 +22,11 @@ class BadgeComponent extends BaseComponent
     }
 
     /**
-     * @param HtmlComponent $parent
-     *
      * @return void
      */
-    protected function onBuild(HtmlComponent $parent): void
+    protected function onBuild(): void
     {
+        $parent = $this->parent();
         // A badge is moved on top only if its parent is a button.
         if ($this->onTop && is_a($parent, ButtonComponent::class)) {
             $parent->element()->addClass('position-relative');

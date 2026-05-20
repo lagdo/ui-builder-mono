@@ -3,7 +3,6 @@
 namespace Lagdo\UiBuilder\Flowbite\Component;
 
 use Lagdo\UiBuilder\Component\Base\PaginationItemComponent as BaseComponent;
-use Lagdo\UiBuilder\Component\HtmlComponent;
 
 class PaginationItemComponent extends BaseComponent
 {
@@ -34,11 +33,9 @@ class PaginationItemComponent extends BaseComponent
     }
 
     /**
-     * @param HtmlComponent $parent
-     *
      * @return void
      */
-    protected function onBuild(HtmlComponent $parent): void
+    protected function onBuild(): void
     {
         $style = match(true) {
             // Style for the <span> element.

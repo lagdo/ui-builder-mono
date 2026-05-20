@@ -3,7 +3,6 @@
 namespace Lagdo\UiBuilder\Preline\Component;
 
 use Lagdo\UiBuilder\Component\Base\DropdownItemComponent as BaseComponent;
-use Lagdo\UiBuilder\Component\HtmlComponent;
 
 class DropdownItemComponent extends BaseComponent
 {
@@ -25,11 +24,9 @@ class DropdownItemComponent extends BaseComponent
     }
 
     /**
-     * @param HtmlComponent $parent
-     *
      * @return void
      */
-    protected function onBuild(HtmlComponent $parent): void
+    protected function onBuild(): void
     {
         $this->addHtml('<svg class="hs-dropdown-open:rotate-180 size-4" ' .
             'xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" ' .

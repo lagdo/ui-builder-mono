@@ -3,7 +3,6 @@
 namespace Lagdo\UiBuilder\Bootstrap5\Component;
 
 use Lagdo\UiBuilder\Component\Base\ButtonComponent as BaseComponent;
-use Lagdo\UiBuilder\Component\HtmlComponent;
 
 use function is_a;
 
@@ -29,31 +28,13 @@ class ButtonComponent extends BaseComponent
     }
 
     /**
-     * @param HtmlComponent $parent
-     *
      * @return void
      */
-    protected function onBuild(HtmlComponent $parent): void
+    protected function onBuild(): void
     {
-        if ($this->fullWidth && !is_a($parent, ButtonGroupComponent::class)) {
+        if ($this->fullWidth && !is_a($this->parent(), ButtonGroupComponent::class)) {
             $this->element()->addClass('w-100');
         }
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function addIcon(string $icon): static
-    {
-        if ($icon === 'remove') {
-            $icon = 'x';
-        } elseif ($icon === 'edit') {
-            $icon = 'pencil';
-        } elseif ($icon === 'ok') {
-            $icon = 'check';
-        }
-        $this->addHtml('<i class="fa fa-' . $icon . '"></i>');
-        return $this;
     }
 
     /**

@@ -2,7 +2,7 @@
 
 namespace Lagdo\UiBuilder\DaisyUi;
 
-use Lagdo\UiBuilder\Builder as AbstractBuilder;
+use Lagdo\UiBuilder\AbstractBuilder;
 
 class Builder extends AbstractBuilder
 {
