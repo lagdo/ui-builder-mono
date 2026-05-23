@@ -2,10 +2,15 @@
 
 namespace Lagdo\UiBuilder\Jaxon;
 
-use Jaxon\App\Pagination\RendererInterface;
 use Jaxon\Di\Container;
-use Lagdo\UiBuilder\Builder as AbstractBuilder;
+use Lagdo\UiBuilder\AbstractBuilder;
 use Lagdo\UiBuilder\BuilderInterface;
+use Lagdo\UiBuilder\Bootstrap3;
+use Lagdo\UiBuilder\Bootstrap4;
+use Lagdo\UiBuilder\Bootstrap5;
+use Lagdo\UiBuilder\DaisyUi;
+use Lagdo\UiBuilder\Flowbite;
+use Lagdo\UiBuilder\Preline;
 use Lagdo\UiBuilder\Component\HtmlComponent;
 use Lagdo\UiBuilder\Component\HtmlElement;
 use LogicException;
@@ -21,6 +26,16 @@ class Builder
     private static Factory $xFactory;
 
     /**
+     * @param string $class
+     *
+     * @return BuilderInterface|null
+     */
+    private static function make(string $class):BuilderInterface|null
+    {
+        return class_exists($class) ? new $class : null;
+    }
+
+    /**
      * Get the builder instance depending on the Jaxon library config.
      *
      * @return BuilderInterface|null
@@ -28,12 +43,12 @@ class Builder
     protected static function createBuilder(): BuilderInterface|null
     {
         return match(jaxon()->getAppOption('ui.template', '')) {
-            'bootstrap3' => class_exists(\Lagdo\UiBuilder\Bootstrap3\Builder::class) ?
-                new \Lagdo\UiBuilder\Bootstrap3\Builder() : null,
-            'bootstrap4' => class_exists(\Lagdo\UiBuilder\Bootstrap4\Builder::class) ?
-                new \Lagdo\UiBuilder\Bootstrap4\Builder() : null,
-            'bootstrap5' => class_exists(\Lagdo\UiBuilder\Bootstrap5\Builder::class) ?
-                new \Lagdo\UiBuilder\Bootstrap5\Builder() : null,
+            'bootstrap3' => self::make(Bootstrap3\Builder::class),
+            'bootstrap4' => self::make(Bootstrap4\Builder::class),
+            'bootstrap5' => self::make(Bootstrap5\Builder::class),
+            'daisyui' => self::make(DaisyUi\Builder::class),
+            'flowbite' => self::make(Flowbite\Builder::class),
+            'preline' => self::make(Preline\Builder::class),
             default => null,
         };
     }
@@ -48,7 +63,7 @@ class Builder
         $di = jaxon()->di();
 
         // Register the pagination renderer.
-        $di->set(RendererInterface::class, fn(Container $di) =>
+        $di->set(PaginationRenderer::class, fn(Container $di) =>
             new PaginationRenderer($di->g(BuilderInterface::class)));
 
         // Register the UI builder.
