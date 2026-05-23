@@ -12,11 +12,6 @@ class TabNavComponent extends BaseComponent
     public static string $tag = 'div';
 
     /**
-     * @var string
-     */
-    private string $style = '';
-
-    /**
      * @return void
      */
     protected function onCreate(): void
@@ -30,39 +25,12 @@ class TabNavComponent extends BaseComponent
      */
     protected function onBuild(): void
     {
-        $class = match($this->style) {
+        $class = match($this->prop('style', '')) {
             'lines' => 'tabs-border',
             'pills' => 'tabs-box',
             default => 'tabs-lift',
         };
         $this->element()->addBaseClass($class);
-    }
-
-    /**
-     * @param string $style
-     *
-     * @return static
-     */
-    public function look(string $style): static
-    {
-        $this->style = $style;
-        return $this;
-    }
-
-    /**
-     * @return static
-     */
-    public function vertical(): static
-    {
-        return $this;
-    }
-
-    /**
-     * @return static
-     */
-    public function fill(): static
-    {
-        return $this;
     }
 
     /**

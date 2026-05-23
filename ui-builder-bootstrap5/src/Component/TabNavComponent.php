@@ -16,39 +16,34 @@ class TabNavComponent extends BaseComponent
      */
     protected function onCreate(): void
     {
-        $this->element()->addBaseClass('nav')
-            ->addBaseClass('nav-tabs');
+        $this->element()->addBaseClass('nav');
     }
 
     /**
-     * @param string $style
+     * @return void
+     */
+    protected function onBuild(): void
+    {
+        $styleClass = match($this->prop('style', '')) {
+            'pills' => 'nav-pills',
+            // 'lines' => '', // Not implemented
+            default => 'nav-tabs',
+        };
+        $this->element()->addBaseClass($styleClass);
+
+        if ($this->parent()->prop('vertical', false)) {
+            $this->element()->addClass('flex-column');
+        }
+    }
+
+    /**
+     * @param bool $justified
      *
      * @return static
      */
-    public function look(string $style): static
+    public function fill(bool $justified = false): static
     {
-        // Replace the second class.
-        $this->element()->setBaseClass(1, 'nav-' . trim($style));
-        return $this;
-    }
-
-    /**
-     * @return static
-     */
-    public function vertical(): static
-    {
-        // Replace the second class.
-        $this->element()->setBaseClass(2, 'flex-column');
-        return $this;
-    }
-
-    /**
-     * @return static
-     */
-    public function fill(): static
-    {
-        // Replace the second class.
-        $this->element()->setBaseClass(2, 'nav-fill');
+        $this->element()->addClass($justified ? 'nav-fill' : 'nav-justified');
         return $this;
     }
 
@@ -59,6 +54,7 @@ class TabNavComponent extends BaseComponent
      */
     public function justify(string $justify): static
     {
+        $this->element()->addClass("justify-content-$justify");
         return $this;
     }
 }

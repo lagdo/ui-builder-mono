@@ -12,11 +12,6 @@ class TabNavItemComponent extends BaseComponent
     public static string $tag = 'button';
 
     /**
-     * @var bool
-     */
-    private bool $active = false;
-
-    /**
      * @return void
      */
     protected function onCreate(): void
@@ -29,33 +24,32 @@ class TabNavItemComponent extends BaseComponent
      */
     protected function onBuild(): void
     {
-        // Pills
-        // $class = 'items-center gap-x-2 bg-transparent text-sm font-medium ' .
-        //     'text-center text-muted-foreground-1 hover:text-primary-hover ' .
-        //     'focus:outline-hidden focus:text-primary-focus rounded-lg ' .
-        //     'disabled:opacity-50 disabled:pointer-events-none';
-        // Lines
-        // $class = 'hs-tab-active:font-semibold hs-tab-active:text-primary-active ' .
-        //     'hs-tab-active:after:bg-primary-active relative py-4 px-1 inline-flex ' .
-        //     'items-center gap-x-2 text-sm whitespace-nowrap text-muted-foreground-1 ' .
-        //     'after:absolute after:-bottom-px after:inset-x-0 after:w-full after:h-0.5 ' .
-        //     'after:bg-transparent hover:text-primary-hover focus:outline-hidden ' .
-        //     'focus:text-primary-focus disabled:opacity-50 disabled:pointer-events-none';
-        // Default
-        $class = 'hs-tab-active:bg-layer hs-tab-active:border-b-transparent ' .
-            'hs-tab-active:text-primary-active -mb-px py-3 px-4 inline-flex items-center ' .
-            'gap-x-2 bg-muted text-sm font-medium text-center border border-line-2 ' .
-            'text-muted-foreground-1 rounded-t-lg hover:text-foreground focus:outline-hidden ' .
-            'focus:text-foreground disabled:opacity-50 disabled:pointer-events-none';
-        /** @var TabNavComponent */
         $parent = $this->parent();
-        if ($parent->fullWidth) {
-            $class .= ' flex-auto justify-center';
-        }
-        if ($this->active) {
-            $class .= ' active';
-        }
+        $class = match($parent->prop('style', '')) {
+            'lines' => 'hs-tab-active:font-semibold hs-tab-active:text-primary-active ' .
+                'hs-tab-active:after:bg-primary-active relative py-4 px-1 inline-flex ' .
+                'items-center gap-x-2 text-sm whitespace-nowrap text-muted-foreground-1 ' .
+                'after:absolute after:-bottom-px after:inset-x-0 after:w-full after:h-0.5 ' .
+                'after:bg-transparent hover:text-primary-hover focus:outline-hidden ' .
+                'focus:text-primary-focus disabled:opacity-50 disabled:pointer-events-none',
+            'pills' => 'items-center gap-x-2 bg-transparent text-sm font-medium ' .
+                'text-center text-muted-foreground-1 hover:text-primary-hover ' .
+                'focus:outline-hidden focus:text-primary-focus rounded-lg ' .
+                'disabled:opacity-50 disabled:pointer-events-none',
+            default => 'hs-tab-active:bg-layer hs-tab-active:border-b-transparent ' .
+                'hs-tab-active:text-primary-active -mb-px py-3 px-4 inline-flex items-center ' .
+                'gap-x-2 bg-muted text-sm font-medium text-center border border-line-2 ' .
+                'text-muted-foreground-1 rounded-t-lg hover:text-foreground focus:outline-hidden ' .
+                'focus:text-foreground disabled:opacity-50 disabled:pointer-events-none',
+        };
         $this->element()->addClass($class);
+
+        if ($parent->prop('filled', false)) {
+            $this->element()->addClass('flex-auto justify-center');
+        }
+        if ($this->prop('active', false)) {
+            $this->element()->addClass('active');
+        }
     }
 
     /**
@@ -79,7 +73,7 @@ class TabNavItemComponent extends BaseComponent
      */
     public function active(bool $active = false): static
     {
-        $this->active = $active;
+        $this->properties['active'] = $active;
         return $this;
     }
 

@@ -12,11 +12,6 @@ class TabNavItemComponent extends BaseComponent
     public static string $tag = 'a';
 
     /**
-     * @var bool
-     */
-    private bool $active = false;
-
-    /**
      * @var array
      */
     private array $activeClasses = [
@@ -50,26 +45,31 @@ class TabNavItemComponent extends BaseComponent
      */
     protected function onBuild(): void
     {
-        if ($this->active) {
+        $active = $this->prop('active', false);
+        if ($active) {
             $this->element()->setAttribute('aria-current', 'page');
         }
 
-        /** @var TabNavComponent */
         $parent = $this->parent();
+        $style = $parent->prop('style', 'default');
+        $filled = $parent->prop('filled', false);
+        $vertical = $parent->parent()->prop('vertical', false);
+
         $wrapper = $this->newElement('li');
         $wrapperClass = match(true) {
-            $parent->fullWidth => 'w-full focus-within:z-10',
-            $parent->vertical => '',
+            $filled => 'w-full focus-within:z-10',
+            $vertical => '',
             default => 'me-2',
         };
         if ($wrapperClass !== '') {
             $wrapper->addClass($wrapperClass);
         }
 
-        $classes = $this->active ? $this->activeClasses : $this->defaultClasses;
-        $class = $parent->vertical ? $classes['vertical'] :
-            ($classes[$parent->style] ?? $classes['vertical']);
-        if ($parent->fullWidth) {
+        $style = $parent->prop('style', 'default');
+        $classes = $active ? $this->activeClasses : $this->defaultClasses;
+        $class = $vertical ? $classes['vertical'] :
+            ($classes[$style] ?? $classes['vertical']);
+        if ($filled) {
             $class = "w-full $class";
         }
         $this->element()->addClass($class);
@@ -82,7 +82,7 @@ class TabNavItemComponent extends BaseComponent
      */
     public function target(string $target): static
     {
-        $this->element()->setAttribute('data-bs-target', "#$target");
+        $this->element()->setAttribute('data-tabs-target', "#$target");
         return $this;
     }
 
@@ -93,7 +93,7 @@ class TabNavItemComponent extends BaseComponent
      */
     public function active(bool $active = false): static
     {
-        $this->active = $active;
+        $this->properties['active'] = $active;
         return $this;
     }
 

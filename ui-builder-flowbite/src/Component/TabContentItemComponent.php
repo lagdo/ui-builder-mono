@@ -31,7 +31,7 @@ class TabContentItemComponent extends BaseComponent
     public function active(bool $active = false): static
     {
         $active || $this->element()->addClass('hidden');
-        $active && $this->element()->setAttribute('aria-selected', 'true');
+        $this->element()->setAttribute('aria-selected', $active ? 'true' : 'false');
         return $this;
     }
 }
