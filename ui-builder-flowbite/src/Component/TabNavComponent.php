@@ -99,7 +99,7 @@ class TabNavComponent extends BaseComponent
     /**
      * @return static
      */
-    public function fullWidth(): static
+    public function fill(): static
     {
         $this->fullWidth = false;
         return $this;
