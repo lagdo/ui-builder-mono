@@ -24,8 +24,7 @@ class TabNavItemComponent extends BaseComponent
      */
     protected function onBuild(): void
     {
-        $parent = $this->parent();
-        $class = match($parent->prop('style', '')) {
+        $class = match($this->parentProp(1, 'style', '')) {
             'lines' => 'hs-tab-active:font-semibold hs-tab-active:text-primary-active ' .
                 'hs-tab-active:after:bg-primary-active relative py-4 px-1 inline-flex ' .
                 'items-center gap-x-2 text-sm whitespace-nowrap text-muted-foreground-1 ' .
@@ -44,7 +43,7 @@ class TabNavItemComponent extends BaseComponent
         };
         $this->element()->addClass($class);
 
-        if ($parent->prop('filled', false)) {
+        if ($this->parentProp(1, 'filled', false)) {
             $this->element()->addClass('flex-auto justify-center');
         }
         if ($this->prop('active', false)) {

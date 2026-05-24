@@ -24,10 +24,12 @@ class TabNavComponent extends BaseComponent
      */
     private function setProperties(): void
     {
-        $contentId = $this->parent()->prop('content');
-        $this->element()->setAttribute('data-tabs-toggle', "#$contentId");
-        if (!$this->element()->hasAttribute('id')) {
-            $this->element()->setAttribute('id', "{$contentId}-tabs");
+        $contentId = $this->parentProp(1, 'content', null);
+        if ($contentId !== null) {
+            $this->element()->setAttribute('data-tabs-toggle', "#$contentId");
+            if (!$this->element()->hasAttribute('id')) {
+                $this->element()->setAttribute('id', "{$contentId}-tabs");
+            }
         }
 
         $justify = $this->prop('justify', '');
@@ -41,7 +43,7 @@ class TabNavComponent extends BaseComponent
      */
     protected function onBuild(): void
     {
-        if ($this->parent()->prop('vertical', false)) {
+        if ($this->parentProp(1, 'vertical', false)) {
             $this->element()->addClass('flex-column space-y space-y-4 ' .
                 'text-sm font-medium text-body md:me-4 mb-4 md:mb-0');
             $this->setProperties();

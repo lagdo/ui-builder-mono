@@ -50,10 +50,9 @@ class TabNavItemComponent extends BaseComponent
             $this->element()->setAttribute('aria-current', 'page');
         }
 
-        $parent = $this->parent();
-        $style = $parent->prop('style', 'default');
-        $filled = $parent->prop('filled', false);
-        $vertical = $parent->parent()->prop('vertical', false);
+        $style = $this->parentProp(1, 'style', 'default');
+        $filled = $this->parentProp(1, 'filled', false);
+        $vertical = $this->parentProp(2, 'vertical', false);
 
         $wrapper = $this->newElement('li');
         $wrapperClass = match(true) {
@@ -65,7 +64,7 @@ class TabNavItemComponent extends BaseComponent
             $wrapper->addClass($wrapperClass);
         }
 
-        $style = $parent->prop('style', 'default');
+        $style = $this->parentProp(1, 'style', 'default');
         $classes = $active ? $this->activeClasses : $this->defaultClasses;
         $class = $vertical ? $classes['vertical'] :
             ($classes[$style] ?? $classes['vertical']);

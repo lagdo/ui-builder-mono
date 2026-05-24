@@ -30,7 +30,7 @@ class TabNavComponent extends BaseComponent
             $this->element()->addClass("justify-$justify");
         }
 
-        if ($this->parent()->prop('vertical', false)) {
+        if ($this->parentProp(1, 'vertical', false)) {
             $this->element()->setAttribute('aria-orientation', 'vertical');
         }
     }
