@@ -63,7 +63,7 @@ class ButtonComponent extends BaseComponent
      */
     protected function onBuild(): void
     {
-        $classes = $this->outline ? $this->classes['outilne'] : $this->classes['default'];
+        $classes = $this->outline ? $this->classes['outline'] : $this->classes['default'];
         $class = ($classes[$this->type] ?? $classes['default']) .
             ' ' . $this->classes['size'][$this->size];
         $this->element()->addClass("$class focus:outline-none");
