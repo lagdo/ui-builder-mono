@@ -30,7 +30,7 @@ class Builder
      *
      * @return BuilderInterface|null
      */
-    private static function make(string $class):BuilderInterface|null
+    private static function make(string $class): BuilderInterface|null
     {
         return class_exists($class) ? new $class : null;
     }
@@ -58,7 +58,7 @@ class Builder
      *
      * @return void
      */
-    public static function register()
+    public static function register(): void
     {
         $di = jaxon()->di();
 
