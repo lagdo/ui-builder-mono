@@ -27,6 +27,7 @@ class TabNavItemComponent extends BaseComponent
      */
     public function target(string $target): static
     {
+        $this->element()->setAttribute('data-tabs-target', "#$target");
         return $this;
     }
 
@@ -40,7 +41,6 @@ class TabNavItemComponent extends BaseComponent
         if ($active) {
             $this->element()->addClass('tab-active');
         }
-
         return $this;
     }
 
