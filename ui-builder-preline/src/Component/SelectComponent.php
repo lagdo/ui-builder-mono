@@ -31,6 +31,6 @@ class SelectComponent extends BaseComponent
         $this->addWrapper($this->newElement('div', ['class' => 'flex items-center']));
         $label->addChild($text)
             ->setClass('text-sm ms-3 text-muted-foreground-1');
-        $this->addNextSibling($label);
+        $this->appendSibling($label);
     }
 }

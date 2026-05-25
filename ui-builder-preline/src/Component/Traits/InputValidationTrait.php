@@ -22,7 +22,7 @@ trait InputValidationTrait
      *
      * @return static
      */
-    abstract protected function addNextSibling(Element|Component $sibling): static;
+    abstract protected function appendSibling(Element|Component $sibling): static;
 
     /**
      * @param HtmlElement $wrapper
@@ -44,7 +44,7 @@ trait InputValidationTrait
             $class = $valid ? 'text-sm text-teal-500 mt-2' : 'text-sm text-red-500 mt-2';
             $element = $this->newElement('p', ['class' => $class])
                 ->addChild(new Html($message));
-            $this->addNextSibling($element);
+            $this->appendSibling($element);
             // $this->addWrapper($this->newElement('div', ['class' => 'relative']));
         }
         return $this;

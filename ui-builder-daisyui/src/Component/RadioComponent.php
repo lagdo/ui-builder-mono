@@ -40,6 +40,6 @@ class RadioComponent extends BaseComponent
     protected function setLabel(HtmlElement $label, Text $text): void
     {
         $label->addBaseClass('label');
-        $this->addWrapper($label)->addNextSibling($text);
+        $this->addWrapper($label)->appendSibling($text);
     }
 }

@@ -11,7 +11,7 @@ class TabContentItemComponent extends BaseComponent
      */
     protected function onCreate(): void
     {
-        $this->element()->addClass('tab-content border-base-300 bg-base-100 p-10')
+        $this->element()->addClass('tab-pane border-base-300 bg-base-100 p-10')
             ->setAttribute('role', 'tabpanel');
     }
 

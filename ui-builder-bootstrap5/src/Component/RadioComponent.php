@@ -42,6 +42,6 @@ class RadioComponent extends BaseComponent
     protected function setLabel(HtmlElement $label, Text $text): void
     {
         $label->addBaseClass('form-label')->addChild($text);
-        $this->addNextSibling($label);
+        $this->appendSibling($label);
     }
 }

@@ -22,7 +22,7 @@ trait InputValidationTrait
      *
      * @return static
      */
-    abstract protected function addNextSibling(Element|Component $sibling): static;
+    abstract protected function appendSibling(Element|Component $sibling): static;
 
     /**
      * @param HtmlElement $wrapper
@@ -43,7 +43,7 @@ trait InputValidationTrait
         if ($message !== '') {
             $element = $this->newElement('div', ['class' => 'validator-hint'])
                 ->addChild(new Html($message));
-            $this->addNextSibling($element);
+            $this->appendSibling($element);
             $this->addWrapper($this->newElement('fieldset', ['class' => 'fieldset']));
         }
         return $this;
@@ -63,7 +63,7 @@ trait InputValidationTrait
         if ($message !== '') {
             $content = $this->newElement('div', ['class' => 'tooltip-content'])
                 ->addChild(new Html($message));
-            $this->addPrevSibling($content);
+            $this->prependSibling($content);
         }
         return $this;
     }

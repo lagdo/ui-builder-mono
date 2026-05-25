@@ -22,7 +22,7 @@ trait InputValidationTrait
      *
      * @return static
      */
-    abstract protected function addNextSibling(Element|Component $sibling): static;
+    abstract protected function appendSibling(Element|Component $sibling): static;
 
     /**
      * @param bool $valid
@@ -38,7 +38,7 @@ trait InputValidationTrait
                 'class' => $valid ? 'valid-feedback' : 'invalid-feedback',
             ]);
             $element->addChild(new Html($message));
-            $this->addNextSibling($element);
+            $this->appendSibling($element);
         }
         return $this;
     }
@@ -57,7 +57,7 @@ trait InputValidationTrait
                 'class' => $valid ? 'valid-tooltip' : 'invalid-tooltip',
             ]);
             $element->addChild(new Html($message));
-            $this->addNextSibling($element);
+            $this->appendSibling($element);
         }
         return $this;
     }

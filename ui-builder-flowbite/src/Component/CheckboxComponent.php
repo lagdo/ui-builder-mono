@@ -31,6 +31,6 @@ class CheckboxComponent extends BaseComponent
         $this->addWrapper($this->newElement('div', ['class' => 'flex items-center']));
         $label->addChild($text)
             ->setClass('select-none ms-2 text-sm font-medium text-heading');
-        $this->addNextSibling($label);
+        $this->appendSibling($label);
     }
 }

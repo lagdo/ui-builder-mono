@@ -25,7 +25,7 @@ trait InputValidationTrait
      *
      * @return static
      */
-    abstract protected function addNextSibling(Element|Component $sibling): static;
+    abstract protected function appendSibling(Element|Component $sibling): static;
 
     /**
      * @param bool $valid
@@ -46,7 +46,7 @@ trait InputValidationTrait
                 'mt-2.5 text-sm text-fg-danger-strong';
             $element = $this->newElement('p', ['class' => $class])
                 ->addChild(new Html($message));
-            $this->addNextSibling($element);
+            $this->appendSibling($element);
         }
         return $this;
     }
@@ -75,7 +75,7 @@ trait InputValidationTrait
                 'role' => 'tooltip',
                 'class' => "$prefix $class",
             ])->addChild(new Html($message));
-            $this->addNextSibling($element);
+            $this->appendSibling($element);
         }
         return $this;
     }

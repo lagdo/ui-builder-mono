@@ -30,6 +30,6 @@ class InputComponent extends BaseComponent
     protected function setLabel(HtmlElement $label, Text $text): void
     {
         $label->addClass('block mb-2 text-sm font-medium text-foreground')->addChild($text);
-        $this->addPrevSibling($label);
+        $this->prependSibling($label);
     }
 }
