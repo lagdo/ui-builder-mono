@@ -95,17 +95,4 @@ class TabNavItemComponent extends BaseComponent
         $this->properties['active'] = $active;
         return $this;
     }
-
-    /**
-     * @param bool $enabled
-     *
-     * @return static
-     */
-    public function enabled(bool $enabled): static
-    {
-        if (!$enabled) {
-            $this->element()->setAttribute('disabled', 'disabled');
-        }
-        return $this;
-    }
 }

@@ -23,7 +23,7 @@ class PaginationItemComponent extends BaseComponent
     public function active(bool $active): static
     {
         if ($active) {
-            $this->wrapper(0)?->setClass('active');
+            $this->wrapper(0)?->addClass('active');
         }
         return $this;
     }
@@ -35,7 +35,7 @@ class PaginationItemComponent extends BaseComponent
      */
     public function enabled(bool $enabled): static
     {
-        $this->wrapper(0)?->setClass($enabled ? 'enabled' : 'disabled');
+        $this->wrapper(0)?->addClass($enabled ? 'enabled' : 'disabled');
         return $this;
     }
 

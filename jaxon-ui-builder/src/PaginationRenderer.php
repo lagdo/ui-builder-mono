@@ -3,10 +3,9 @@
 namespace Lagdo\UiBuilder\Jaxon;
 
 use Jaxon\App\Pagination\Page;
-use Jaxon\App\Pagination\RendererInterface;
 use Lagdo\UiBuilder\BuilderInterface;
 
-class PaginationRenderer implements RendererInterface
+class PaginationRenderer
 {
     /**
      * @param BuilderInterface $ui
