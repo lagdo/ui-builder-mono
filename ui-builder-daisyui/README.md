@@ -14,34 +14,21 @@ This package extends the [HTML UI builder](https://github.com/lagdo/ui-builder) 
 
 See the [HTML UI builder](https://github.com/lagdo/ui-builder) documentation.
 
-Depending on the version of Bootstrap, a different class instance must provided where the `Lagdo\UiBuilder\BuilderInterface` is required.
+### Javascript code for tabs
 
-For example, let say this `View` class is used to create HTML code.
-```php
-use Lagdo\UiBuilder\BuilderInterface;
+DaisyUI doesn't provide Javascript code for tabs. So in order to have dynamic tabs working, the Javascript function in [this file](https://github.com/lagdo/ui-builder/tree/main/js/tabs.js) must be loaded into the page, and the following call executed.
 
-class View
-{
-    /**
-     * @var BuilderInterface
-     */
-    protected $uiBuilder;
-
-    /**
-     * @param BuilderInterface
-     */
-    public function __construct(BuilderInterface $uiBuilder)
-    {
-        $this->uiBuilder = $uiBuilder;
+```js
+setUiBuilderTabEventListeners({
+    containerId: '', // The id of an element which wraps all the tabs.
+    tabs: {
+        tabClass: 'tab',
+        paneClass: 'tab-pane',
+        activeClass: 'tab-active',
+        hiddenClass: 'hidden',
+        targetAttr: 'tabsTarget',
     }
-}
-```
-
-With the following example, the `View` class will generate HTML code for Bootstrap 3.
-```php
-use Lagdo\UiBuilder\DaisyUi\Builder;
-
-$view = new View(new Builder());
+});
 ```
 
 ### Contributing
