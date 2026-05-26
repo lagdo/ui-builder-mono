@@ -12,26 +12,24 @@ class TableComponent extends BaseComponent
     protected function onCreate(): void
     {
         $this->element()->addBaseClass('table');
-        $this->addWrapper($this->newElement('div', [
-            'class' => 'overflow-x-auto rounded-box border border-base-content/5 bg-base-100',
-        ]));
+        $this->addWrapper($this->newElement('div', ['class' => 'overflow-x-auto']));
     }
 
     /**
      * @return static
      */
-    public function responsive(): static
+    public function stripe(): static
     {
+        $this->element()->addClass('table-zebra');
         return $this;
     }
 
     /**
-     * @param string $style
-     *
      * @return static
      */
-    public function skin(string $style): static
+    public function border(): static
     {
+        $this->wrapper(0)?->addClass('rounded-box border border-base-content/5 bg-base-100');
         return $this;
     }
 }

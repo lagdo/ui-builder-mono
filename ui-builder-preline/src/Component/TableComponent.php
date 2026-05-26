@@ -9,32 +9,22 @@ class TableComponent extends BaseComponent
     /**
      * @return void
      */
-    protected function onCreate(): void
+    protected function onBuild(): void
     {
-        $this->element()->addClass('min-w-full divide-y divide-table-line');
-        $this->addWrapper($this->newElement('div', [
-            'class' => 'border border-table-line rounded-lg shadow-xs overflow-x-auto ' .
+        $bordered = $this->prop('border', false);
+
+        $tableClass = $bordered ? 'min-w-full' : 'min-w-full divide-y divide-table-line';
+        $this->element()->addClass($tableClass);
+
+        $wrapperClass = $bordered ?
+            'border border-table-line rounded-lg overflow-x-auto ' .
                 '[&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-thumb]:rounded-none ' .
                 '[&::-webkit-scrollbar-track]:bg-scrollbar-track ' .
-                '[&::-webkit-scrollbar-thumb]:bg-scrollbar-thumb',
-        ]));
-    }
-
-    /**
-     * @return static
-     */
-    public function responsive(): static
-    {
-        return $this;
-    }
-
-    /**
-     * @param string $style
-     *
-     * @return static
-     */
-    public function skin(string $style): static
-    {
-        return $this;
+                '[&::-webkit-scrollbar-thumb]:bg-scrollbar-thumb' :
+            'overflow-x-auto [&::-webkit-scrollbar]:h-2 ' .
+                '[&::-webkit-scrollbar-thumb]:rounded-none ' .
+                '[&::-webkit-scrollbar-track]:bg-scrollbar-track ' .
+                '[&::-webkit-scrollbar-thumb]:bg-scrollbar-thumb';
+        $this->addWrapper($this->newElement('div', ['class' => $wrapperClass]));
     }
 }

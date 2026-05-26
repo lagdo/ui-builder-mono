@@ -12,27 +12,17 @@ class TableComponent extends BaseComponent
     protected function onCreate(): void
     {
         $this->element()->addClass('w-full text-sm text-left rtl:text-right text-body');
-        $this->addWrapper($this->newElement('div', [
-            'class' => 'relative overflow-x-auto bg-neutral-primary-soft ' .
-                'shadow-xs rounded-base border border-default',
-        ]));
     }
 
     /**
-     * @return static
+     * @return void
      */
-    public function responsive(): static
+    protected function onBuild(): void
     {
-        return $this;
-    }
-
-    /**
-     * @param string $style
-     *
-     * @return static
-     */
-    public function skin(string $style): static
-    {
-        return $this;
+        $wrapperClass = $this->prop('border', false) ?
+            'relative overflow-x-auto bg-neutral-primary-soft ' .
+                'shadow-xs rounded-base border border-default' :
+            'relative overflow-x-auto';
+        $this->addWrapper($this->newElement('div', ['class' => $wrapperClass]));
     }
 }
