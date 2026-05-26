@@ -7,9 +7,12 @@ use Lagdo\UiBuilder\Component\Base\DropdownItemComponent as BaseComponent;
 class DropdownItemComponent extends BaseComponent
 {
     /**
-     * @var string
+     * @return string
      */
-    public static string $tag = 'div';
+    protected function tagName(): string
+    {
+        return 'div';
+    }
 
     /**
      * @inheritDoc

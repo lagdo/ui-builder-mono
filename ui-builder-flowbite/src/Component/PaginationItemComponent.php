@@ -7,9 +7,12 @@ use Lagdo\UiBuilder\Component\Base\PaginationItemComponent as BaseComponent;
 class PaginationItemComponent extends BaseComponent
 {
     /**
-     * @var string
+     * @return string
      */
-    public static string $tag = 'a';
+    protected function tagName(): string
+    {
+        return 'a';
+    }
 
     /**
      * @var bool

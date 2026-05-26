@@ -7,9 +7,12 @@ use Lagdo\UiBuilder\Component\Base\CardHeaderComponent as BaseComponent;
 class CardHeaderComponent extends BaseComponent
 {
     /**
-     * @var string
+     * @return string
      */
-    public static string $tag = 'p';
+    protected function tagName(): string
+    {
+        return 'p';
+    }
 
     /**
      * @return void

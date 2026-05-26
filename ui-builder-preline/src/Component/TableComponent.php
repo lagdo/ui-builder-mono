@@ -21,11 +21,9 @@ class TableComponent extends BaseComponent
     }
 
     /**
-     * @param bool $responsive
-     *
      * @return static
      */
-    public function responsive(bool $responsive = true): static
+    public function responsive(): static
     {
         return $this;
     }

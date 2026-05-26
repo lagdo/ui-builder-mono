@@ -15,20 +15,4 @@ class FormComponent extends BaseComponent
             ->setAttribute('novalidate');
         return $this;
     }
-
-    /**
-     * @inheritDoc
-     */
-    public function horizontal(bool $horizontal = true): static
-    {
-        return $this;
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function wrapped(bool $wrapped = true): static
-    {
-        return $this;
-    }
 }
