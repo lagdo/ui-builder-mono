@@ -25,6 +25,18 @@ class TabNavItemComponent extends BaseComponent
     }
 
     /**
+     * @return void
+     */
+    protected function onBuild(): void
+    {
+        $active = $this->prop('active', false);
+        if ($active) {
+            $this->element()->addClass('active');
+        }
+        $this->element()->setAttribute('aria-selected', $active ? 'true' : 'false');
+    }
+
+    /**
      * @param string $target
      *
      * @return static
@@ -32,23 +44,6 @@ class TabNavItemComponent extends BaseComponent
     public function target(string $target): static
     {
         $this->element()->setAttribute('data-bs-target', "#$target");
-        return $this;
-    }
-
-    /**
-     * @param bool $active
-     *
-     * @return static
-     */
-    public function active(bool $active = false): static
-    {
-        if ($active) {
-            $this->element()->addClass('active')
-                ->setAttribute('aria-selected', 'true');
-            return $this;
-        }
-
-        $this->element()->setAttribute('aria-selected', 'false');
         return $this;
     }
 }

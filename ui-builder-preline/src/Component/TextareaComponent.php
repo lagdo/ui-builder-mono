@@ -3,6 +3,8 @@
 namespace Lagdo\UiBuilder\Preline\Component;
 
 use Lagdo\UiBuilder\Component\Base\TextareaComponent as BaseComponent;
+use Lagdo\UiBuilder\Component\HtmlElement;
+use Lagdo\UiBuilder\Component\Html\Text;
 
 class TextareaComponent extends BaseComponent
 {
@@ -20,5 +22,17 @@ class TextareaComponent extends BaseComponent
             '[&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-none ' .
             '[&::-webkit-scrollbar-track]:bg-scrollbar-track ' .
             '[&::-webkit-scrollbar-thumb]:bg-scrollbar-thumb');
+    }
+
+    /**
+     * @param HtmlElement $label
+     * @param Text $text
+     *
+     * @return void
+     */
+    protected function setLabel(HtmlElement $label, Text $text): void
+    {
+        $label->addBaseClass('label')->addChild($text);
+        $this->prependSibling($label);
     }
 }

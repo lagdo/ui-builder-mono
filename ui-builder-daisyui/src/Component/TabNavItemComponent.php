@@ -24,6 +24,16 @@ class TabNavItemComponent extends BaseComponent
     }
 
     /**
+     * @return void
+     */
+    protected function onBuild(): void
+    {
+        if ($this->prop('active', false)) {
+            $this->element()->addClass('tab-active');
+        }
+    }
+
+    /**
      * @param string $target
      *
      * @return static
@@ -31,19 +41,6 @@ class TabNavItemComponent extends BaseComponent
     public function target(string $target): static
     {
         $this->element()->setAttribute('data-tabs-target', "#$target");
-        return $this;
-    }
-
-    /**
-     * @param bool $active
-     *
-     * @return static
-     */
-    public function active(bool $active = false): static
-    {
-        if ($active) {
-            $this->element()->addClass('tab-active');
-        }
         return $this;
     }
 }

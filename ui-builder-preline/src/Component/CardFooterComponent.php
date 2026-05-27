@@ -24,14 +24,4 @@ class CardFooterComponent extends BaseComponent
         ]));
         $this->element()->addClass('text-sm text-muted-foreground-1');
     }
-
-    /**
-     * @param string $style
-     *
-     * @return static
-     */
-    public function skin(string $style): static
-    {
-        return $this;
-    }
 }

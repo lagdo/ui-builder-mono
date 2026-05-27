@@ -7,20 +7,13 @@ use Lagdo\UiBuilder\Component\Base\MenuComponent as BaseComponent;
 class MenuComponent extends BaseComponent
 {
     /**
-     * @return static
+     * @return void
      */
-    public function vertical(): static
+    protected function onBuild(): void
     {
-        $this->element()->addBaseClass('menu menu-vertical bg-base-200 rounded-box w-56');
-        return $this;
-    }
-
-    /**
-     * @return static
-     */
-    public function horizontal(): static
-    {
-        $this->element()->addClass('menu menu-horizontal bg-base-200 rounded-box');
-        return $this;
+        $class = $this->prop('vertical', true) ?
+            'menu menu-vertical bg-base-200 rounded-box w-56' :
+            'menu menu-horizontal bg-base-200 rounded-box';
+        $this->element()->addClass($class);
     }
 }

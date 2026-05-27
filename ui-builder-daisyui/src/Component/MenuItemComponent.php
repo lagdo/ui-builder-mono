@@ -7,12 +7,15 @@ use Lagdo\UiBuilder\Component\Base\MenuItemComponent as BaseComponent;
 class MenuItemComponent extends BaseComponent
 {
     /**
-     * @var string
+     * @return void
      */
-    protected static string $activeClass = 'menu-active';
-
-    /**
-     * @var string
-     */
-    protected static string $disabledClass = 'menu-disabled';
+    protected function onBuild(): void
+    {
+        if ($this->prop('active', false)) {
+            $this->element()->addClass('menu-active');
+        }
+        if (!$this->prop('enabled', true)) {
+            $this->element()->addClass('menu-disabled');
+        }
+    }
 }

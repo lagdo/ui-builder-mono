@@ -87,15 +87,4 @@ class TabNavItemComponent extends BaseComponent
         $this->element()->setAttribute('data-tabs-target', "#$target");
         return $this;
     }
-
-    /**
-     * @param bool $active
-     *
-     * @return static
-     */
-    public function active(bool $active = false): static
-    {
-        $this->properties['active'] = $active;
-        return $this;
-    }
 }

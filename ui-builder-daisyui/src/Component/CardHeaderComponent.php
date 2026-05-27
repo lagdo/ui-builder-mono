@@ -14,14 +14,4 @@ class CardHeaderComponent extends BaseComponent
         // Not implemented in DaisyUi. See https://tw-elements.com/docs/standard/components/cards/.
         $this->element()->addClass('border-b-2 border-neutral-100 px-6 py-3 dark:border-white/10');
     }
-
-    /**
-     * @param string $style
-     *
-     * @return static
-     */
-    public function skin(string $style): static
-    {
-        return $this;
-    }
 }

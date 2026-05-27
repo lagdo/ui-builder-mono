@@ -15,13 +15,12 @@ class TabContentItemComponent extends BaseComponent
     }
 
     /**
-     * @param bool $active
-     *
-     * @return static
+     * @return void
      */
-    public function active(bool $active = false): static
+    protected function onBuild(): void
     {
-        $active && $this->element()->addBaseClass('show active');
-        return $this;
+        if ($this->prop('active', false)) {
+            $this->element()->addBaseClass('show active');
+        }
     }
 }

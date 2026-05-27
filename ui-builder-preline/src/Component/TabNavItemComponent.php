@@ -67,15 +67,4 @@ class TabNavItemComponent extends BaseComponent
         ]);
         return $this;
     }
-
-    /**
-     * @param bool $active
-     *
-     * @return static
-     */
-    public function active(bool $active = false): static
-    {
-        $this->properties['active'] = $active;
-        return $this;
-    }
 }

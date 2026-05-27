@@ -15,14 +15,4 @@ class CardFooterComponent extends BaseComponent
         $this->element()->addClass('border-t-2 border-neutral-100 px-6 py-3 ' .
             'text-surface/75 dark:border-white/10 dark:text-neutral-300');
     }
-
-    /**
-     * @param string $style
-     *
-     * @return static
-     */
-    public function skin(string $style): static
-    {
-        return $this;
-    }
 }

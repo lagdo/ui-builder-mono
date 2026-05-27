@@ -7,23 +7,16 @@ use Lagdo\UiBuilder\Component\Base\MenuComponent as BaseComponent;
 class MenuComponent extends BaseComponent
 {
     /**
-     * @return static
+     * @return void
      */
-    public function vertical(): static
+    protected function onBuild(): void
     {
-        $this->element()->addClass('flex flex-col w-full text-sm font-medium ' .
-            'text-heading bg-neutral-primary-soft border border-default rounded-base');
-        return $this;
-    }
-
-    /**
-     * @return static
-     */
-    public function horizontal(): static
-    {
-        // Replaced flex-col with flex-row, and removed w-full.
-        $this->element()->addClass('flex flex-row text-sm font-medium ' .
-            'text-heading bg-neutral-primary-soft border border-default rounded-base');
-        return $this;
+        $class = $this->prop('vertical', true) ?
+            'flex flex-col w-full text-sm font-medium text-heading ' .
+                'bg-neutral-primary-soft border border-default rounded-base' :
+            // Replaced flex-col with flex-row, and removed w-full.
+            'flex flex-row text-sm font-medium text-heading ' .
+                'bg-neutral-primary-soft border border-default rounded-base';
+        $this->element()->addClass($class);
     }
 }

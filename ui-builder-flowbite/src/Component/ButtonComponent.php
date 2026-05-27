@@ -2,30 +2,11 @@
 
 namespace Lagdo\UiBuilder\Flowbite\Component;
 
+use Lagdo\UiBuilder\Component\Attr\SizeEnum;
 use Lagdo\UiBuilder\Component\Base\ButtonComponent as BaseComponent;
 
 class ButtonComponent extends BaseComponent
 {
-    /**
-     * @var string
-     */
-    private string $type = 'default';
-
-    /**
-     * @var string
-     */
-    private string $size = 'default';
-
-    /**
-     * @var bool
-     */
-    private bool $fullWidth = false;
-
-    /**
-     * @var bool
-     */
-    private bool $outline = false;
-
     /**
      * @var array<string, array<string>>
      */
@@ -52,9 +33,9 @@ class ButtonComponent extends BaseComponent
             'danger' => 'text-danger bg-neutral-primary border border-danger hover:bg-danger hover:text-white focus:ring-4 focus:ring-neutral-tertiary font-medium rounded-base',
         ],
         'size' => [
-            'default' => '',
-            'large' => '',
-            'small' => '',
+            'default' => 'leading-5 px-4 py-2.5',
+            'large' => 'px-5 py-3',
+            'small' => 'leading-5 px-3 py-2',
         ],
     ];
 
@@ -63,99 +44,14 @@ class ButtonComponent extends BaseComponent
      */
     protected function onBuild(): void
     {
-        $classes = $this->outline ? $this->classes['outline'] : $this->classes['default'];
-        $class = ($classes[$this->type] ?? $classes['default']) .
-            ' ' . $this->classes['size'][$this->size];
-        $this->element()->addClass("$class focus:outline-none");
-    }
+        $type = $this->prop('alert') ?? $this->prop('visual', null);
+        $classes = $this->prop('outline', false) ?
+            $this->classes['outline'] : $this->classes['default'];
+        $class = $classes[$type?->value ?? ''] ?? $classes['default'];
+        $this->element()->addClass($class);
 
-    /**
-     * @return static
-     */
-    public function large(): static
-    {
-        $this->size = 'large';
-        return $this;
-    }
-
-    /**
-     * @return static
-     */
-    public function small(): static
-    {
-        $this->size = 'small';
-        return $this;
-    }
-
-    /**
-     * @return static
-     */
-    public function primary(): static
-    {
-        $this->type = 'primary';
-        return $this;
-    }
-
-    /**
-     * @return static
-     */
-    public function secondary(): static
-    {
-        $this->type = 'secondary';
-        return $this;
-    }
-
-    /**
-     * @return static
-     */
-    public function success(): static
-    {
-        $this->type = 'success';
-        return $this;
-    }
-
-    /**
-     * @return static
-     */
-    public function info(): static
-    {
-        $this->type = 'primary';
-        return $this;
-    }
-
-    /**
-     * @return static
-     */
-    public function warning(): static
-    {
-        $this->type = 'warning';
-        return $this;
-    }
-
-    /**
-     * @return static
-     */
-    public function danger(): static
-    {
-        $this->type = 'danger';
-        return $this;
-    }
-
-    /**
-     * @return static
-     */
-    public function outline(): static
-    {
-        $this->outline = true;
-        return $this;
-    }
-
-    /**
-     * @return static
-     */
-    public function fullWidth(): static
-    {
-        $this->fullWidth = true;
-        return $this;
+        $size = $this->prop('size', SizeEnum::DEFAULT);
+        $this->element()->addClass($this->classes['size'][$size->value]);
+        $this->element()->addClass('focus:outline-none');
     }
 }

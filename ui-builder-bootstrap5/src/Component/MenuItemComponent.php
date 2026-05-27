@@ -13,4 +13,17 @@ class MenuItemComponent extends BaseComponent
     {
         $this->element()->addBaseClass('list-group-item list-group-item-action');
     }
+
+    /**
+     * @return void
+     */
+    protected function onBuild(): void
+    {
+        if ($this->prop('active', false)) {
+            $this->element()->addClass('active');
+        }
+        if (!$this->prop('enabled', true)) {
+            $this->element()->addClass('disabled');
+        }
+    }
 }

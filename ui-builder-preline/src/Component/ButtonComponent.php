@@ -2,30 +2,11 @@
 
 namespace Lagdo\UiBuilder\Preline\Component;
 
+use Lagdo\UiBuilder\Component\Attr\SizeEnum;
 use Lagdo\UiBuilder\Component\Base\ButtonComponent as BaseComponent;
 
 class ButtonComponent extends BaseComponent
 {
-    /**
-     * @var string
-     */
-    private string $type = 'default';
-
-    /**
-     * @var string
-     */
-    private string $size = 'default';
-
-    /**
-     * @var bool
-     */
-    private bool $fullWidth = false;
-
-    /**
-     * @var bool
-     */
-    private bool $outline = false;
-
     /**
      * @var array<string, array<string>>
      */
@@ -60,103 +41,17 @@ class ButtonComponent extends BaseComponent
      */
     protected function onBuild(): void
     {
-        $sizeClass = $this->classes['size'][$this->size];
-        if ($this->fullWidth) {
+        $size = $this->prop('size', SizeEnum::DEFAULT);
+        $sizeClass = $this->classes['size'][$size->value];
+        if ($this->prop('fullWidth', false)) {
             $sizeClass .= ' w-full';
         }
-        $classes = $this->outline ? $this->classes['outline'] : $this->classes['default'];
-        $typeClass = $classes[$this->type] ?? $classes['default'];
-        $this->element()->addClass("$sizeClass inline-flex items-center gap-x-2 text-sm " .
-            "font-medium rounded-lg $typeClass disabled:opacity-50 disabled:pointer-events-none");
-    }
+        $this->element()->addClass("$sizeClass inline-flex items-center gap-x-2 text-sm font-medium rounded-lg");
 
-    /**
-     * @return static
-     */
-    public function large(): static
-    {
-        $this->size = 'large';
-        return $this;
-    }
-
-    /**
-     * @return static
-     */
-    public function small(): static
-    {
-        $this->size = 'small';
-        return $this;
-    }
-
-    /**
-     * @return static
-     */
-    public function primary(): static
-    {
-        $this->type = 'primary';
-        return $this;
-    }
-
-    /**
-     * @return static
-     */
-    public function secondary(): static
-    {
-        $this->type = 'secondary';
-        return $this;
-    }
-
-    /**
-     * @return static
-     */
-    public function success(): static
-    {
-        $this->type = 'success';
-        return $this;
-    }
-
-    /**
-     * @return static
-     */
-    public function info(): static
-    {
-        $this->type = 'primary';
-        return $this;
-    }
-
-    /**
-     * @return static
-     */
-    public function warning(): static
-    {
-        $this->type = 'warning';
-        return $this;
-    }
-
-    /**
-     * @return static
-     */
-    public function danger(): static
-    {
-        $this->type = 'danger';
-        return $this;
-    }
-
-    /**
-     * @return static
-     */
-    public function outline(): static
-    {
-        $this->outline = true;
-        return $this;
-    }
-
-    /**
-     * @return static
-     */
-    public function fullWidth(): static
-    {
-        $this->fullWidth = true;
-        return $this;
+        $type = $this->prop('alert') ?? $this->prop('visual', null);
+        $classes = $this->prop('outline', false) ?
+            $this->classes['outline'] : $this->classes['default'];
+        $typeClass = $classes[$type?->value ?? ''] ?? $classes['default'];
+        $this->element()->addClass("$typeClass disabled:opacity-50 disabled:pointer-events-none");
     }
 }

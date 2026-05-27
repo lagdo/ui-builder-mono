@@ -15,18 +15,9 @@ class TabContentItemComponent extends BaseComponent
             'role' => 'tabpanel',
             'aria-labelledby' => $this->getAttribute('id') . '-item',
         ]);
-    }
 
-    /**
-     * @param bool $active
-     *
-     * @return static
-     */
-    public function active(bool $active = false): static
-    {
-        if (!$active) {
+        if (!$this->prop('active', false)) {
             $this->element()->addClass('hidden');
         }
-        return $this;
     }
 }

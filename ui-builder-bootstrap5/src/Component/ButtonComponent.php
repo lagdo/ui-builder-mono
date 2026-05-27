@@ -2,22 +2,13 @@
 
 namespace Lagdo\UiBuilder\Bootstrap5\Component;
 
+use Lagdo\UiBuilder\Component\Attr\SizeEnum;
 use Lagdo\UiBuilder\Component\Base\ButtonComponent as BaseComponent;
 
 use function is_a;
 
 class ButtonComponent extends BaseComponent
 {
-    /**
-     * @var bool
-     */
-    private bool $fullWidth = false;
-
-    /**
-     * @var bool
-     */
-    private bool $outline = false;
-
     /**
      * @return void
      */
@@ -32,98 +23,23 @@ class ButtonComponent extends BaseComponent
      */
     protected function onBuild(): void
     {
-        if ($this->fullWidth && !is_a($this->parent(), ButtonGroupComponent::class)) {
+        $type = $this->prop('alert') ?? $this->prop('visual', null);
+        $prefix = $type === null || $this->prop('outline', false) ? 'btn-outline-' : 'btn-';
+        $this->element()->addClass($prefix . ($type?->value ?? 'secondary'));
+
+        switch($this->prop('size', null)) {
+        case SizeEnum::LARGE:
+            $this->element()->addClass('btn-lg');
+            break;
+        case SizeEnum::SMALL:
+            $this->element()->addClass('btn-sm');
+            break;
+        default:
+        }
+
+        if ($this->prop('fullWidth', false) &&
+            !is_a($this->parent(), ButtonGroupComponent::class)) {
             $this->element()->addClass('w-100');
         }
-    }
-
-    /**
-     * @return static
-     */
-    public function large(): static
-    {
-        $this->element()->addClass('btn-lg');
-        return $this;
-    }
-
-    /**
-     * @return static
-     */
-    public function small(): static
-    {
-        $this->element()->addClass('btn-sm');
-        return $this;
-    }
-
-    /**
-     * @return static
-     */
-    public function primary(): static
-    {
-        $this->element()->addClass($this->outline ? 'btn-outline-primary' : 'btn-primary');
-        return $this;
-    }
-
-    /**
-     * @return static
-     */
-    public function secondary(): static
-    {
-        $this->element()->addClass($this->outline ? 'btn-outline-secondary' : 'btn-secondary');
-        return $this;
-    }
-
-    /**
-     * @return static
-     */
-    public function success(): static
-    {
-        $this->element()->addClass($this->outline ? 'btn-outline-success' : 'btn-success');
-        return $this;
-    }
-
-    /**
-     * @return static
-     */
-    public function info(): static
-    {
-        $this->element()->addClass($this->outline ? 'btn-outline-info' : 'btn-info');
-        return $this;
-    }
-
-    /**
-     * @return static
-     */
-    public function warning(): static
-    {
-        $this->element()->addClass($this->outline ? 'btn-outline-warning' : 'btn-warning');
-        return $this;
-    }
-
-    /**
-     * @return static
-     */
-    public function danger(): static
-    {
-        $this->element()->addClass($this->outline ? 'btn-outline-danger' : 'btn-danger');
-        return $this;
-    }
-
-    /**
-     * @return static
-     */
-    public function outline(): static
-    {
-        $this->outline = true;
-        return $this;
-    }
-
-    /**
-     * @return static
-     */
-    public function fullWidth(): static
-    {
-        $this->fullWidth = true;
-        return $this;
     }
 }

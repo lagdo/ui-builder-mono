@@ -9,11 +9,6 @@ use function is_a;
 class BadgeComponent extends BaseComponent
 {
     /**
-     * @var bool
-     */
-    private bool $onTop = false;
-
-    /**
      * @inheritDoc
      */
     protected function onCreate(): void
@@ -26,9 +21,17 @@ class BadgeComponent extends BaseComponent
      */
     protected function onBuild(): void
     {
+        $type = $this->prop('alert') ?? $this->prop('visual', null);
+        $type = $type?->value ?? 'light';
+        $this->element()->addClass("bg-$type");
+        // The text is dark for some types of badges.
+        if (!isset($this->properties['alert'])) {
+            $this->element()->addClass('text-dark');
+        }
+
         $parent = $this->parent();
         // A badge is moved on top only if its parent is a button.
-        if ($this->onTop && is_a($parent, ButtonComponent::class)) {
+        if ($this->prop('onTop', false) && is_a($parent, ButtonComponent::class)) {
             $parent->element()->addClass('position-relative');
             $this->element()->addClass('position-absolute top-0 start-100 translate-middle p-2');
         }
@@ -39,40 +42,7 @@ class BadgeComponent extends BaseComponent
      */
     public function top(): static
     {
-        $this->onTop = true;
-        return $this;
-    }
-
-    /**
-     * @param string $type
-     *
-     * @return static
-     */
-    public function type(string $type): static
-    {
-        $this->element()->addClass("bg-$type");
-        return $this;
-    }
-
-    /**
-     * @param string $rounded
-     *
-     * @return static
-     */
-    public function rounded(string $rounded): static
-    {
-        $this->element()->addClass("rounded-$rounded");
-        return $this;
-    }
-
-    /**
-     * @param string $border
-     *
-     * @return static
-     */
-    public function border(string $border): static
-    {
-        $this->element()->addClass("border border-$border");
+        $this->properties['onTop'] = true;
         return $this;
     }
 }

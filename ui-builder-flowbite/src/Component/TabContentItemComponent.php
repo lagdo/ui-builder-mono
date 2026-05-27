@@ -21,17 +21,11 @@ class TabContentItemComponent extends BaseComponent
     protected function onBuild(): void
     {
         $this->setAttribute('aria-labelledby', $this->getAttribute('id') . '-tab');
-    }
 
-    /**
-     * @param bool $active
-     *
-     * @return static
-     */
-    public function active(bool $active = false): static
-    {
-        $active || $this->element()->addClass('hidden');
+        $active = $this->prop('active', false);
+        if (!$active) {
+            $this->element()->addClass('hidden');
+        }
         $this->element()->setAttribute('aria-selected', $active ? 'true' : 'false');
-        return $this;
     }
 }

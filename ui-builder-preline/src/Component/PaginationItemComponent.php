@@ -24,29 +24,16 @@ class PaginationItemComponent extends BaseComponent
     }
 
     /**
-     * @param bool $active
-     *
-     * @return static
+     * @return void
      */
-    public function active(bool $active): static
+    protected function onBuild(): void
     {
-        if ($active) {
+        if ($this->prop('active', false)) {
             $this->element()->addClass('btn-active');
         }
-        return $this;
-    }
-
-    /**
-     * @param bool $enabled
-     *
-     * @return static
-     */
-    public function enabled(bool $enabled): static
-    {
-        if (!$enabled) {
+        if (!$this->prop('enabled', true)) {
             $this->element()->addClass('btn-disabled');
         }
-        return $this;
     }
 
     /**

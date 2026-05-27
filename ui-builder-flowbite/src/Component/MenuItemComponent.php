@@ -14,4 +14,17 @@ class MenuItemComponent extends BaseComponent
         $this->element()->addClass('px-4 py-2 border-b border-default ' .
             'first:rounded-t-lg last:rounded-r-lg');
     }
+
+    /**
+     * @return void
+     */
+    protected function onBuild(): void
+    {
+        if ($this->prop('active', false)) {
+            $this->element()->addClass('menu-active');
+        }
+        if (!$this->prop('enabled', true)) {
+            $this->element()->addClass('menu-disabled');
+        }
+    }
 }

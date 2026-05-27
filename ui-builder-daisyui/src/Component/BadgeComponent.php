@@ -2,6 +2,7 @@
 
 namespace Lagdo\UiBuilder\DaisyUi\Component;
 
+use Lagdo\UiBuilder\Component\Attr\VisualEnum;
 use Lagdo\UiBuilder\Component\Base\BadgeComponent as BaseComponent;
 
 class BadgeComponent extends BaseComponent
@@ -11,28 +12,17 @@ class BadgeComponent extends BaseComponent
      */
     protected function onCreate(): void
     {
-        $this->element()->addBaseClass('badge');
+        $this->element()->addBaseClass('badge badge-soft');
     }
 
     /**
-     * @param string $type
-     *
-     * @return static
+     * @inheritDoc
      */
-    public function type(string $type): static
+    protected function onBuild(): void
     {
-        $this->element()->addClass("badge-$type");
-        return $this;
-    }
-
-    /**
-     * @param string $border
-     *
-     * @return static
-     */
-    public function border(string $border): static
-    {
-        $this->element()->addClass("badge-$border");
-        return $this;
+        $type = $this->prop('alert') ?? $this->prop('visual', null);
+        if ($type !== null && $type !== VisualEnum::DEFAULT) {
+            $this->element()->addClass("badge-{$type->value}");
+        }
     }
 }

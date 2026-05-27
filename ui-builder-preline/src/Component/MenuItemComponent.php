@@ -21,9 +21,16 @@ class MenuItemComponent extends BaseComponent
      */
     protected function onBuild(): void
     {
-        $style = $this->parentProp(1, 'vertical', false) ? 'gap-x-2' :
+        $style = $this->parentProp(1, 'vertical', true) ? 'gap-x-2' :
             'gap-x-2.5 sm:-ms-px sm:mt-0 sm:first:rounded-se-none ' .
             'sm:first:rounded-es-lg sm:last:rounded-es-none sm:last:rounded-se-lg';
         $this->element()->addClass($style);
+
+        if ($this->prop('active', false)) {
+            $this->element()->addClass('menu-active');
+        }
+        if (!$this->prop('enabled', true)) {
+            $this->element()->addClass('menu-disabled');
+        }
     }
 }
