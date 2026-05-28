@@ -20,9 +20,9 @@ class BadgeComponent extends BaseComponent
      */
     protected function onBuild(): void
     {
-        $type = $this->prop('alert') ?? $this->prop('visual', null);
-        if ($type !== null && $type !== VisualEnum::DEFAULT) {
-            $this->element()->addClass("badge-{$type->value}");
+        $visual = $this->prop('visual', null);
+        if ($visual !== null && $visual !== VisualEnum::DEFAULT) {
+            $this->element()->addClass("badge-{$visual->value}");
         }
     }
 }

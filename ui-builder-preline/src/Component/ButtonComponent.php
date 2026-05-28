@@ -48,10 +48,10 @@ class ButtonComponent extends BaseComponent
         }
         $this->element()->addClass("$sizeClass inline-flex items-center gap-x-2 text-sm font-medium rounded-lg");
 
-        $type = $this->prop('alert') ?? $this->prop('visual', null);
+        $visual = $this->prop('visual', null);
         $classes = $this->prop('outline', false) ?
             $this->classes['outline'] : $this->classes['default'];
-        $typeClass = $classes[$type?->value ?? ''] ?? $classes['default'];
-        $this->element()->addClass("$typeClass disabled:opacity-50 disabled:pointer-events-none");
+        $visualClass = $classes[$visual?->value ?? ''] ?? $classes['default'];
+        $this->element()->addClass("$visualClass disabled:opacity-50 disabled:pointer-events-none");
     }
 }

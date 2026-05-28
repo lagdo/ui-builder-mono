@@ -33,9 +33,9 @@ class DropdownButtonComponent extends BaseComponent
      */
     protected function onBuild(): void
     {
-        $type = $this->prop('alert') ?? $this->prop('visual', null);
-        if ($type !== null) {
-            $this->element()->addClass("btn-{$type->value}");
+        $visual = $this->prop('visual', null);
+        if ($visual !== null) {
+            $this->element()->addClass("btn-{$visual->value}");
         }
 
         switch($this->prop('size', null)) {

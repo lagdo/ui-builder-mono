@@ -21,9 +21,9 @@ class BadgeComponent extends BaseComponent
      */
     protected function onBuild(): void
     {
-        $type = $this->prop('alert') ?? $this->prop('visual', null);
-        $type = $type?->value ?? 'light';
-        $this->element()->addClass("bg-$type");
+        $visual = $this->prop('visual', null);
+        $visual = $visual?->value ?? 'light';
+        $this->element()->addClass("bg-$visual");
         // The text is dark for some types of badges.
         if (!isset($this->properties['alert'])) {
             $this->element()->addClass('text-dark');
