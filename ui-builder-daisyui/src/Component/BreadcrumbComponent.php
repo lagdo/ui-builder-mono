@@ -7,12 +7,9 @@ use Lagdo\UiBuilder\Component\Base\BreadcrumbComponent as BaseComponent;
 class BreadcrumbComponent extends BaseComponent
 {
     /**
-     * @return string
+     * @var string
      */
-    protected function tagName(): string
-    {
-        return 'ul';
-    }
+    protected string $tagName = 'ul';
 
     /**
      * @inheritDoc

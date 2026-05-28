@@ -7,12 +7,9 @@ use Lagdo\UiBuilder\Component\Base\CardFooterComponent as BaseComponent;
 class CardFooterComponent extends BaseComponent
 {
     /**
-     * @return string
+     * @var string
      */
-    protected function tagName(): string
-    {
-        return 'p';
-    }
+    protected string $tagName = 'p';
 
     /**
      * @return void

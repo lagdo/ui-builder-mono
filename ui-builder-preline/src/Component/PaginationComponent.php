@@ -7,12 +7,9 @@ use Lagdo\UiBuilder\Component\Base\PaginationComponent as BaseComponent;
 class PaginationComponent extends BaseComponent
 {
     /**
-     * @return string
+     * @var string
      */
-    protected function tagName(): string
-    {
-        return 'nav';
-    }
+    protected string $tagName = 'nav';
 
     /**
      * @return void

@@ -8,12 +8,9 @@ use Lagdo\UiBuilder\Component\Base\DropdownButtonComponent as BaseComponent;
 class DropdownButtonComponent extends BaseComponent
 {
     /**
-     * @return string
+     * @var string
      */
-    protected function tagName(): string
-    {
-        return 'div';
-    }
+    protected string $tagName = 'div';
 
     /**
      * @inheritDoc
