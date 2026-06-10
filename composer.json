@@ -25,6 +25,7 @@
     },
     "autoload": {
         "psr-4": {
+            "Lagdo\\UiBuilder\\Html\\": "ui-builder-html/src/",
             "Lagdo\\UiBuilder\\": "ui-builder/src/",
             "Lagdo\\UiBuilder\\Jaxon\\": "jaxon-ui-builder/src/",
             "Lagdo\\UiBuilder\\Bootstrap3\\": "ui-builder-bootstrap3/src/",
@@ -42,6 +43,7 @@
         "contao/monorepo-tools": "^0.2"
     },
     "replace": {
+        "lagdo/ui-builder-html": "self.version",
         "lagdo/ui-builder": "self.version",
         "lagdo/jaxon-ui-builder": "self.version",
         "lagdo/ui-builder-bootstrap3": "self.version",
