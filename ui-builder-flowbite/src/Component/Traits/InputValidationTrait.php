@@ -2,10 +2,8 @@
 
 namespace Lagdo\UiBuilder\Flowbite\Component\Traits;
 
-use Lagdo\UiBuilder\Component\Component;
-use Lagdo\UiBuilder\Component\Html\Element;
-use Lagdo\UiBuilder\Component\Html\Html;
-use Lagdo\UiBuilder\Component\HtmlElement;
+use Lagdo\UiBuilder\Html\Element\Html;
+use Lagdo\UiBuilder\Html\HtmlElement;
 
 use function bin2hex;
 use function random_bytes;
@@ -21,11 +19,11 @@ trait InputValidationTrait
     abstract protected function newElement(string $name, array $arguments = []): HtmlElement;
 
     /**
-     * @param Element|Component $sibling
+     * @param HtmlElement $sibling
      *
      * @return static
      */
-    abstract protected function appendSibling(Element|Component $sibling): static;
+    abstract protected function appendSibling(HtmlElement $sibling): static;
 
     /**
      * @param bool $valid

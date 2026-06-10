@@ -2,10 +2,8 @@
 
 namespace Lagdo\UiBuilder\Preline\Component\Traits;
 
-use Lagdo\UiBuilder\Component\Component;
-use Lagdo\UiBuilder\Component\Html\Element;
-use Lagdo\UiBuilder\Component\Html\Html;
-use Lagdo\UiBuilder\Component\HtmlElement;
+use Lagdo\UiBuilder\Html\Element\Html;
+use Lagdo\UiBuilder\Html\HtmlElement;
 
 trait InputValidationTrait
 {
@@ -18,11 +16,11 @@ trait InputValidationTrait
     abstract protected function newElement(string $name, array $arguments = []): HtmlElement;
 
     /**
-     * @param Element|Component $sibling
+     * @param HtmlElement $sibling
      *
      * @return static
      */
-    abstract protected function appendSibling(Element|Component $sibling): static;
+    abstract protected function appendSibling(HtmlElement $sibling): static;
 
     /**
      * @param HtmlElement $wrapper

@@ -2,7 +2,7 @@
 
 namespace Lagdo\UiBuilder\Flowbite\Component;
 
-use Lagdo\UiBuilder\Component\Base\CardFooterComponent as BaseComponent;
+use Lagdo\UiBuilder\Component\CardFooterComponent as BaseComponent;
 
 class CardFooterComponent extends BaseComponent
 {

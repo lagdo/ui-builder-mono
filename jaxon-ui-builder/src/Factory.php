@@ -5,20 +5,32 @@ namespace Lagdo\UiBuilder\Jaxon;
 use Jaxon\App\PageComponent;
 use Jaxon\Script\JsExpr;
 use Jaxon\Script\Call\JxnCall;
-use Lagdo\UiBuilder\Component\HtmlElement;
+use Lagdo\UiBuilder;
+use Lagdo\UiBuilder\BuilderInterface;
+use Lagdo\UiBuilder\Html\Element\Element;
+use Lagdo\UiBuilder\Html\HtmlComponent;
+use Lagdo\UiBuilder\Html\HtmlElement;
+use LogicException;
 
 use function array_filter;
 use function array_map;
+use function class_exists;
 use function count;
 use function htmlentities;
 use function is_a;
 use function is_string;
 use function Jaxon\attr;
+use function Jaxon\jaxon;
 use function json_encode;
 use function trim;
 
 class Factory
 {
+    /**
+     * @var BuilderInterface
+     */
+    private BuilderInterface $builder;
+
     /**
      * Get the component HTML code
      *
@@ -26,7 +38,7 @@ class Factory
      *
      * @return string
      */
-    public function html(JxnCall $xJsCall): string
+    private function html(JxnCall $xJsCall): string
     {
         return attr()->html($xJsCall);
     }
@@ -38,7 +50,7 @@ class Factory
      *
      * @return bool
      */
-    public function setAttr(HtmlElement $element, string $tagName, array $arguments): bool
+    private function setAttr(HtmlElement $element, string $tagName, array $arguments): bool
     {
         switch ($tagName) {
         case 'bind':
@@ -149,7 +161,7 @@ class Factory
             $events = [$events];
         }
 
-        $filterCallback = fn(array $event) => $this->eventIsValid($event);
+        $filterCallback = $this->eventIsValid(...);
         $convertCallback = fn(array $event) => [
             'select' => $event[0],
             'event' => trim($event[1]),
@@ -170,5 +182,99 @@ class Factory
     {
         $encoded = htmlentities(json_encode($this->handlers($events)));
         $element->setAttribute('jxn-event', $encoded, false);
+    }
+
+    /**
+     * @param string $tagName
+     * @param string $method
+     * @param array $arguments
+     *
+     * @return Element
+     * @throws LogicException
+     */
+    private function registerBuilderHelper(string $tagName,
+        string $method, array $arguments): Element
+    {
+        if ($method === 'jxnHtml') {
+            return $this->builder->html($this->html($arguments[0]));
+        }
+
+        throw new LogicException("Call to undefined method \"{$method}()\" in the HTML UI builder.");
+    }
+
+    /**
+     * @param HtmlElement $element
+     * @param string $tagName
+     * @param string $method
+     * @param array $arguments
+     *
+     * @return HtmlElement
+     * @throws LogicException
+     */
+    private function registerElementHelper(HtmlElement $element,
+        string $tagName, string $method, array $arguments): HtmlElement
+    {
+        if ($this->setAttr($element, $tagName, $arguments)) {
+            return $element;
+        }
+
+        throw new LogicException("Call to undefined method \"{$method}()\" in the HTML element.");
+    }
+
+    /**
+     * @param HtmlComponent $component
+     * @param string $tagName
+     * @param string $method
+     * @param array $arguments
+     *
+     * @return HtmlComponent
+     * @throws LogicException
+     */
+    private function registerComponentHelper(HtmlComponent $component,
+        string $tagName, string $method, array $arguments): HtmlComponent
+    {
+        if ($this->setAttr($component->element(), $tagName, $arguments)) {
+            return $component;
+        }
+
+        throw new LogicException("Call to undefined method \"{$method}()\" in the HTML component.");
+    }
+
+    /**
+     * @param string $class
+     *
+     * @return BuilderInterface|null
+     */
+    private function make(string $class): BuilderInterface|null
+    {
+        return class_exists($class) ? new $class : null;
+    }
+
+    /**
+     * @return BuilderInterface|null
+     */
+    public function builder(): BuilderInterface|null
+    {
+        $this->builder = match(jaxon()->getAppOption('ui.template', '')) {
+            'bootstrap3' => $this->make(UiBuilder\Bootstrap3\Builder::class),
+            'bootstrap4' => $this->make(UiBuilder\Bootstrap4\Builder::class),
+            'bootstrap5' => $this->make(UiBuilder\Bootstrap5\Builder::class),
+            'daisyui' => $this->make(UiBuilder\DaisyUi\Builder::class),
+            'flowbite' => $this->make(UiBuilder\Flowbite\Builder::class),
+            'preline' => $this->make(UiBuilder\Preline\Builder::class),
+            default => null,
+        };
+        if ($this->builder === null) {
+            return null;
+        }
+
+        // This factory adds the Jaxon jxnHtml() function to the builder interface.
+        $this->builder->registerBuilderHelper('jxn', $this->registerBuilderHelper(...));
+        // This factory adds functions to set Jaxon attributes on HTML elements.
+        $this->builder->registerElementHelper('jxn', $this->registerElementHelper(...));
+        // This factory adds functions to set Jaxon attributes on HTML components.
+        $this->builder->registerComponentHelper('jxn', $this->registerComponentHelper(...));
+
+        return $this->builder;
     }
 }

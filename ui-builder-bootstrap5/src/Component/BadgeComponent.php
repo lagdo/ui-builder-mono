@@ -2,7 +2,7 @@
 
 namespace Lagdo\UiBuilder\Bootstrap5\Component;
 
-use Lagdo\UiBuilder\Component\Base\BadgeComponent as BaseComponent;
+use Lagdo\UiBuilder\Component\BadgeComponent as BaseComponent;
 
 use function is_a;
 

@@ -2,7 +2,7 @@
 
 namespace Lagdo\UiBuilder\Flowbite\Component;
 
-use Lagdo\UiBuilder\Component\Base\TableHeadCellComponent as BaseComponent;
+use Lagdo\UiBuilder\Component\TableHeadCellComponent as BaseComponent;
 
 use function get_class;
 
@@ -27,8 +27,6 @@ class TableHeadCellComponent extends BaseComponent
      */
     protected function onBuild(): void
     {
-        parent::onBuild();
-
         $zone = $this->getZone();
         if ($zone !== '') {
             $class = match(true) {

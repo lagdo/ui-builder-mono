@@ -2,7 +2,7 @@
 
 namespace Lagdo\UiBuilder\Preline\Component;
 
-use Lagdo\UiBuilder\Component\Base\TabNavComponent as BaseComponent;
+use Lagdo\UiBuilder\Component\TabNavComponent as BaseComponent;
 
 class TabNavComponent extends BaseComponent
 {

@@ -2,7 +2,7 @@
 
 namespace Lagdo\UiBuilder\Flowbite\Component;
 
-use Lagdo\UiBuilder\Component\Base\MenuItemComponent as BaseComponent;
+use Lagdo\UiBuilder\Component\MenuItemComponent as BaseComponent;
 
 class MenuItemComponent extends BaseComponent
 {

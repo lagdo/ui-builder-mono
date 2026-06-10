@@ -2,7 +2,7 @@
 
 namespace Lagdo\UiBuilder\Preline\Component;
 
-use Lagdo\UiBuilder\Component\Base\PaginationComponent as BaseComponent;
+use Lagdo\UiBuilder\Component\PaginationComponent as BaseComponent;
 
 class PaginationComponent extends BaseComponent
 {

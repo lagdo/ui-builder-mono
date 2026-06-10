@@ -2,7 +2,7 @@
 
 namespace Lagdo\UiBuilder\Preline\Component;
 
-use Lagdo\UiBuilder\Component\Base\DropdownMenuItemComponent as BaseComponent;
+use Lagdo\UiBuilder\Component\DropdownMenuItemComponent as BaseComponent;
 
 class DropdownMenuItemComponent extends BaseComponent
 {

@@ -2,7 +2,7 @@
 
 namespace Lagdo\UiBuilder\Preline\Component;
 
-use Lagdo\UiBuilder\Component\Base\TableDataCellComponent as BaseComponent;
+use Lagdo\UiBuilder\Component\TableDataCellComponent as BaseComponent;
 
 use function get_class;
 

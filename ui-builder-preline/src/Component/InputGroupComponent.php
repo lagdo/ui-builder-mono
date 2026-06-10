@@ -2,7 +2,7 @@
 
 namespace Lagdo\UiBuilder\Preline\Component;
 
-use Lagdo\UiBuilder\Component\Base\InputGroupComponent as BaseComponent;
+use Lagdo\UiBuilder\Component\InputGroupComponent as BaseComponent;
 
 class InputGroupComponent extends BaseComponent
 {

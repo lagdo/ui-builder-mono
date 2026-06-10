@@ -2,7 +2,7 @@
 
 namespace Lagdo\UiBuilder\Flowbite\Component;
 
-use Lagdo\UiBuilder\Component\Base\DropdownMenuComponent as BaseComponent;
+use Lagdo\UiBuilder\Component\DropdownMenuComponent as BaseComponent;
 
 class DropdownMenuComponent extends BaseComponent
 {

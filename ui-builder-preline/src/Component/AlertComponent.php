@@ -3,7 +3,7 @@
 namespace Lagdo\UiBuilder\Preline\Component;
 
 use Lagdo\UiBuilder\Component\Attr\LevelEnum;
-use Lagdo\UiBuilder\Component\Base\AlertComponent as BaseComponent;
+use Lagdo\UiBuilder\Component\AlertComponent as BaseComponent;
 
 class AlertComponent extends BaseComponent
 {

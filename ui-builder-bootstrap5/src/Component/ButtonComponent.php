@@ -3,7 +3,7 @@
 namespace Lagdo\UiBuilder\Bootstrap5\Component;
 
 use Lagdo\UiBuilder\Component\Attr\SizeEnum;
-use Lagdo\UiBuilder\Component\Base\ButtonComponent as BaseComponent;
+use Lagdo\UiBuilder\Component\ButtonComponent as BaseComponent;
 
 use function is_a;
 

@@ -3,7 +3,7 @@
 namespace Lagdo\UiBuilder\DaisyUi\Component;
 
 use Lagdo\UiBuilder\Component\Attr\VisualEnum;
-use Lagdo\UiBuilder\Component\Base\BadgeComponent as BaseComponent;
+use Lagdo\UiBuilder\Component\BadgeComponent as BaseComponent;
 
 class BadgeComponent extends BaseComponent
 {

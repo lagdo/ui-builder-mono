@@ -2,7 +2,7 @@
 
 namespace Lagdo\UiBuilder\Preline\Component;
 
-use Lagdo\UiBuilder\Component\Base\LabelComponent as BaseComponent;
+use Lagdo\UiBuilder\Component\LabelComponent as BaseComponent;
 
 class LabelComponent extends BaseComponent
 {
