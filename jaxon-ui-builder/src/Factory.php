@@ -10,17 +10,16 @@ use Lagdo\UiBuilder\BuilderInterface;
 use Lagdo\UiBuilder\Html\Element\Element;
 use Lagdo\UiBuilder\Html\HtmlComponent;
 use Lagdo\UiBuilder\Html\HtmlElement;
+use Closure;
 use LogicException;
 
 use function array_filter;
 use function array_map;
-use function class_exists;
 use function count;
 use function htmlentities;
 use function is_a;
 use function is_string;
 use function Jaxon\attr;
-use function Jaxon\jaxon;
 use function json_encode;
 use function trim;
 
@@ -30,6 +29,24 @@ class Factory
      * @var BuilderInterface
      */
     private BuilderInterface $builder;
+
+    /**
+     * @var array<string, class-string<BuilderInterface>>
+     */
+    private $builderClasses = [
+        'bootstrap3' => UiBuilder\Bootstrap3\Builder::class,
+        'bootstrap4' => UiBuilder\Bootstrap4\Builder::class,
+        'bootstrap5' => UiBuilder\Bootstrap5\Builder::class,
+        'daisyui' => UiBuilder\DaisyUi\Builder::class,
+        'flowbite' => UiBuilder\Flowbite\Builder::class,
+        'preline' => UiBuilder\Preline\Builder::class,
+    ];
+
+    /**
+     * @param Closure $templateGetter
+     */
+    public function __construct(private Closure $templateGetter)
+    {}
 
     /**
      * Get the component HTML code
@@ -241,32 +258,16 @@ class Factory
     }
 
     /**
-     * @param string $class
-     *
-     * @return BuilderInterface|null
-     */
-    private function make(string $class): BuilderInterface|null
-    {
-        return class_exists($class) ? new $class : null;
-    }
-
-    /**
      * @return BuilderInterface|null
      */
     public function builder(): BuilderInterface|null
     {
-        $this->builder = match(jaxon()->getAppOption('ui.template', '')) {
-            'bootstrap3' => $this->make(UiBuilder\Bootstrap3\Builder::class),
-            'bootstrap4' => $this->make(UiBuilder\Bootstrap4\Builder::class),
-            'bootstrap5' => $this->make(UiBuilder\Bootstrap5\Builder::class),
-            'daisyui' => $this->make(UiBuilder\DaisyUi\Builder::class),
-            'flowbite' => $this->make(UiBuilder\Flowbite\Builder::class),
-            'preline' => $this->make(UiBuilder\Preline\Builder::class),
-            default => null,
-        };
-        if ($this->builder === null) {
+        $template = ($this->templateGetter)();
+        if (!isset($this->builderClasses[$template])) {
             return null;
         }
+
+        $this->builder = new ($this->builderClasses[$template])();
 
         // This factory adds the Jaxon jxnHtml() function to the builder interface.
         $this->builder->registerBuilderHelper('jxn', $this->registerBuilderHelper(...));
