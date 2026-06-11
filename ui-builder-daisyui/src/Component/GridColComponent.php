@@ -16,7 +16,7 @@ class GridColComponent extends BaseComponent
         if ($width < 1 || $width > 12) {
             $width = 12; // Full width by default.
         }
-        $this->element()->addBaseClass("col-span-$width");
+        $this->addBaseClass("col-span-$width");
         return $this;
     }
 }

@@ -16,7 +16,7 @@ class PaginationItemComponent extends BaseComponent
      */
     protected function onCreate(): void
     {
-        $this->element()->addBaseClass('join-item btn')
+        $this->addBaseClass('join-item btn')
             ->setAttribute('type', 'button');
     }
 

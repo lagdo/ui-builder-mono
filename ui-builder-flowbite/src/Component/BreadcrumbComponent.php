@@ -11,7 +11,7 @@ class BreadcrumbComponent extends BaseComponent
      */
     protected function onCreate(): void
     {
-        $this->element()->addBaseClass('inline-flex items-center space-x-1 md:space-x-2');
+        $this->addBaseClass('inline-flex items-center space-x-1 md:space-x-2');
         $this->addWrapper($this->newElement('nav', ['class' => 'flex', 'aria-label' => 'Breadcrumb']));
     }
 }

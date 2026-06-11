@@ -11,7 +11,7 @@ class MenuItemComponent extends BaseComponent
      */
     protected function onCreate(): void
     {
-        $this->element()->addBaseClass('list-group-item list-group-item-action');
+        $this->addBaseClass('list-group-item list-group-item-action');
     }
 
     /**

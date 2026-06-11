@@ -36,7 +36,7 @@ class TabNavItemComponent extends BaseComponent
      */
     protected function onCreate(): void
     {
-        $this->element()->addBaseClass('tab')
+        $this->addBaseClass('tab')
             ->setAttribute('role', 'tab');
     }
 

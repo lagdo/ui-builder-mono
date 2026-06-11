@@ -16,7 +16,7 @@ class PaginationComponent extends BaseComponent
      */
     protected function onCreate(): void
     {
-        $this->element()->addBaseClass('flex -space-x-px text-sm');
+        $this->addBaseClass('flex -space-x-px text-sm');
         $this->addWrapper($this->newElement('nav', ['aria-label' => 'Pagination']));
     }
 }

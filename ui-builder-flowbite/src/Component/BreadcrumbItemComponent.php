@@ -11,7 +11,7 @@ class BreadcrumbItemComponent extends BaseComponent
      */
     protected function onCreate(): void
     {
-        $this->element()->addBaseClass('inline-flex items-center');
+        $this->addBaseClass('inline-flex items-center');
     }
 
     /**

@@ -11,7 +11,7 @@ class AlertComponent extends BaseComponent
      */
     protected function onCreate(): void
     {
-        $this->element()->addBaseClass('alert alert-soft');
+        $this->addBaseClass('alert alert-soft');
     }
 
     /**

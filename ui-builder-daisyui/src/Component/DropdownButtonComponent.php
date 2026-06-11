@@ -17,7 +17,7 @@ class DropdownButtonComponent extends BaseComponent
      */
     protected function onCreate(): void
     {
-        $this->element()->addBaseClass('btn')
+        $this->addBaseClass('btn')
             ->addClass('m-1')
             ->setAttributes([
                 'tabindex' => '0',

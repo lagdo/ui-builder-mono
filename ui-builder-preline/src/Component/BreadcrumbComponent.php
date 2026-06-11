@@ -11,6 +11,6 @@ class BreadcrumbComponent extends BaseComponent
      */
     protected function onCreate(): void
     {
-        $this->element()->addBaseClass('flex items-center whitespace-nowrap');
+        $this->addBaseClass('flex items-center whitespace-nowrap');
     }
 }

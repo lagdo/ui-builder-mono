@@ -17,7 +17,7 @@ class SelectComponent extends BaseComponent
      */
     protected function onCreate(): void
     {
-        $this->element()->addBaseClass('select');
+        $this->addBaseClass('select');
     }
 
     /**

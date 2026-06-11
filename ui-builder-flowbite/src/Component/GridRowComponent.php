@@ -11,6 +11,6 @@ class GridRowComponent extends BaseComponent
      */
     protected function onCreate(): void
     {
-        $this->element()->addBaseClass('grid grid-cols-12');
+        $this->addBaseClass('grid grid-cols-12');
     }
 }

@@ -16,7 +16,7 @@ class TabNavComponent extends BaseComponent
      */
     protected function onCreate(): void
     {
-        $this->element()->addBaseClass('tabs')
+        $this->addBaseClass('tabs')
             ->setAttribute('role', 'tablist');
     }
 
@@ -30,7 +30,7 @@ class TabNavComponent extends BaseComponent
             'pills' => 'tabs-box',
             default => 'tabs-lift',
         };
-        $this->element()->addBaseClass($class);
+        $this->addBaseClass($class);
     }
 
     /**

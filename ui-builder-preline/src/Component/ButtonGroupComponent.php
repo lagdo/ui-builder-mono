@@ -11,6 +11,6 @@ class ButtonGroupComponent extends BaseComponent
      */
     protected function onCreate(): void
     {
-        $this->element()->addBaseClass('inline-flex rounded-lg shadow-2xs');
+        $this->addBaseClass('inline-flex rounded-lg shadow-2xs');
     }
 }

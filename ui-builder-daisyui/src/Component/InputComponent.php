@@ -17,7 +17,7 @@ class InputComponent extends BaseComponent
      */
     protected function onCreate(): void
     {
-        $this->element()->addBaseClass('input');
+        $this->addBaseClass('input');
     }
 
     /**

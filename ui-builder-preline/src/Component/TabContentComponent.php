@@ -11,6 +11,6 @@ class TabContentComponent extends BaseComponent
      */
     protected function onCreate(): void
     {
-        $this->element()->addBaseClass('mt-3');
+        $this->addBaseClass('mt-3');
     }
 }

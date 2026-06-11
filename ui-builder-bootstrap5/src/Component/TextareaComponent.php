@@ -16,7 +16,7 @@ class TextareaComponent extends BaseComponent
     protected function onBuild(): void
     {
         if ($this->inForm()) {
-            $this->element()->addBaseClass('form-control');
+            $this->addBaseClass('form-control');
         }
     }
 

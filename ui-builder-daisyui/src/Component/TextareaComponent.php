@@ -15,7 +15,7 @@ class TextareaComponent extends BaseComponent
      */
     protected function onCreate(): void
     {
-        $this->element()->addBaseClass('textarea');
+        $this->addBaseClass('textarea');
     }
 
     /**

@@ -12,7 +12,7 @@ class BadgeComponent extends BaseComponent
      */
     protected function onCreate(): void
     {
-        $this->element()->addBaseClass('badge badge-soft');
+        $this->addBaseClass('badge badge-soft');
     }
 
     /**
