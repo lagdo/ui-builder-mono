@@ -101,8 +101,7 @@ class Factory
     private function bind(HtmlElement $element, JxnCall $xJsCall, string $item = '')
     {
         $element->setAttribute('jxn-bind', $xJsCall->_class(), false);
-        if(($item = trim($item)) !== '')
-        {
+        if(($item = trim($item)) !== '') {
             $element->setAttribute('jxn-item', $item, false);
         }
     }
@@ -268,7 +267,6 @@ class Factory
         }
 
         $this->builder = new ($this->builderClasses[$template])();
-
         // This factory adds the Jaxon jxnHtml() function to the builder interface.
         $this->builder->registerBuilderHelper('jxn', $this->registerBuilderHelper(...));
         // This factory adds functions to set Jaxon attributes on HTML elements.
