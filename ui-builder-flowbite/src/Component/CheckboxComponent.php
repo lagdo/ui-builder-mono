@@ -8,8 +8,6 @@ use Lagdo\UiBuilder\Html\Element\Text;
 
 class CheckboxComponent extends BaseComponent
 {
-    // use Traits\InputValidationTrait;
-
     /**
      * @return void
      */

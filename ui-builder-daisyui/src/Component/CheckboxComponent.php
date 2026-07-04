@@ -10,8 +10,6 @@ use function is_a;
 
 class CheckboxComponent extends BaseComponent
 {
-    // use Traits\InputValidationTrait;
-
     /**
      * @return void
      */
@@ -36,7 +34,7 @@ class CheckboxComponent extends BaseComponent
      */
     protected function setLabel(HtmlElement $label, Text $text): void
     {
-        $label->addBaseClass('label');
+        $label->addClass('label');
         $this->addWrapper($label)->appendSibling($text);
     }
 }
