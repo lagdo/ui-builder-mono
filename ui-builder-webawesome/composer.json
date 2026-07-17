@@ -1,0 +1,29 @@
+{
+    "name": "lagdo/ui-builder-webawesome",
+    "type": "library",
+    "description": "UI Builder extensions for the Web Awesome UI library.",
+    "authors": [
+        {
+            "name": "Thierry Feuzeu",
+            "email": "thierry.feuzeu@gmail.com"
+        }
+    ],
+    "homepage": "https://github.com/lagdo/ui-builder-webawesome",
+    "license": "MIT",
+    "keywords": ["HTML", "UI Builder", "Webawesome"],
+    "support": {
+        "issues": "https://github.com/lagdo/ui-builder-webawesome/issues",
+        "source": "https://github.com/lagdo/ui-builder-webawesome"
+    },
+    "require": {
+        "php": ">=8.0",
+        "lagdo/ui-builder": "0.11.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Lagdo\\UiBuilder\\WebAwesome\\": "src/"
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": false
+}
