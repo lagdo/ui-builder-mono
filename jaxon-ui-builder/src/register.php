@@ -5,9 +5,13 @@ namespace Lagdo\UiBuilder\Jaxon;
 use Lagdo\UiBuilder\BuilderInterface;
 
 use function jaxon;
-use function php_sapi_name;
 
-function registerUiBuilder(): void
+/**
+ * @param string $optionName
+ *
+ * @return void
+ */
+function registerUiBuilder(string $optionName): void
 {
     $jaxon = jaxon();
     $di = $jaxon->di();
@@ -16,17 +20,6 @@ function registerUiBuilder(): void
     $jaxon->di()->set(PaginationRenderer::class, fn() =>
         new PaginationRenderer($di->g(BuilderInterface::class)));
     // Register the UI builder.
-    $templateGetter = fn() => $jaxon->getAppOption('ui.template', '');
+    $templateGetter = fn() => $jaxon->getAppOption($optionName, '');
     $di->set(BuilderInterface::class, fn() => (new Factory($templateGetter))->builder());
 }
-
-function register(): void
-{
-    // Do nothing if running in cli.
-    if(php_sapi_name() !== 'cli')
-    {
-        registerUiBuilder();
-    }
-}
-
-register();
