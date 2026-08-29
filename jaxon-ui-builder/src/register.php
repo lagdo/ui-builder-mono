@@ -7,19 +7,18 @@ use Lagdo\UiBuilder\BuilderInterface;
 use function jaxon;
 
 /**
- * @param string $optionName
+ * @param string $template
  *
  * @return void
  */
-function registerUiBuilder(string $optionName): void
+function registerUiBuilder(string $template): void
 {
     $jaxon = jaxon();
     $di = $jaxon->di();
 
     // Register the pagination renderer.
-    $jaxon->di()->set(PaginationRenderer::class, fn() =>
+    $di->set(PaginationRenderer::class, fn() =>
         new PaginationRenderer($di->g(BuilderInterface::class)));
     // Register the UI builder.
-    $templateGetter = fn() => $jaxon->getAppOption($optionName, '');
-    $di->set(BuilderInterface::class, fn() => (new Factory($templateGetter))->builder());
+    $di->set(BuilderInterface::class, fn() => (new Factory($template))->builder());
 }

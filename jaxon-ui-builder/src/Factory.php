@@ -10,7 +10,6 @@ use Lagdo\UiBuilder\BuilderInterface;
 use Lagdo\UiBuilder\Html\Element\Element;
 use Lagdo\UiBuilder\Html\HtmlComponent;
 use Lagdo\UiBuilder\Html\HtmlElement;
-use Closure;
 use LogicException;
 
 use function array_filter;
@@ -43,9 +42,9 @@ class Factory
     ];
 
     /**
-     * @param Closure $templateGetter
+     * @param string $template
      */
-    public function __construct(private Closure $templateGetter)
+    public function __construct(private string $template)
     {}
 
     /**
@@ -261,12 +260,12 @@ class Factory
      */
     public function builder(): BuilderInterface|null
     {
-        $template = ($this->templateGetter)();
-        if (!isset($this->builderClasses[$template])) {
+        $builderClass = $this->builderClasses[$this->template] ?? null;
+        if ($builderClass === null) {
             return null;
         }
 
-        $this->builder = new ($this->builderClasses[$template])();
+        $this->builder = new ($builderClass)();
         // This factory adds the Jaxon jxnHtml() function to the builder interface.
         $this->builder->registerBuilderHelper('jxn', $this->registerBuilderHelper(...));
         // This factory adds functions to set Jaxon attributes on HTML elements.
