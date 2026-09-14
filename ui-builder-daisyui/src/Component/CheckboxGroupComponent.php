@@ -2,9 +2,9 @@
 
 namespace Lagdo\UiBuilder\DaisyUi\Component;
 
-use Lagdo\UiBuilder\Component\InputGroupComponent as BaseComponent;
+use Lagdo\UiBuilder\Component\CheckboxGroupComponent as BaseComponent;
 
-class InputGroupComponent extends BaseComponent
+class CheckboxGroupComponent extends BaseComponent
 {
     /**
      * @return void

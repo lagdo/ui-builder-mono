@@ -3,6 +3,7 @@
 namespace Lagdo\UiBuilder\Bootstrap5\Component;
 
 use Lagdo\UiBuilder\Component\CheckboxComponent as BaseComponent;
+use Lagdo\UiBuilder\Component\CheckboxGroupComponent;
 use Lagdo\UiBuilder\Component\InputGroupComponent;
 use Lagdo\UiBuilder\Html\HtmlElement;
 use Lagdo\UiBuilder\Html\Element\Text;
@@ -25,10 +26,17 @@ class CheckboxComponent extends BaseComponent
      */
     protected function onBuild(): void
     {
-        if (is_a($this->parent(), InputGroupComponent::class)) {
+        $parent = $this->parent();
+        if (is_a($parent, InputGroupComponent::class)) {
             $this->addWrapper($this->newElement('div', ['class' => 'input-group-text']));
             $this->element()->addClass('mt-0');
+            return;
         }
+
+        $wrapperClass = is_a($parent, CheckboxGroupComponent::class) &&
+            ($parent->properties['horizontal'] ?? false) ?
+                'form-check form-check-inline' : 'form-check';
+        $this->addWrapper($this->newElement('div', ['class' =>  $wrapperClass]));
     }
 
     /**
@@ -36,7 +44,7 @@ class CheckboxComponent extends BaseComponent
      */
     protected function setLabel(HtmlElement $label, Text $text): void
     {
-        $label->addClass('form-label')->addChild($text);
+        $label->addClass('form-check-label')->addChild($text);
         $this->appendSibling($label);
     }
 }
