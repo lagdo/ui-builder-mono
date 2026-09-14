@@ -21,9 +21,19 @@ While the later only generates HTML code, the `BuilderInterface` functions will 
 
 The class that generates the final HTML code is provided by a separate package, which must be installed in addition to this one.
 
+#### Note
+
+The grid system is built with the PureCSS micro framework, and not customized by the libraries.
+When using it, the following CSS files must be included in the web page.
+
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/grids-responsive-min.css">
+```
+
 #### Prerequisites
 
-This package requires PHP version 7.1 or greater.
+This package requires PHP version 8.0 or greater.
 
 #### Installation
 
