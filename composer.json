@@ -1,5 +1,5 @@
 {
-    "name": "lagdo/html-ui-builder",
+    "name": "lagdo/ui-builder",
     "type": "library",
     "description": "UI Builder extensions for HTML/CSS frameworks.",
     "authors": [
@@ -8,7 +8,7 @@
             "email": "thierry.feuzeu@gmail.com"
         }
     ],
-    "homepage": "https://github.com/lagdo/html-ui-builder",
+    "homepage": "https://github.com/lagdo/ui-builder",
     "license": "MIT",
     "keywords": [
         "HTML",
@@ -16,8 +16,8 @@
         "Bootstrap"
     ],
     "support": {
-        "issues": "https://github.com/lagdo/html-ui-builder/issues",
-        "source": "https://github.com/lagdo/html-ui-builder"
+        "issues": "https://github.com/lagdo/ui-builder/issues",
+        "source": "https://github.com/lagdo/ui-builder"
     },
     "require": {
         "php": ">=8.0",
@@ -25,7 +25,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Lagdo\\UiBuilder\\Html\\": "ui-builder-html/src/",
+            "Lagdo\\HtmlBuilder\\": "html-builder/src/",
             "Lagdo\\UiBuilder\\": "ui-builder/src/",
             "Lagdo\\UiBuilder\\Jaxon\\": "jaxon-ui-builder/src/",
             "Lagdo\\UiBuilder\\Bootstrap3\\": "ui-builder-bootstrap3/src/",
@@ -43,7 +43,7 @@
         "contao/monorepo-tools": "^0.2"
     },
     "replace": {
-        "lagdo/ui-builder-html": "self.version",
+        "lagdo/html-builder": "self.version",
         "lagdo/ui-builder": "self.version",
         "lagdo/jaxon-ui-builder": "self.version",
         "lagdo/ui-builder-bootstrap3": "self.version",

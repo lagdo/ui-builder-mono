@@ -3,8 +3,8 @@
 namespace Lagdo\UiBuilder\DaisyUi\Component;
 
 use Lagdo\UiBuilder\Component\CheckboxComponent as BaseComponent;
-use Lagdo\UiBuilder\Html\HtmlElement;
-use Lagdo\UiBuilder\Html\Element\Text;
+use Lagdo\HtmlBuilder\HtmlElement;
+use Lagdo\HtmlBuilder\Element\Text;
 
 use function is_a;
 

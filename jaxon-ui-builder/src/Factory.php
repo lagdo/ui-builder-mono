@@ -7,9 +7,9 @@ use Jaxon\Script\JsExpr;
 use Jaxon\Script\Call\JxnCall;
 use Lagdo\UiBuilder;
 use Lagdo\UiBuilder\BuilderInterface;
-use Lagdo\UiBuilder\Html\Element\Element;
-use Lagdo\UiBuilder\Html\HtmlComponent;
-use Lagdo\UiBuilder\Html\HtmlElement;
+use Lagdo\HtmlBuilder\Element\Element;
+use Lagdo\HtmlBuilder\HtmlComponent;
+use Lagdo\HtmlBuilder\HtmlElement;
 use LogicException;
 
 use function array_filter;

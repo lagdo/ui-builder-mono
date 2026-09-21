@@ -3,8 +3,8 @@
 namespace Lagdo\UiBuilder\Flowbite\Component;
 
 use Lagdo\UiBuilder\Component\SelectComponent as BaseComponent;
-use Lagdo\UiBuilder\Html\HtmlElement;
-use Lagdo\UiBuilder\Html\Element\Text;
+use Lagdo\HtmlBuilder\HtmlElement;
+use Lagdo\HtmlBuilder\Element\Text;
 
 class SelectComponent extends BaseComponent
 {

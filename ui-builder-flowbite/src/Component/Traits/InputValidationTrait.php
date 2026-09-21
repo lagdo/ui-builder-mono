@@ -2,8 +2,8 @@
 
 namespace Lagdo\UiBuilder\Flowbite\Component\Traits;
 
-use Lagdo\UiBuilder\Html\Element\Html;
-use Lagdo\UiBuilder\Html\HtmlElement;
+use Lagdo\HtmlBuilder\Element\Html;
+use Lagdo\HtmlBuilder\HtmlElement;
 
 use function bin2hex;
 use function random_bytes;

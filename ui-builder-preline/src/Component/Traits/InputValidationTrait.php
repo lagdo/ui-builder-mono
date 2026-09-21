@@ -2,8 +2,8 @@
 
 namespace Lagdo\UiBuilder\Preline\Component\Traits;
 
-use Lagdo\UiBuilder\Html\Element\Html;
-use Lagdo\UiBuilder\Html\HtmlElement;
+use Lagdo\HtmlBuilder\Element\Html;
+use Lagdo\HtmlBuilder\HtmlElement;
 
 trait InputValidationTrait
 {

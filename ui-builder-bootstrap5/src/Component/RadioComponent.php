@@ -5,8 +5,8 @@ namespace Lagdo\UiBuilder\Bootstrap5\Component;
 use Lagdo\UiBuilder\Component\RadioComponent as BaseComponent;
 use Lagdo\UiBuilder\Component\InputGroupComponent;
 use Lagdo\UiBuilder\Component\RadioGroupComponent;
-use Lagdo\UiBuilder\Html\HtmlElement;
-use Lagdo\UiBuilder\Html\Element\Text;
+use Lagdo\HtmlBuilder\HtmlElement;
+use Lagdo\HtmlBuilder\Element\Text;
 
 use function is_a;
 

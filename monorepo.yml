@@ -6,14 +6,12 @@ branch_filter: /^(main)$/
 
 # List of all split projects
 repositories:
-    ui-builder-html:
-        url: git@github.com:lagdo/ui-builder-html.git
+    html-builder:
+        url: git@github.com:lagdo/html-builder.git
     ui-builder:
         url: git@github.com:lagdo/ui-builder.git
     jaxon-ui-builder:
         url: git@github.com:lagdo/jaxon-ui-builder.git
-    ui-builder-bootstrap3:
-        url: git@github.com:lagdo/ui-builder-bootstrap3.git
     ui-builder-bootstrap4:
         url: git@github.com:lagdo/ui-builder-bootstrap4.git
     ui-builder-bootstrap5:

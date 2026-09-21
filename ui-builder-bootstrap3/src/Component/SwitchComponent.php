@@ -4,8 +4,8 @@ namespace Lagdo\UiBuilder\Bootstrap3\Component;
 
 use Lagdo\UiBuilder\Component\SwitchComponent as BaseComponent;
 use Lagdo\UiBuilder\Component\InputGroupComponent;
-use Lagdo\UiBuilder\Html\HtmlElement;
-use Lagdo\UiBuilder\Html\Element\Text;
+use Lagdo\HtmlBuilder\HtmlElement;
+use Lagdo\HtmlBuilder\Element\Text;
 
 /**
  * No switch component actually. This is a checkbox instead.
