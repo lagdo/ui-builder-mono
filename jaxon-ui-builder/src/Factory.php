@@ -5,11 +5,11 @@ namespace Lagdo\UiBuilder\Jaxon;
 use Jaxon\App\PageComponent;
 use Jaxon\Script\JsExpr;
 use Jaxon\Script\Call\JxnCall;
-use Lagdo\UiBuilder;
-use Lagdo\UiBuilder\BuilderInterface;
 use Lagdo\HtmlBuilder\Element\Element;
 use Lagdo\HtmlBuilder\HtmlComponent;
 use Lagdo\HtmlBuilder\HtmlElement;
+use Lagdo\UiBuilder;
+use Lagdo\UiBuilder\BuilderInterface;
 use LogicException;
 
 use function array_filter;
@@ -33,12 +33,12 @@ class Factory
      * @var array<string, class-string<BuilderInterface>>
      */
     private $builderClasses = [
-        'bootstrap3' => UiBuilder\Bootstrap3\Builder::class,
         'bootstrap4' => UiBuilder\Bootstrap4\Builder::class,
         'bootstrap5' => UiBuilder\Bootstrap5\Builder::class,
         'daisyui' => UiBuilder\DaisyUi\Builder::class,
         'flowbite' => UiBuilder\Flowbite\Builder::class,
         'preline' => UiBuilder\Preline\Builder::class,
+        'webawesome' => UiBuilder\WebAwesome\Builder::class,
     ];
 
     /**
@@ -272,7 +272,6 @@ class Factory
         $this->builder->registerElementHelper('jxn', $this->registerElementHelper(...));
         // This factory adds functions to set Jaxon attributes on HTML components.
         $this->builder->registerComponentHelper('jxn', $this->registerComponentHelper(...));
-
         return $this->builder;
     }
 }
