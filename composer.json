@@ -1,7 +1,7 @@
 {
     "name": "lagdo/ui-builder",
     "type": "library",
-    "description": "UI Builder extensions for HTML/CSS frameworks.",
+    "description": "A customizable and extensible HTML UI builder.",
     "authors": [
         {
             "name": "Thierry Feuzeu",
@@ -28,12 +28,12 @@
             "Lagdo\\HtmlBuilder\\": "html-builder/src/",
             "Lagdo\\UiBuilder\\": "ui-builder/src/",
             "Lagdo\\UiBuilder\\Jaxon\\": "jaxon-ui-builder/src/",
-            "Lagdo\\UiBuilder\\Bootstrap3\\": "ui-builder-bootstrap3/src/",
             "Lagdo\\UiBuilder\\Bootstrap4\\": "ui-builder-bootstrap4/src/",
             "Lagdo\\UiBuilder\\Bootstrap5\\": "ui-builder-bootstrap5/src/",
             "Lagdo\\UiBuilder\\DaisyUi\\": "ui-builder-daisyui/src/",
             "Lagdo\\UiBuilder\\Flowbite\\": "ui-builder-flowbite/src/",
-            "Lagdo\\UiBuilder\\Preline\\": "ui-builder-preline/src/"
+            "Lagdo\\UiBuilder\\Preline\\": "ui-builder-preline/src/",
+            "Lagdo\\UiBuilder\\WebAwesome\\": "ui-builder-webawesome/src/"
         },
         "files": [
             "jaxon-ui-builder/src/register.php"
@@ -46,12 +46,12 @@
         "lagdo/html-builder": "self.version",
         "lagdo/ui-builder": "self.version",
         "lagdo/jaxon-ui-builder": "self.version",
-        "lagdo/ui-builder-bootstrap3": "self.version",
         "lagdo/ui-builder-bootstrap4": "self.version",
         "lagdo/ui-builder-bootstrap5": "self.version",
         "lagdo/ui-builder-daisyui": "self.version",
         "lagdo/ui-builder-flowbite": "self.version",
-        "lagdo/ui-builder-preline": "self.version"
+        "lagdo/ui-builder-preline": "self.version",
+        "lagdo/ui-builder-webawesome": "self.version"
     },
     "extra": {
         "contao-manager-plugin": []
