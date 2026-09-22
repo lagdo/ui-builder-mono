@@ -32,15 +32,22 @@
             "Lagdo\\UiBuilder\\Bootstrap5\\": "ui-builder-bootstrap5/src/",
             "Lagdo\\UiBuilder\\DaisyUi\\": "ui-builder-daisyui/src/",
             "Lagdo\\UiBuilder\\Flowbite\\": "ui-builder-flowbite/src/",
-            "Lagdo\\UiBuilder\\Preline\\": "ui-builder-preline/src/",
-            "Lagdo\\UiBuilder\\WebAwesome\\": "ui-builder-webawesome/src/"
+            "Lagdo\\UiBuilder\\Preline\\": "ui-builder-preline/src/"
         },
         "files": [
             "jaxon-ui-builder/src/register.php"
         ]
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Lagdo\\HtmlBuilder\\Tests\\": "html-builder/tests/"
+        }
+    },
     "require-dev": {
-        "contao/monorepo-tools": "^0.2"
+        "contao/monorepo-tools": "^0.2",
+        "php-coveralls/php-coveralls": "^2.5",
+        "phpunit/phpcov": "^8.2",
+        "phpunit/phpunit": "^9.5"
     },
     "replace": {
         "lagdo/html-builder": "self.version",
@@ -50,8 +57,7 @@
         "lagdo/ui-builder-bootstrap5": "self.version",
         "lagdo/ui-builder-daisyui": "self.version",
         "lagdo/ui-builder-flowbite": "self.version",
-        "lagdo/ui-builder-preline": "self.version",
-        "lagdo/ui-builder-webawesome": "self.version"
+        "lagdo/ui-builder-preline": "self.version"
     },
     "extra": {
         "contao-manager-plugin": []
