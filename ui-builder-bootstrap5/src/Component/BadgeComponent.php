@@ -25,7 +25,7 @@ class BadgeComponent extends BaseComponent
         $visual = $visual?->value ?? 'light';
         $this->element()->addClass("bg-$visual");
         // The text is dark for some types of badges.
-        if (!isset($this->properties['alert'])) {
+        if ($this->prop('alert', null) === null) {
             $this->element()->addClass('text-dark');
         }
 
@@ -42,7 +42,6 @@ class BadgeComponent extends BaseComponent
      */
     public function top(): static
     {
-        $this->properties['onTop'] = true;
-        return $this;
+        return $this->setProp('onTop', true);
     }
 }

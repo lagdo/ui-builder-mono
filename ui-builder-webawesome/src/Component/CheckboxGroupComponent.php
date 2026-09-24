@@ -19,8 +19,7 @@ class CheckboxGroupComponent extends BaseComponent
      */
     protected function onBuild(): void
     {
-        if (isset($this->properties['direction'])) {
-            $direction = $this->properties['direction'];
+        if (($direction = $this->prop('direction', null)) !== null) {
             $this->element()->setAttribute('orientation', $direction->value);
         }
     }

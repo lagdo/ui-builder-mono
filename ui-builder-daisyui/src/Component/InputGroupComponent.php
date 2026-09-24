@@ -11,7 +11,7 @@ class InputGroupComponent extends BaseComponent
      */
     protected function onBuild(): void
     {
-        $class = ($this->properties['horizontal'] ?? false) ?
+        $class = ($this->prop('horizontal', false)) ?
             'join join-horizontal' : 'join join-vertical';
         $this->addBaseClass($class);
     }
