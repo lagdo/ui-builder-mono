@@ -24,7 +24,7 @@ class BadgeComponent extends BaseComponent
                 'text-xs font-medium px-1.5 py-0.5 rounded', // Success
             VisualEnum::WARNING => 'bg-warning-soft text-fg-warning text-xs ' .
                 'font-medium px-1.5 py-0.5 rounded', // Warning
-            VisualEnum::DANGER => 'bg-danger-soft text-fg-danger-strong ' .
+            VisualEnum::ERROR => 'bg-danger-soft text-fg-danger-strong ' .
                 'text-xs font-medium px-1.5 py-0.5 rounded', // Danger
             default => 'bg-neutral-primary-soft text-heading text-xs ' .
                 'font-medium px-1.5 py-0.5 rounded', // Alternative

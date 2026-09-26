@@ -16,7 +16,7 @@
         "source": "https://github.com/lagdo/jaxon-ui-builder"
     },
     "require": {
-        "php": ">=8.0",
+        "php": ">=8.1",
         "jaxon-php/jaxon-core": "^5.4",
         "lagdo/ui-builder": "0.14.*"
     },

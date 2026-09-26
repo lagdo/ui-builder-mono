@@ -17,6 +17,14 @@ class ButtonComponent extends BaseComponent
     /**
      * @return void
      */
+    protected function onCreate(): void
+    {
+        $this->setAttribute('type', 'button');
+    }
+
+    /**
+     * @return void
+     */
     protected function onBuild(): void
     {
         $size = $this->prop('size', SizeEnum::DEFAULT);
@@ -42,7 +50,7 @@ class ButtonComponent extends BaseComponent
             VisualEnum::INFO => 'brand', // Same as primary.
             VisualEnum::SUCCESS => 'success',
             VisualEnum::WARNING => 'warning',
-            VisualEnum::DANGER => 'danger',
+            VisualEnum::ERROR => 'danger',
             default => 'neutral',
         });
     }

@@ -14,7 +14,8 @@ class ButtonComponent extends BaseComponent
      */
     protected function onCreate(): void
     {
-        $this->addBaseClass('btn');
+        $this->addBaseClass('btn')
+            ->setAttribute('type', 'button');
     }
 
     /**

@@ -24,7 +24,7 @@ class BadgeComponent extends BaseComponent
             VisualEnum::INFO => 'brand', // Same as primary.
             VisualEnum::SUCCESS => 'success',
             VisualEnum::WARNING => 'warning',
-            VisualEnum::DANGER => 'danger',
+            VisualEnum::ERROR => 'danger',
         };
         $this->element()->setAttribute('variant', $variant);
     }

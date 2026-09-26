@@ -23,7 +23,7 @@ class BadgeComponent extends BaseComponent
             VisualEnum::SUCCESS => 'bg-primary-100 text-primary-800 ' .
                 'dark:bg-primary-500/20 dark:text-primary-400',
             VisualEnum::WARNING => 'bg-plain/10 text-foreground-inverse',
-            VisualEnum::DANGER => 'bg-yellow-100 text-yellow-800 dark:bg-yellow-500/20 dark:text-yellow-400',
+            VisualEnum::ERROR => 'bg-yellow-100 text-yellow-800 dark:bg-yellow-500/20 dark:text-yellow-400',
             default => 'bg-muted text-muted-foreground-1',
         };
         $this->element()->addClass($class);

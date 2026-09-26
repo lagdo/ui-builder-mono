@@ -39,6 +39,14 @@ class ButtonComponent extends BaseComponent
     /**
      * @return void
      */
+    protected function onCreate(): void
+    {
+        $this->setAttribute('type', 'button');
+    }
+
+    /**
+     * @return void
+     */
     protected function onBuild(): void
     {
         $size = $this->prop('size', SizeEnum::DEFAULT);
