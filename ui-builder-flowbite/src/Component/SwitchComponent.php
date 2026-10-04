@@ -4,7 +4,7 @@ namespace Lagdo\UiBuilder\Flowbite\Component;
 
 use Lagdo\UiBuilder\Component\SwitchComponent as BaseComponent;
 use Lagdo\HtmlBuilder\HtmlElement;
-use Lagdo\HtmlBuilder\Element\Text;
+use Lagdo\HtmlBuilder\Element\Html;
 
 class SwitchComponent extends BaseComponent
 {
@@ -31,10 +31,10 @@ class SwitchComponent extends BaseComponent
     /**
      * @inheritDoc
      */
-    protected function setLabel(HtmlElement $label, Text $text): void
+    protected function setLabel(HtmlElement $label, Html $html): void
     {
         $this->appendSibling($this->newElement('span', [
             'class' => 'ms-3 text-sm font-medium text-heading select-none',
-        ])->addChild($text));
+        ])->addChild($html));
     }
 }

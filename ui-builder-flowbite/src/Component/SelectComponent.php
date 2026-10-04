@@ -4,7 +4,7 @@ namespace Lagdo\UiBuilder\Flowbite\Component;
 
 use Lagdo\UiBuilder\Component\SelectComponent as BaseComponent;
 use Lagdo\HtmlBuilder\HtmlElement;
-use Lagdo\HtmlBuilder\Element\Text;
+use Lagdo\HtmlBuilder\Element\Html;
 
 class SelectComponent extends BaseComponent
 {
@@ -23,9 +23,9 @@ class SelectComponent extends BaseComponent
     /**
      * @inheritDoc
      */
-    protected function setLabel(HtmlElement $label, Text $text): void
+    protected function setLabel(HtmlElement $label, Html $html): void
     {
-        $label->addClass('block mb-2.5 text-sm font-medium text-heading')->addChild($text);
+        $label->addClass('block mb-2.5 text-sm font-medium text-heading')->addChild($html);
         $this->prependSibling($label);
     }
 }

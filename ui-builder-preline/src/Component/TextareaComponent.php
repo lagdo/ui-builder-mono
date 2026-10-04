@@ -4,7 +4,7 @@ namespace Lagdo\UiBuilder\Preline\Component;
 
 use Lagdo\UiBuilder\Component\TextareaComponent as BaseComponent;
 use Lagdo\HtmlBuilder\HtmlElement;
-use Lagdo\HtmlBuilder\Element\Text;
+use Lagdo\HtmlBuilder\Element\Html;
 
 class TextareaComponent extends BaseComponent
 {
@@ -27,9 +27,9 @@ class TextareaComponent extends BaseComponent
     /**
      * @inheritDoc
      */
-    protected function setLabel(HtmlElement $label, Text $text): void
+    protected function setLabel(HtmlElement $label, Html $html): void
     {
-        $label->addClass('label')->addChild($text);
+        $label->addClass('label')->addChild($html);
         $this->prependSibling($label);
     }
 }

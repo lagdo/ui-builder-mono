@@ -4,7 +4,7 @@ namespace Lagdo\UiBuilder\Preline\Component;
 
 use Lagdo\UiBuilder\Component\SwitchComponent as BaseComponent;
 use Lagdo\HtmlBuilder\HtmlElement;
-use Lagdo\HtmlBuilder\Element\Text;
+use Lagdo\HtmlBuilder\Element\Html;
 
 class SwitchComponent extends BaseComponent
 {
@@ -33,10 +33,10 @@ class SwitchComponent extends BaseComponent
     /**
      * @inheritDoc
      */
-    protected function setLabel(HtmlElement $label, Text $text): void
+    protected function setLabel(HtmlElement $label, Html $html): void
     {
         $this->addWrapper($this->newElement('div', ['class' => 'flex items-center gap-x-3']));
-        $label->addChild($text)
+        $label->addChild($html)
             ->setClass('text-sm text-muted-foreground-1');
         $this->appendSibling($label);
     }

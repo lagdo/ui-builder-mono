@@ -4,7 +4,7 @@ namespace Lagdo\UiBuilder\Preline\Component;
 
 use Lagdo\UiBuilder\Component\CheckboxComponent as BaseComponent;
 use Lagdo\HtmlBuilder\HtmlElement;
-use Lagdo\HtmlBuilder\Element\Text;
+use Lagdo\HtmlBuilder\Element\Html;
 
 class CheckboxComponent extends BaseComponent
 {
@@ -22,10 +22,10 @@ class CheckboxComponent extends BaseComponent
     /**
      * @inheritDoc
      */
-    protected function setLabel(HtmlElement $label, Text $text): void
+    protected function setLabel(HtmlElement $label, Html $html): void
     {
         $this->addWrapper($this->newElement('div', ['class' => 'flex items-center']));
-        $label->addChild($text)
+        $label->addChild($html)
             ->setClass('text-sm ms-3 text-muted-foreground-1');
         $this->appendSibling($label);
     }

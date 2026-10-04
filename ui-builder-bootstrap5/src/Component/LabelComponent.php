@@ -16,12 +16,12 @@ class LabelComponent extends BaseComponent
     {
         // Only one of these label should be added.
         switch(true) {
+            case is_a($this->parent(), InputGroupComponent::class):
+                $this->addBaseClass('input-group-text');
+                break;
             case $this->inForm():
                 $this->addBaseClass('form-label');
                 break;
-            case is_a($this->parent(), InputGroupComponent::class):
-                $this->addBaseClass('input-group-text');
-                // break;
         };
     }
 }
