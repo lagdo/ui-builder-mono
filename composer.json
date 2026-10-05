@@ -10,17 +10,13 @@
     ],
     "homepage": "https://github.com/lagdo/ui-builder",
     "license": "MIT",
-    "keywords": [
-        "HTML",
-        "UI Builder",
-        "Bootstrap"
-    ],
+    "keywords": ["HTML Builder", "UI Builder", "Bootstrap", "Tailwind", "DaisyUI", "WebAwesome", "Bulma"],
     "support": {
         "issues": "https://github.com/lagdo/ui-builder/issues",
         "source": "https://github.com/lagdo/ui-builder"
     },
     "require": {
-        "php": ">=8.0",
+        "php": ">=8.1",
         "jaxon-php/jaxon-core": "^5.4"
     },
     "autoload": {

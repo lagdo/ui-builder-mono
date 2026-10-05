@@ -18,7 +18,7 @@
     "require": {
         "php": ">=8.1",
         "jaxon-php/jaxon-core": "^5.4",
-        "lagdo/ui-builder": "0.14.*"
+        "lagdo/ui-builder": "0.15.*"
     },
     "autoload": {
         "psr-4": {
