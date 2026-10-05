@@ -29,7 +29,6 @@ use function trim;
 function uiRegister(): void
 {
     $di = jaxon()->di();
-
     // Register the pagination renderer.
     $di->set(PaginationRenderer::class, fn() =>
         new PaginationRenderer($di->g(BuilderInterface::class)));
@@ -153,11 +152,12 @@ function setAttr(HtmlElement $element, string $tagName, array $arguments): bool
 }
 
 /**
- * @param HtmlBuilder $builder
+ * @template Builder of HtmlBuilder
+ * @param Builder $builder
  *
- * @return void
+ * @return Builder
  */
-function initUiBuilder(HtmlBuilder $builder): void
+function initUiBuilder(HtmlBuilder $builder): mixed
 {
     // This factory adds the Jaxon jxnHtml() function to the builder interface.
     $builder->registerBuilderHelper('jxn', function(HtmlBuilder $builder,
@@ -168,6 +168,7 @@ function initUiBuilder(HtmlBuilder $builder): void
 
         throw new LogicException("Call to undefined method \"{$method}()\" in the HTML UI builder.");
     });
+
     // This factory adds functions to set Jaxon attributes on HTML elements.
     $builder->registerElementHelper('jxn', function(HtmlElement $element,
         string $tagName, string $method, array $arguments): HtmlElement {
@@ -177,6 +178,7 @@ function initUiBuilder(HtmlBuilder $builder): void
 
         throw new LogicException("Call to undefined method \"{$method}()\" in the HTML element.");
     });
+
     // This factory adds functions to set Jaxon attributes on HTML components.
     $builder->registerComponentHelper('jxn', function(HtmlComponent $component,
         string $tagName, string $method, array $arguments): HtmlComponent {
@@ -186,4 +188,6 @@ function initUiBuilder(HtmlBuilder $builder): void
 
         throw new LogicException("Call to undefined method \"{$method}()\" in the HTML component.");
     });
+
+    return $builder;
 }
