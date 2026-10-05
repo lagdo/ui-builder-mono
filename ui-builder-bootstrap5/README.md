@@ -12,6 +12,23 @@ This package extends the [HTML UI builder](https://github.com/lagdo/ui-builder) 
 
 ### Usage
 
+Create a builder instance.
+
+```php
+use Lagdo\UiBuilder\Bootstrap5\Builder;
+
+$builder = new Builder();
+```
+
+The [CoreUI admin template](https://coreui.io) defines custom classes for its components.
+So a different builder class is provided.
+
+```php
+use Lagdo\UiBuilder\Bootstrap5\CoreUi\Builder;
+
+$builder = new Builder();
+```
+
 See the [HTML UI builder](https://github.com/lagdo/ui-builder) documentation.
 
 ### Contributing

@@ -107,8 +107,7 @@ class View
                     )
                     ->width(8)
                 )
-            )
-            ->responsive()->setId('form-id')
+            )->setId('form-id')
         );
     }
 }

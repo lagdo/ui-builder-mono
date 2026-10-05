@@ -12,6 +12,14 @@ This package extends the [HTML UI builder](https://github.com/lagdo/ui-builder) 
 
 ### Usage
 
+Create a builder instance.
+
+```php
+use Lagdo\UiBuilder\DaisyUi\Builder;
+
+$builder = new Builder();
+```
+
 See the [HTML UI builder](https://github.com/lagdo/ui-builder) documentation.
 
 ### Javascript code for tabs
