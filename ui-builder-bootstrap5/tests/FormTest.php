@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Lagdo\UiBuilder\Bootstrap5\Tests;
 
 use Lagdo\UiBuilder\Bootstrap5\Builder;

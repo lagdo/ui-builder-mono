@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Lagdo\UiBuilder\WebAwesome;
 
 use Lagdo\UiBuilder\AbstractBuilder;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Lagdo\UiBuilder\Flowbite\Tests;
 
 use Lagdo\UiBuilder\Flowbite\Builder;

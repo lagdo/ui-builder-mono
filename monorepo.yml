@@ -16,14 +16,22 @@ repositories:
         url: git@github.com:lagdo/ui-builder-bootstrap4.git
     ui-builder-bootstrap5:
         url: git@github.com:lagdo/ui-builder-bootstrap5.git
+    ui-builder-bulma:
+        url: git@github.com:lagdo/ui-builder-bulma.git
+    ui-builder-tailwind:
+        url: git@github.com:lagdo/ui-builder-tailwind.git
     ui-builder-daisyui:
         url: git@github.com:lagdo/ui-builder-daisyui.git
     ui-builder-flowbite:
         url: git@github.com:lagdo/ui-builder-flowbite.git
     ui-builder-preline:
         url: git@github.com:lagdo/ui-builder-preline.git
+    ui-builder-webawesome:
+        url: git@github.com:lagdo/ui-builder-webawesome.git
 
 # Additional composer settings for the root composer.json
 composer:
     require-dev:
         contao/monorepo-tools: ^0.2
+    require:
+        lagdo/facades: ^1.2

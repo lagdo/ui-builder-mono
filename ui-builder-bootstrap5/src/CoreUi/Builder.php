@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Lagdo\UiBuilder\Bootstrap5\CoreUi;
 
 use Lagdo\UiBuilder\Bootstrap5\Builder as Bootstrap5;

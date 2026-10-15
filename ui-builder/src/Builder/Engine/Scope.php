@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Lagdo\UiBuilder\Builder\Engine;
 
 use Lagdo\HtmlBuilder\Builder\Scope as BaseScope;
