@@ -1,0 +1,18 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Lagdo\UiBuilder\Bulma\Component;
+
+use Lagdo\UiBuilder\Component\TabContentComponent as BaseComponent;
+
+class TabContentComponent extends BaseComponent
+{
+    /**
+     * @return void
+     */
+    protected function onCreate(): void
+    {
+        $this->addBaseClass('tab-content');
+    }
+}

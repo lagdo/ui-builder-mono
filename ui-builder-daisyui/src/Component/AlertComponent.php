@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Lagdo\UiBuilder\DaisyUi\Component;
 
 use Lagdo\UiBuilder\Component\AlertComponent as BaseComponent;
+use Lagdo\UiBuilder\Component\Attr\LevelEnum;
 
 class AlertComponent extends BaseComponent
 {
@@ -13,7 +14,7 @@ class AlertComponent extends BaseComponent
      */
     protected function onCreate(): void
     {
-        $this->addBaseClass('alert alert-soft');
+        $this->addBaseClass('alert');
     }
 
     /**
@@ -23,7 +24,8 @@ class AlertComponent extends BaseComponent
     {
         $level = $this->prop('level', null);
         if ($level !== null) {
-            $this->element()->addClass("alert-{$level->value}");
+            $class = $level === LevelEnum::DANGER ? 'error' : $level->value;
+            $this->element()->addClass("alert-{$class}");
         }
     }
 }

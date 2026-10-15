@@ -1,0 +1,7 @@
+.project
+.phpunit.result.cache
+.settings/*
+composer.phar
+composer.lock
+vendor/
+.idea/

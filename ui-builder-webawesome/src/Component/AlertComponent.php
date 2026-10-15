@@ -25,7 +25,7 @@ class AlertComponent extends BaseComponent
             LevelEnum::SUCCESS => 'success',
             LevelEnum::WARNING => 'warning',
             LevelEnum::DANGER => 'danger',
-            default => 'neutral',
+            default => 'brand',
         };
         $this->element()->setAttribute('variant', $variant);
     }
