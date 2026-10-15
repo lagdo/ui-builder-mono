@@ -6,8 +6,8 @@ use Lagdo\UiBuilder\UiComponent;
 
 abstract class BadgeComponent extends UiComponent
 {
-    use Traits\VisualTrait;
-    use Traits\VariantTrait;
+    use Mixin\VisualTrait;
+    use Mixin\VariantTrait;
 
     /**
      * @var string

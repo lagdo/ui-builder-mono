@@ -1,6 +1,8 @@
 <?php
 
-namespace Lagdo\UiBuilder\DaisyUi\Component\Traits;
+declare(strict_types=1);
+
+namespace Lagdo\UiBuilder\WebAwesome\Component\Mixin;
 
 use Lagdo\HtmlBuilder\Element\Html;
 use Lagdo\HtmlBuilder\HtmlElement;
@@ -39,10 +41,11 @@ trait InputValidationTrait
     {
         $this->addClass($valid ? 'validator' : 'validator invalid');
         if ($message !== '') {
-            $element = $this->newElement('div', ['class' => 'validator-hint'])
+            $class = $valid ? 'text-sm text-teal-500 mt-2' : 'text-sm text-red-500 mt-2';
+            $element = $this->newElement('p', ['class' => $class])
                 ->addChild(new Html($message));
             $this->appendSibling($element);
-            $this->addWrapper($this->newElement('fieldset', ['class' => 'fieldset']));
+            // $this->addWrapper($this->newElement('div', ['class' => 'relative']));
         }
         return $this;
     }
@@ -55,13 +58,17 @@ trait InputValidationTrait
      */
     public function tooltip(bool $valid, string $message = ''): static
     {
-        $this->addWrapper($this->newElement('div', [
-            'class' => $valid ? 'tooltip tooltip-success' : 'tooltip tooltip-error',
-        ]));
+        $this->addClass('hs-tooltip-toggle');
         if ($message !== '') {
-            $content = $this->newElement('div', ['class' => 'tooltip-content'])
+            $class = 'hs-tooltip-content hs-tooltip-shown:opacity-100 ' .
+                'hs-tooltip-shown:visible opacity-0 transition-opacity inline-block ' .
+                'absolute invisible z-10 py-1 px-2 bg-tooltip border border-tooltip-line ' .
+                'text-xs font-medium text-tooltip-foreground rounded-md shadow-2xs';
+            $element = $this->newElement('span', ['class' => $class])
                 ->addChild(new Html($message));
-            $this->prependSibling($content);
+            $this->addChild($element);
+            $class = 'hs-tooltip [--placement:auto] inline-block';
+            $this->addWrapper($this->newElement('div', ['class' => $class]));
         }
         return $this;
     }

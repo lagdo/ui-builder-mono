@@ -8,7 +8,7 @@ use Lagdo\HtmlBuilder\Element\Html;
 
 class SelectComponent extends BaseComponent
 {
-    // use Traits\InputValidationTrait;
+    // use Mixin\InputValidationTrait;
 
     /**
      * @return void

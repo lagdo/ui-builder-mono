@@ -1,6 +1,8 @@
 <?php
 
-namespace Lagdo\UiBuilder\Component\Traits;
+declare(strict_types=1);
+
+namespace Lagdo\UiBuilder\Component\Mixin;
 
 use Lagdo\UiBuilder\Component\Attr\SizeEnum;
 

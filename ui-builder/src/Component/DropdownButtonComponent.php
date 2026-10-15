@@ -6,7 +6,7 @@ use Lagdo\UiBuilder\UiComponent;
 
 abstract class DropdownButtonComponent extends UiComponent
 {
-    use Traits\VisualTrait;
+    use Mixin\VisualTrait;
 
     /**
      * @var string

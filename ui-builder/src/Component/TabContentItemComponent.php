@@ -6,7 +6,7 @@ use Lagdo\UiBuilder\UiComponent;
 
 abstract class TabContentItemComponent extends UiComponent
 {
-    use Traits\StateTrait;
+    use Mixin\StateTrait;
 
     /**
      * @var string

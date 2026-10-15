@@ -6,8 +6,8 @@ use Lagdo\UiBuilder\UiComponent;
 
 abstract class AlertComponent extends UiComponent
 {
-    use Traits\LevelTrait;
-    use Traits\VariantTrait;
+    use Mixin\LevelTrait;
+    use Mixin\VariantTrait;
 
     /**
      * @var string

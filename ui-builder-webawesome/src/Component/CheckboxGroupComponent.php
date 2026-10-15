@@ -3,7 +3,7 @@
 namespace Lagdo\UiBuilder\WebAwesome\Component;
 
 use Lagdo\UiBuilder\Component\CheckboxGroupComponent as BaseComponent;
-use Lagdo\UiBuilder\Component\Traits\DirectionTrait;
+use Lagdo\UiBuilder\Component\Mixin\DirectionTrait;
 
 class CheckboxGroupComponent extends BaseComponent
 {

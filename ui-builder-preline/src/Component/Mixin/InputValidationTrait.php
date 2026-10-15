@@ -1,6 +1,8 @@
 <?php
 
-namespace Lagdo\UiBuilder\Preline\Component\Traits;
+declare(strict_types=1);
+
+namespace Lagdo\UiBuilder\Preline\Component\Mixin;
 
 use Lagdo\HtmlBuilder\Element\Html;
 use Lagdo\HtmlBuilder\HtmlElement;

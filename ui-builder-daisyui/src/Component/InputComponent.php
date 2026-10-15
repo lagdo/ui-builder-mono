@@ -10,7 +10,7 @@ use function is_a;
 
 class InputComponent extends BaseComponent
 {
-    use Traits\InputValidationTrait;
+    use Mixin\InputValidationTrait;
 
     /**
      * @return void

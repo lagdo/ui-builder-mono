@@ -4,8 +4,8 @@ namespace Lagdo\UiBuilder\Component;
 
 abstract class SelectComponent extends InputComponent
 {
-    use Traits\InputLabelTrait;
-    use Traits\InputValidationTrait;
+    use Mixin\InputLabelTrait;
+    use Mixin\InputValidationTrait;
 
     /**
      * @var string

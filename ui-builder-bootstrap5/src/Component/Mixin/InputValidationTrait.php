@@ -1,6 +1,8 @@
 <?php
 
-namespace Lagdo\UiBuilder\Bootstrap5\Component\Traits;
+declare(strict_types=1);
+
+namespace Lagdo\UiBuilder\Bootstrap5\Component\Mixin;
 
 use Lagdo\HtmlBuilder\Element\Html;
 use Lagdo\HtmlBuilder\HtmlElement;

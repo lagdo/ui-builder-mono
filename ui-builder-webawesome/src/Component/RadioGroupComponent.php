@@ -3,7 +3,7 @@
 namespace Lagdo\UiBuilder\WebAwesome\Component;
 
 use Lagdo\UiBuilder\Component\RadioGroupComponent as BaseComponent;
-use Lagdo\UiBuilder\Component\Traits\DirectionTrait;
+use Lagdo\UiBuilder\Component\Mixin\DirectionTrait;
 
 class RadioGroupComponent extends BaseComponent
 {

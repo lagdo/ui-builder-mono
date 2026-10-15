@@ -6,11 +6,11 @@ use Lagdo\UiBuilder\UiComponent;
 
 abstract class ButtonComponent extends UiComponent
 {
-    use Traits\VisualTrait;
-    use Traits\StateTrait;
-    use Traits\JustifyTrait;
-    use Traits\VariantTrait;
-    use Traits\SizeTrait;
+    use Mixin\VisualTrait;
+    use Mixin\StateTrait;
+    use Mixin\JustifyTrait;
+    use Mixin\VariantTrait;
+    use Mixin\SizeTrait;
 
     /**
      * @var string

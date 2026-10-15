@@ -6,8 +6,8 @@ use Lagdo\UiBuilder\UiComponent;
 
 abstract class RadioComponent extends UiComponent
 {
-    use Traits\InputLabelTrait;
-    use Traits\InputValidationTrait;
+    use Mixin\InputLabelTrait;
+    use Mixin\InputValidationTrait;
 
     /**
      * @var string

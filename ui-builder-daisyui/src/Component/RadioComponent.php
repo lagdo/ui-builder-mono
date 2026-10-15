@@ -10,7 +10,7 @@ use function is_a;
 
 class RadioComponent extends BaseComponent
 {
-    // use Traits\InputValidationTrait;
+    // use Mixin\InputValidationTrait;
 
     /**
      * @return void

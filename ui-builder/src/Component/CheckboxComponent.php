@@ -6,7 +6,7 @@ use Lagdo\UiBuilder\UiComponent;
 
 abstract class CheckboxComponent extends UiComponent
 {
-    use Traits\InputLabelTrait;
+    use Mixin\InputLabelTrait;
 
     /**
      * @var string

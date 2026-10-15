@@ -6,7 +6,7 @@ use Lagdo\UiBuilder\Component\InputComponent as BaseComponent;
 
 class InputComponent extends BaseComponent
 {
-    use Traits\InputValidationTrait;
+    use Mixin\InputValidationTrait;
 
     /**
      * @var string

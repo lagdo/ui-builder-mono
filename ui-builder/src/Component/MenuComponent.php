@@ -6,7 +6,7 @@ use Lagdo\UiBuilder\UiComponent;
 
 abstract class MenuComponent extends UiComponent
 {
-    use Traits\DirectionTrait;
+    use Mixin\DirectionTrait;
 
     /**
      * @var string
