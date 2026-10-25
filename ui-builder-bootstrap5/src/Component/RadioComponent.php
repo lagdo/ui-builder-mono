@@ -4,11 +4,10 @@ declare(strict_types=1);
 
 namespace Lagdo\UiBuilder\Bootstrap5\Component;
 
-use Lagdo\UiBuilder\Component\RadioComponent as BaseComponent;
-use Lagdo\UiBuilder\Component\InputGroupComponent;
-use Lagdo\UiBuilder\Component\RadioGroupComponent;
-use Lagdo\HtmlBuilder\HtmlElement;
 use Lagdo\HtmlBuilder\Element\Html;
+use Lagdo\UiBuilder\Component\InputGroupComponent;
+use Lagdo\UiBuilder\Component\RadioComponent as BaseComponent;
+use Lagdo\UiBuilder\Component\RadioGroupComponent;
 
 use function is_a;
 

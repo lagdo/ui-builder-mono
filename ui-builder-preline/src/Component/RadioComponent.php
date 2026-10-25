@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace Lagdo\UiBuilder\Preline\Component;
 
-use Lagdo\UiBuilder\Component\RadioComponent as BaseComponent;
-use Lagdo\HtmlBuilder\HtmlElement;
 use Lagdo\HtmlBuilder\Element\Html;
+use Lagdo\UiBuilder\Component\RadioComponent as BaseComponent;
 
 class RadioComponent extends BaseComponent
 {

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Lagdo\UiBuilder\WebAwesome\Component;
 
-use Lagdo\UiBuilder\Component\FormFieldComponent as BaseComponent;
 use Lagdo\HtmlBuilder\Element\Html;
+use Lagdo\UiBuilder\Component\FormFieldComponent as BaseComponent;
 
 class FormFieldComponent extends BaseComponent
 {

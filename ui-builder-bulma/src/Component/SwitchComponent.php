@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Lagdo\UiBuilder\Bulma\Component;
 
-use Lagdo\UiBuilder\Component\SwitchComponent as BaseComponent;
 use Lagdo\HtmlBuilder\Element\Html;
+use Lagdo\UiBuilder\Component\SwitchComponent as BaseComponent;
 
 class SwitchComponent extends BaseComponent
 {

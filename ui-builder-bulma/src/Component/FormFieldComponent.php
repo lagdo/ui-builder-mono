@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Lagdo\UiBuilder\Bulma\Component;
 
-use Lagdo\UiBuilder\Component\FormFieldComponent as BaseComponent;
-use Lagdo\HtmlBuilder\HtmlElement;
 use Lagdo\HtmlBuilder\Element\Html;
+use Lagdo\HtmlBuilder\HtmlElement;
+use Lagdo\UiBuilder\Component\FormFieldComponent as BaseComponent;
 
 class FormFieldComponent extends BaseComponent
 {

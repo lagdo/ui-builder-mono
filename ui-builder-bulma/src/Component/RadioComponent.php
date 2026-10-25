@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Lagdo\UiBuilder\Bulma\Component;
 
-use Lagdo\UiBuilder\Component\RadioComponent as BaseComponent;
 use Lagdo\HtmlBuilder\Element\Html;
+use Lagdo\UiBuilder\Component\RadioComponent as BaseComponent;
 
 use function is_a;
 

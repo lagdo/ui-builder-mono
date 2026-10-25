@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Lagdo\UiBuilder\Bootstrap5\Component;
 
-use Lagdo\UiBuilder\Component\SwitchComponent as BaseComponent;
 use Lagdo\HtmlBuilder\Element\Html;
+use Lagdo\UiBuilder\Component\SwitchComponent as BaseComponent;
 
 use function is_a;
 

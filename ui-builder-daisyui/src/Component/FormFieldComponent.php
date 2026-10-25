@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Lagdo\UiBuilder\DaisyUi\Component;
 
-use Lagdo\UiBuilder\Component\FormFieldComponent as BaseComponent;
 use Lagdo\HtmlBuilder\Element\Html;
+use Lagdo\UiBuilder\Component\FormFieldComponent as BaseComponent;
 
 class FormFieldComponent extends BaseComponent
 {
@@ -14,5 +14,8 @@ class FormFieldComponent extends BaseComponent
      */
     protected function setLabel(Html $html, array $attributes): void
     {
+        $label = $this->newElement('label', $attributes);
+        $label->addClass('label')->addChild($html);
+        $this->prependSibling($label);
     }
 }

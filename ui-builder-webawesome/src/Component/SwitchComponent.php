@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Lagdo\UiBuilder\WebAwesome\Component;
 
+use Lagdo\HtmlBuilder\Element\Html;
 use Lagdo\UiBuilder\Component\SwitchComponent as BaseComponent;
 
 class SwitchComponent extends BaseComponent
@@ -16,9 +17,7 @@ class SwitchComponent extends BaseComponent
     /**
      * @inheritDoc
      */
-    public function label(string $label, array $attributes = []): static
+    protected function setLabel(Html $html, array $attributes): void
     {
-        $this->addText($label);
-        return $this;
     }
 }

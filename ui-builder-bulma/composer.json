@@ -20,6 +20,7 @@
         "lagdo/ui-builder": "0.15.*"
     },
     "require-dev": {
+        "jaxon-php/jaxon-dialogs": "^5.1",
         "phpunit/phpunit": "^9.5",
         "php-coveralls/php-coveralls": "^2.5",
         "phpunit/phpcov": "^8.2"
