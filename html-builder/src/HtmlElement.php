@@ -26,6 +26,7 @@ use function htmlspecialchars;
 use function implode;
 use function is_a;
 use function is_bool;
+use function is_int;
 use function is_numeric;
 use function is_string;
 use function sprintf;
@@ -254,14 +255,15 @@ class HtmlElement extends Element
 
     /**
      * @param string $name
-     * @param string|bool $value
+     * @param string|int|bool $value
      * @param bool $escape
      *
      * @return static
      */
-    public function setAttribute(string $name, string|bool $value = true, bool $escape = true): static
+    public function setAttribute(string $name,
+        string|int|bool $value = true, bool $escape = true): static
     {
-        $this->attributes[$name] = $value;
+        $this->attributes[$name] = is_int($value) ? "$value" : $value;
         $this->escapes[$name] = $escape;
         return $this;
     }
@@ -393,7 +395,7 @@ class HtmlElement extends Element
      */
     private function escape(string|bool $value): string
     {
-        return is_bool($value) ? $value : htmlspecialchars($value, ENT_COMPAT);
+        return is_bool($value) ? $value : htmlspecialchars("$value", ENT_COMPAT);
     }
 
     /**
