@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Lagdo\UiBuilder\Preline\Component;
 
-use Lagdo\UiBuilder\Component\MenuComponent as BaseComponent;
+use Lagdo\UiBuilder\Component\PanelMenuComponent as BaseComponent;
 
-class MenuComponent extends BaseComponent
+class PanelMenuComponent extends BaseComponent
 {
     /**
      * @return void

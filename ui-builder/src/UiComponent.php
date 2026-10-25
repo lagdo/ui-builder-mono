@@ -11,7 +11,6 @@ use Lagdo\HtmlBuilder\HtmlElement;
 use Lagdo\UiBuilder\Builder\Engine\ScopeInterface;
 use Closure;
 
-use function get_class;
 use function trim;
 
 abstract class UiComponent extends HtmlComponent
@@ -225,7 +224,18 @@ abstract class UiComponent extends HtmlComponent
      */
     final protected function wrapElement(HtmlElement $wrapper): static
     {
-        $this->wrappers[] = $wrapper;
+        $this->elementWrappers[] = $wrapper;
+        return $this;
+    }
+
+    /**
+     * @param HtmlElement $wrapper
+     *
+     * @return static
+     */
+    final protected function wrapChildren(HtmlElement $wrapper): static
+    {
+        $this->childrenWrappers[] = $wrapper;
         return $this;
     }
 

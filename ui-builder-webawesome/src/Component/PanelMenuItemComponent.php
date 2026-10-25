@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Lagdo\UiBuilder\WebAwesome\Component;
 
-use Lagdo\UiBuilder\Component\MenuItemComponent as BaseComponent;
+use Lagdo\UiBuilder\Component\PanelMenuItemComponent as BaseComponent;
 
-class MenuItemComponent extends BaseComponent
+class PanelMenuItemComponent extends BaseComponent
 {
     /**
      * @var string

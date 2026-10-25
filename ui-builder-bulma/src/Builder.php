@@ -16,7 +16,6 @@ class Builder extends AbstractBuilder
         // Button components
         $this->buttonComponentClass = Component\ButtonComponent::class;
         $this->buttonGroupComponentClass = Component\ButtonGroupComponent::class;
-        $this->buttonMenuComponentClass = Component\ButtonMenuComponent::class;
         // Card components
         $this->cardComponentClass = Component\CardComponent::class;
         $this->cardImageComponentClass = Component\CardImageComponent::class;
@@ -43,8 +42,8 @@ class Builder extends AbstractBuilder
         $this->selectOptionComponentClass = Component\SelectOptionComponent::class;
         $this->inputGroupComponentClass = Component\InputGroupComponent::class;
         // Menu components
-        $this->menuComponentClass = Component\MenuComponent::class;
-        $this->menuItemComponentClass = Component\MenuItemComponent::class;
+        $this->panelMenuComponentClass = Component\PanelMenuComponent::class;
+        $this->panelMenuItemComponentClass = Component\PanelMenuItemComponent::class;
         $this->breadcrumbComponentClass = Component\BreadcrumbComponent::class;
         $this->breadcrumbItemComponentClass = Component\BreadcrumbItemComponent::class;
         // Pagination components

@@ -7,7 +7,7 @@ namespace Lagdo\UiBuilder\Component;
 use Lagdo\UiBuilder\Component\Attr\DirectionEnum;
 use Lagdo\UiBuilder\UiComponent;
 
-abstract class MenuComponent extends UiComponent
+abstract class PanelMenuComponent extends UiComponent
 {
     use Mixin\DirectionTrait;
 
@@ -21,6 +21,6 @@ abstract class MenuComponent extends UiComponent
      */
     protected function defaultDirection(): DirectionEnum
     {
-        return DirectionEnum::HORIZONTAL;
+        return DirectionEnum::VERTICAL;
     }
 }

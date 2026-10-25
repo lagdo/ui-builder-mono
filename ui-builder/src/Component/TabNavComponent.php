@@ -14,14 +14,14 @@ abstract class TabNavComponent extends UiComponent
     protected string $tagName = '';
 
     /**
-     * @param bool $justified
+     * @param bool $filled
      *
      * @return static
      */
-    public function fill(bool $justified = false): static
+    public function fill(bool $filled = true): static
     {
-        return $this->setProp('filled', true)
-            ->setProp('justified', $justified);
+        return $this->setProp('filled', $filled)
+            ->setProp('justified', $filled);
     }
 
     /**

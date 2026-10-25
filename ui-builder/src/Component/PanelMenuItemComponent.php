@@ -6,7 +6,7 @@ namespace Lagdo\UiBuilder\Component;
 
 use Lagdo\UiBuilder\UiComponent;
 
-abstract class MenuItemComponent extends UiComponent
+abstract class PanelMenuItemComponent extends UiComponent
 {
     use Mixin\StateTrait;
 

@@ -5,19 +5,18 @@ declare(strict_types=1);
 namespace Lagdo\UiBuilder\Builder;
 
 use Lagdo\UiBuilder\Component;
-use Lagdo\UiBuilder\Component\MenuItemComponent;
 
 trait MenuBuilderTrait
 {
     /**
      * @var string
      */
-    protected string $menuComponentClass = '';
+    protected string $panelMenuComponentClass = '';
 
     /**
      * @var string
      */
-    protected string $menuItemComponentClass = '';
+    protected string $panelMenuItemComponentClass = '';
 
     /**
      * @var string
@@ -32,17 +31,17 @@ trait MenuBuilderTrait
     /**
      * @inheritDoc
      */
-    public function menu(...$arguments): Component\MenuComponent
+    public function panelMenu(...$arguments): Component\PanelMenuComponent
     {
-        return $this->createComponent($this->menuComponentClass, $arguments);
+        return $this->createComponent($this->panelMenuComponentClass, $arguments);
     }
 
     /**
      * @inheritDoc
      */
-    public function menuItem(...$arguments): Component\MenuItemComponent
+    public function panelMenuItem(...$arguments): Component\PanelMenuItemComponent
     {
-        return $this->createComponent($this->menuItemComponentClass, $arguments);
+        return $this->createComponent($this->panelMenuItemComponentClass, $arguments);
     }
 
     /**

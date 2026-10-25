@@ -18,6 +18,7 @@ abstract class ButtonGroupComponent extends UiComponent
      */
     public function fullWidth(): static
     {
+        $this->setProp('fullWidth', true);
         return $this;
     }
 }

@@ -9,14 +9,14 @@ use Lagdo\UiBuilder\Component;
 interface MenuBuilderInterface
 {
     /**
-     * @return Component\MenuComponent
+     * @return Component\PanelMenuComponent
      */
-    public function menu(...$arguments): Component\MenuComponent;
+    public function panelMenu(...$arguments): Component\PanelMenuComponent;
 
     /**
-     * @return Component\MenuItemComponent
+     * @return Component\PanelMenuItemComponent
      */
-    public function menuItem(...$arguments): Component\MenuItemComponent;
+    public function panelMenuItem(...$arguments): Component\PanelMenuItemComponent;
 
     /**
      * @return Component\BreadcrumbComponent
