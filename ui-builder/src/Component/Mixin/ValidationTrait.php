@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Lagdo\UiBuilder\Component\Mixin;
 
-trait InputValidationTrait
+trait ValidationTrait
 {
     /**
      * @param bool $required
@@ -19,22 +19,20 @@ trait InputValidationTrait
 
     /**
      * @param bool $valid
-     * @param string $message
      *
      * @return static
      */
-    public function feedback(bool $valid, string $message = ''): static
+    public function feedback(bool $valid): static
     {
         return $this;
     }
 
     /**
-     * @param bool $valid
      * @param string $message
      *
      * @return static
      */
-    public function tooltip(bool $valid, string $message = ''): static
+    public function help(string $message): static
     {
         return $this;
     }

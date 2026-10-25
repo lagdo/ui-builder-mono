@@ -9,6 +9,11 @@ use Lagdo\UiBuilder\Component\Attr\DirectionEnum;
 trait DirectionTrait
 {
     /**
+     * @return DirectionEnum
+     */
+    abstract protected function defaultDirection(): DirectionEnum;
+
+    /**
      * @param DirectionEnum $direction
      *
      * @return static
@@ -23,9 +28,7 @@ trait DirectionTrait
      */
     public function horizontal(): static
     {
-        return $this->setProp('horizontal', true)
-            ->setProp('vertical', false)
-            ->direction(DirectionEnum::HORIZONTAL);
+        return $this->direction(DirectionEnum::HORIZONTAL);
     }
 
     /**
@@ -33,8 +36,30 @@ trait DirectionTrait
      */
     public function vertical(): static
     {
-        return $this->setProp('vertical', true)
-            ->setProp('horizontal', false)
-            ->direction(DirectionEnum::VERTICAL);
+        return $this->direction(DirectionEnum::VERTICAL);
+    }
+
+    /**
+     * @return DirectionEnum
+     */
+    private function getDirection(): DirectionEnum
+    {
+        return $this->prop('direction', $this->defaultDirection());
+    }
+
+    /**
+     * @return bool
+     */
+    public function isHorizontal(): bool
+    {
+        return $this->getDirection() === DirectionEnum::HORIZONTAL;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isVertical(): bool
+    {
+        return $this->getDirection() === DirectionEnum::VERTICAL;
     }
 }

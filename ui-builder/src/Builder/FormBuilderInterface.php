@@ -14,6 +14,11 @@ interface FormBuilderInterface
     public function form(...$arguments): Component\FormComponent;
 
     /**
+     * @return Component\FormFieldComponent
+     */
+    public function formField(...$arguments): Component\FormFieldComponent;
+
+    /**
      * @return Component\LabelComponent
      */
     public function label(...$arguments): Component\LabelComponent;

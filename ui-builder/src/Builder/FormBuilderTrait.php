@@ -16,6 +16,11 @@ trait FormBuilderTrait
     /**
      * @var string
      */
+    protected string $formFieldComponentClass = '';
+
+    /**
+     * @var string
+     */
     protected string $labelComponentClass = '';
 
     /**
@@ -74,6 +79,14 @@ trait FormBuilderTrait
     public function form(...$arguments): Component\FormComponent
     {
         return $this->createComponent($this->formComponentClass, $arguments);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function formField(...$arguments): Component\FormFieldComponent
+    {
+        return $this->createComponent($this->formFieldComponentClass, $arguments);
     }
 
     /**
