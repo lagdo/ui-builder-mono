@@ -153,6 +153,18 @@ class HtmlElement extends Element
     }
 
     /**
+     * @param array<Element> $children
+     *
+     * @return static
+     */
+    public function prependChildren(array $children): static
+    {
+        $children = array_filter($children, fn($child) => is_a($child, Element::class));
+        $this->children = [...$children, ...$this->children];
+        return $this;
+    }
+
+    /**
      * @param Element $child
      *
      * @return static
@@ -160,6 +172,17 @@ class HtmlElement extends Element
     public function addChild(Element $child): static
     {
         $this->children[] = $child;
+        return $this;
+    }
+
+    /**
+     * @param Element $child
+     *
+     * @return static
+     */
+    public function prependChild(Element $child): static
+    {
+        $this->children = [$child, ...$this->children];
         return $this;
     }
 
