@@ -27,8 +27,7 @@ class MenuItemComponent extends BaseComponent
     protected function onBuild(): void
     {
         if ($this->prop('active', false)) {
-            $this->element()->addClass('is-active')
-                ->setStyle('color: rgb(245, 246, 255); background-color: rgb(66, 88, 255);');
+            $this->element()->addClass('is-active');
         }
         if (!$this->prop('enabled', true)) {
             $this->element()->setDisabled('disabled');

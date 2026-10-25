@@ -13,7 +13,7 @@ class MenuComponent extends BaseComponent
      */
     protected function onBuild(): void
     {
-        $class = $this->prop('vertical', true) ?
+        $class = $this->isVertical() ?
             'max-w-xs w-full flex flex-col' :
             'w-full flex flex-col sm:flex-row';
         $this->element()->addClass($class);

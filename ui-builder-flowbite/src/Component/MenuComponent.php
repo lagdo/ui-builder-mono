@@ -13,7 +13,7 @@ class MenuComponent extends BaseComponent
      */
     protected function onBuild(): void
     {
-        $class = $this->prop('vertical', true) ?
+        $class = $this->isVertical() ?
             'flex flex-col w-full text-sm font-medium text-heading ' .
                 'bg-neutral-primary-soft border border-default rounded-base' :
             // Replaced flex-col with flex-row, and removed w-full.

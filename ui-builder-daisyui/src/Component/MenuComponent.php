@@ -13,7 +13,7 @@ class MenuComponent extends BaseComponent
      */
     protected function onBuild(): void
     {
-        $class = $this->prop('vertical', true) ?
+        $class = $this->isVertical() ?
             'menu menu-vertical bg-base-200 rounded-box w-56' :
             'menu menu-horizontal bg-base-200 rounded-box';
         $this->element()->addClass($class);
