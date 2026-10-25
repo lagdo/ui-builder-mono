@@ -17,8 +17,9 @@ class SelectComponent extends BaseComponent
      */
     protected function onBuild(): void
     {
-        if ($this->inForm()) {
-            $this->addBaseClass('form-select');
+        $this->addBaseClass('form-select');
+        if ($this->prop('shrink', false)) {
+            $this->addClass('flex-grow-0 w-auto');
         }
     }
 
