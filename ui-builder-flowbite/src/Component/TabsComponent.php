@@ -10,7 +10,7 @@ class TabsComponent extends BaseComponent
 {
     protected function onBuild(): void
     {
-        if ($this->prop('vertical', false)) {
+        if ($this->isHorizontal()) {
             $this->element()->addClass('md:flex');
         }
     }

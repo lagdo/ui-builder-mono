@@ -28,6 +28,23 @@ class TabNavItemComponent extends BaseComponent
         if (!$this->prop('enabled', true)) {
             $wrapper->setAttribute('disabled', true);
         }
-        $this->addWrapper($wrapper);
+
+        $target = $this->prop('target');
+        if ($target !== null) {
+            $wrapper->setAttribute('data-target', $target);
+        }
+
+        $this->wrapElement($wrapper);
+    }
+
+    /**
+     * @param string $target
+     *
+     * @return static
+     */
+    public function target(string $target): static
+    {
+        $this->setProp('target', $target);
+        return $this;
     }
 }
