@@ -10,14 +10,14 @@ use Lagdo\HtmlBuilder\Element\Html;
 
 class RadioComponent extends BaseComponent
 {
-    // use Mixin\InputValidationTrait;
+    // use Mixin\ValidationTrait;
 
     /**
      * @return void
      */
     protected function onCreate(): void
     {
-        $this->element()->setAttribute('type', 'radio')
+        $this->setAttribute('type', 'radio')
             ->addBaseClass('shrink-0 size-4 bg-transparent border-line-3 rounded-full shadow-2xs ' .
                 'text-primary focus:ring-0 focus:ring-offset-0 checked:bg-primary-checked ' .
                 'checked:border-primary-checked disabled:opacity-50 disabled:pointer-events-none');
@@ -26,9 +26,10 @@ class RadioComponent extends BaseComponent
     /**
      * @inheritDoc
      */
-    protected function setLabel(HtmlElement $label, Html $html): void
+    protected function setLabel(Html $html, array $attributes): void
     {
-        $this->addWrapper($this->newElement('div', ['class' => 'flex items-center']));
+        $label = $this->newElement('label', $attributes);
+        $this->wrapElement($this->newElement('div', ['class' => 'flex items-center']));
         $label->addChild($html)
             ->setClass('text-sm ms-3 text-muted-foreground-1');
         $this->appendSibling($label);

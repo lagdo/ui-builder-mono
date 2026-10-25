@@ -12,7 +12,7 @@ use function is_a;
 
 class RadioComponent extends BaseComponent
 {
-    // use Mixin\InputValidationTrait;
+    // use Mixin\ValidationTrait;
 
     /**
      * @return void
@@ -36,8 +36,9 @@ class RadioComponent extends BaseComponent
     /**
      * @inheritDoc
      */
-    protected function setLabel(HtmlElement $label, Html $html): void
+    protected function setLabel(Html $html, array $attributes): void
     {
+        $label = $this->newElement('label', $attributes);
         $label->addClass('label');
         $this->wrapElement($label)->appendSibling($html);
     }

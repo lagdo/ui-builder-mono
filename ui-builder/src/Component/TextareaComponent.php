@@ -6,8 +6,7 @@ namespace Lagdo\UiBuilder\Component;
 
 abstract class TextareaComponent extends InputComponent
 {
-    use Mixin\InputLabelTrait;
-    use Mixin\InputValidationTrait;
+    use Mixin\ValidationTrait;
 
     /**
      * @var string

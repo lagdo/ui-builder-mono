@@ -8,8 +8,7 @@ use Lagdo\UiBuilder\UiComponent;
 
 abstract class RadioComponent extends UiComponent
 {
-    use Mixin\InputLabelTrait;
-    use Mixin\InputValidationTrait;
+    use Mixin\LabelTrait;
 
     /**
      * @var string
@@ -23,7 +22,7 @@ abstract class RadioComponent extends UiComponent
      */
     public function checked(bool $checked = false): static
     {
-        $this->element()->setAttribute('checked', $checked ? 'checked' : false);
+        $this->element()->setAttribute('checked', $checked);
         return $this;
     }
 }

@@ -24,9 +24,10 @@ class CheckboxComponent extends BaseComponent
     /**
      * @inheritDoc
      */
-    protected function setLabel(HtmlElement $label, Html $html): void
+    protected function setLabel(Html $html, array $attributes): void
     {
-        $this->addWrapper($this->newElement('div', ['class' => 'flex items-center']));
+        $label = $this->newElement('label', $attributes);
+        $this->wrapElement($this->newElement('div', ['class' => 'flex items-center']));
         $label->addChild($html)
             ->setClass('text-sm ms-3 text-muted-foreground-1');
         $this->appendSibling($label);

@@ -11,8 +11,11 @@ class ButtonGroupComponent extends BaseComponent
     /**
      * @return void
      */
-    protected function onCreate(): void
+    protected function onBuild(): void
     {
         $this->addBaseClass('buttons has-addons');
+        if ($this->prop('fullWidth', false)) {
+            $this->addBaseClass('is-fullwidth');
+        }
     }
 }

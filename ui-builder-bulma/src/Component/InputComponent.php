@@ -16,6 +16,10 @@ class InputComponent extends BaseComponent
      */
     protected function onBuild(): void
     {
+        if ($this->element()->getAttribute('type') === 'hidden') {
+            return;
+        }
+
         $this->addBaseClass('input')
             ->wrapElement($this->newElement('div', ['class' => 'control']));
         $message = $this->prop('message');

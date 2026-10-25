@@ -13,7 +13,7 @@ class RadioGroupComponent extends BaseComponent
      */
     protected function onBuild(): void
     {
-        $class = ($this->prop('horizontal', false)) ?
+        $class = ($this->isVertical()) ?
             'join join-horizontal' : 'join join-vertical';
         $this->addBaseClass($class);
     }

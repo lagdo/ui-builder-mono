@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace Lagdo\UiBuilder\Component;
 
-abstract class SelectComponent extends InputComponent
+use Lagdo\UiBuilder\UiComponent;
+
+abstract class SelectComponent extends UiComponent
 {
-    use Mixin\InputLabelTrait;
-    use Mixin\InputValidationTrait;
+    use Mixin\ValidationTrait;
 
     /**
      * @var string

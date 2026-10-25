@@ -8,8 +8,7 @@ use Lagdo\UiBuilder\UiComponent;
 
 abstract class InputComponent extends UiComponent
 {
-    use Mixin\InputLabelTrait;
-    use Mixin\InputValidationTrait;
+    use Mixin\ValidationTrait;
 
     /**
      * @var string

@@ -8,7 +8,7 @@ use Lagdo\UiBuilder\UiComponent;
 
 abstract class CheckboxComponent extends UiComponent
 {
-    use Mixin\InputLabelTrait;
+    use Mixin\LabelTrait;
 
     /**
      * @var string
@@ -22,7 +22,7 @@ abstract class CheckboxComponent extends UiComponent
      */
     public function checked(bool $checked = true): static
     {
-        $this->element()->setAttribute('checked', $checked ? 'checked' : false);
+        $this->element()->setAttribute('checked', $checked);
         return $this;
     }
 }

@@ -35,9 +35,10 @@ class SwitchComponent extends BaseComponent
     /**
      * @inheritDoc
      */
-    protected function setLabel(HtmlElement $label, Html $html): void
+    protected function setLabel(Html $html, array $attributes): void
     {
-        $this->addWrapper($this->newElement('div', ['class' => 'flex items-center gap-x-3']));
+        $label = $this->newElement('label', $attributes);
+        $this->wrapElement($this->newElement('div', ['class' => 'flex items-center gap-x-3']));
         $label->addChild($html)
             ->setClass('text-sm text-muted-foreground-1');
         $this->appendSibling($label);

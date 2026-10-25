@@ -33,8 +33,9 @@ class SwitchComponent extends BaseComponent
     /**
      * @inheritDoc
      */
-    protected function setLabel(HtmlElement $label, Html $html): void
+    protected function setLabel(Html $html, array $attributes): void
     {
+        $label = $this->newElement('label', $attributes);
         $this->appendSibling($this->newElement('span', [
             'class' => 'ms-3 text-sm font-medium text-heading select-none',
         ])->addChild($html));

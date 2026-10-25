@@ -8,6 +8,8 @@ use Lagdo\UiBuilder\UiComponent;
 
 abstract class InputGroupComponent extends UiComponent
 {
+    use Mixin\ValidationTrait;
+
     /**
      * @var string
      */

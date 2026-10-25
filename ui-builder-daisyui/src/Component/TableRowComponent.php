@@ -6,6 +6,8 @@ namespace Lagdo\UiBuilder\DaisyUi\Component;
 
 use Lagdo\UiBuilder\Component\TableRowComponent as BaseComponent;
 
+use function is_a;
+
 class TableRowComponent extends BaseComponent
 {
     /**
@@ -13,7 +15,7 @@ class TableRowComponent extends BaseComponent
      */
     protected function onBuild(): void
     {
-        if ($this->parentClass() === TableBodyComponent::class &&
+        if (is_a($this->parent(), TableBodyComponent::class) &&
             $this->parentProp(2, 'hover', false)) {
             $this->element()->addClass('hover:bg-base-300');
         }

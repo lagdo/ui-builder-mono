@@ -8,7 +8,7 @@ use Lagdo\UiBuilder\UiComponent;
 
 abstract class SwitchComponent extends UiComponent
 {
-    use Mixin\InputLabelTrait;
+    use Mixin\LabelTrait;
 
     /**
      * @var string

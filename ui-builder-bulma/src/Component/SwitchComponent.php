@@ -19,7 +19,18 @@ class SwitchComponent extends BaseComponent
             'class' => 'switch is-rounded is-small',
         ]));
         $this->appendSibling($this->newElement('span', ['class' => 'check']));
-        $this->addWrapper($this->newElement('div', ['class' => 'control']));
+    }
+
+    /**
+     * @return void
+     */
+    protected function onBuild(): void
+    {
+        $wrapper = $this->newElement('div', ['class' => 'control']);
+        if (is_a($this->parent(), InputGroupComponent::class)) {
+            $wrapper->addClass('is-switch');
+        }
+        $this->wrapElement($wrapper);
     }
 
     /**

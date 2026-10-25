@@ -37,17 +37,17 @@ class RadioComponent extends BaseComponent
             return;
         }
 
-        $wrapperClass = is_a($parent, RadioGroupComponent::class) &&
-            ($parent->prop('horizontal', false)) ?
-                'form-check form-check-inline' : 'form-check';
+        $wrapperClass = is_a($parent, RadioGroupComponent::class) && $parent->isVertical() ?
+            'form-check form-check-inline' : 'form-check';
         $this->wrapElement($this->newElement('div', ['class' =>  $wrapperClass]));
     }
 
     /**
      * @inheritDoc
      */
-    protected function setLabel(HtmlElement $label, Html $html): void
+    protected function setLabel(Html $html, array $attributes): void
     {
+        $label = $this->newElement('label', $attributes);
         $label->addClass('form-check-label')->addChild($html);
         $this->appendSibling($label);
     }
