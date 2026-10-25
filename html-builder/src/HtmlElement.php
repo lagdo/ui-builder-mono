@@ -164,6 +164,18 @@ class HtmlElement extends Element
     }
 
     /**
+     * @param HtmlElement $wrapper
+     *
+     * @return static
+     */
+    public function wrapChildren(HtmlElement $wrapper): static
+    {
+        $wrapper->addChildren($this->children);
+        $this->children = [$wrapper];
+        return $this;
+    }
+
+    /**
      * @param string $class
      *
      * @return static
