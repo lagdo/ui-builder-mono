@@ -12,4 +12,12 @@ abstract class DropdownComponent extends UiComponent
      * @var string
      */
     protected string $tagName = 'div';
+
+    /**
+     * @return static
+     */
+    public function right(): static
+    {
+        return $this;
+    }
 }

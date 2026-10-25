@@ -14,6 +14,15 @@ class DropdownComponent extends BaseComponent
     protected function onCreate(): void
     {
         // The dropdown menu shows only if hoverable. Otherwise, it requires Javascript.
-        $this->addBaseClass('dropdown is-hoverable');
+        $this->addBaseClass('dropdown');
+    }
+
+    /**
+     * @return static
+     */
+    public function right(): static
+    {
+        $this->addBaseClass('is-right');
+        return $this;
     }
 }
