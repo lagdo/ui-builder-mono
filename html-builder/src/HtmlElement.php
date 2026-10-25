@@ -385,7 +385,9 @@ class HtmlElement extends Element
      */
     private function renderTag(): string
     {
-        return sprintf('%s%s</%s>', $this->renderOpened(), $this->renderChildren(), $this->tag);
+        $content = $this->renderChildren();
+        return $content === '' && $this->tag === 'input' ? $this->renderShort() :
+            sprintf('%s%s</%s>', $this->renderOpened(), $content, $this->tag);
     }
 
     /**
