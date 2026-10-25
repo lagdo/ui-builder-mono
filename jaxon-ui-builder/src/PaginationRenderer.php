@@ -5,9 +5,10 @@ declare(strict_types=1);
 namespace Lagdo\UiBuilder\Jaxon;
 
 use Jaxon\App\Pagination\Page;
+use Jaxon\App\Pagination\PaginationRenderer as Renderer;
 use Lagdo\UiBuilder\BuilderInterface;
 
-class PaginationRenderer
+class PaginationRenderer extends Renderer
 {
     /**
      * @param BuilderInterface $ui
@@ -18,7 +19,7 @@ class PaginationRenderer
     /**
      * @inheritDoc
      */
-    public function render(array $aPages, Page $xPrevPage, Page $xNextPage): string
+    protected function render(array $aPages, Page $xPrevPage, Page $xNextPage): string
     {
         $attrs = ['role' => 'link'];
         return $this->ui->build(

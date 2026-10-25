@@ -17,7 +17,7 @@
     },
     "require": {
         "php": ">=8.1",
-        "jaxon-php/jaxon-core": "^5.4",
+        "jaxon-php/jaxon-core": "^5.8",
         "lagdo/ui-builder": "0.15.*"
     },
     "autoload": {
