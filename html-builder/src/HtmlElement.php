@@ -122,6 +122,14 @@ class HtmlElement extends Element
     }
 
     /**
+     * @return bool
+     */
+    public function isForm(): bool
+    {
+        return $this->tag === 'form';
+    }
+
+    /**
      * @param array<Element> $children
      *
      * @return static
