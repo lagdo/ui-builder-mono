@@ -21,7 +21,7 @@ class CheckboxComponent extends BaseComponent
         if (is_a($this->parent(), InputGroupComponent::class)) {
             $wrapper->addClass('is-checkbox');
         }
-        $this->addWrapper($wrapper);
+        $this->wrapElement($wrapper);
     }
 
     /**

@@ -11,16 +11,11 @@ class PaginationItemComponent extends BaseComponent
     /**
      * @return void
      */
-    protected function onCreate(): void
-    {
-        $this->addWrapper($this->newElement('li'));
-    }
-
-    /**
-     * @return void
-     */
     protected function onBuild(): void
     {
+        $wrapper = $this->newElement('li');
+        $this->wrapElement($wrapper);
+
         if (!$this->prop('enabled', true)) {
             $this->element()->setTag('span');
             $this->addClass('pagination-ellipsis');

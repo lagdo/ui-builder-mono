@@ -18,6 +18,6 @@ class BreadcrumbComponent extends BaseComponent
      */
     protected function onCreate(): void
     {
-        $this->addWrapper($this->newElement('div', ['class' => 'breadcrumbs text-sm']));
+        $this->wrapElement($this->newElement('div', ['class' => 'breadcrumbs text-sm']));
     }
 }

@@ -17,7 +17,7 @@ class InputComponent extends BaseComponent
     protected function onBuild(): void
     {
         $this->addBaseClass('input')
-            ->addWrapper($this->newElement('div', ['class' => 'control']));
+            ->wrapElement($this->newElement('div', ['class' => 'control']));
         $message = $this->prop('message');
         if ($message !== null) {
             $feedback = $this->prop('feedback');
@@ -29,7 +29,7 @@ class InputComponent extends BaseComponent
             $message = $this->newElement('p', ['class' => $class])
                 ->addChild(new Text($message));
             $wrapper = $this->newElement('div')->setGhost(true);
-            $this->addWrapper($wrapper);
+            $this->wrapElement($wrapper);
             $this->afterBuild(fn() => $wrapper->addChild($message));
         }
     }

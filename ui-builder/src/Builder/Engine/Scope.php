@@ -47,7 +47,7 @@ class Scope extends BaseScope implements ScopeInterface
             $this->expand($argument);
         }
 
-        $this->inForm = $this->inForm || $this->parent->element()->tag() === 'form';
+        $this->inForm = $this->inForm || $this->parent->element()->isForm();
 
         foreach ($this->children as $component) {
             if (is_a($component, Element::class)) {

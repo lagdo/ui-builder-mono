@@ -19,6 +19,6 @@ class CardHeaderComponent extends BaseComponent
     protected function onCreate(): void
     {
         $this->addBaseClass('card-header-title')
-            ->addWrapper($this->newElement('header', ['class' => 'card-header']));
+            ->wrapElement($this->newElement('header', ['class' => 'card-header']));
     }
 }

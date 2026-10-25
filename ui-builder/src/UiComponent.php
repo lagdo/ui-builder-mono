@@ -32,14 +32,24 @@ abstract class UiComponent extends HtmlComponent
     private array $properties = [];
 
     /**
-     * @var array<array<Closure>>
+     * @var array<Closure>
      */
-    private array $builders = ['before' => [], 'after' => []];
+    private array $beforeBuilders = [];
+
+    /**
+     * @var array<Closure>
+     */
+    private array $afterBuilders = [];
 
     /**
      * @var array<HtmlElement>
      */
-    private array $wrappers = [];
+    private array $elementWrappers = [];
+
+    /**
+     * @var array<HtmlElement>
+     */
+    private array $childrenWrappers = [];
 
     /**
      * @var array<Element>
@@ -116,7 +126,7 @@ abstract class UiComponent extends HtmlComponent
      */
     final protected function beforeBuild(Closure $builder): static
     {
-        $this->builders['before'][] = $builder;
+        $this->beforeBuilders[] = $builder;
         return $this;
     }
 
@@ -127,7 +137,7 @@ abstract class UiComponent extends HtmlComponent
      */
     final protected function afterBuild(Closure $builder): static
     {
-        $this->builders['after'][] = $builder;
+        $this->afterBuilders[] = $builder;
         return $this;
     }
 
@@ -193,23 +203,6 @@ abstract class UiComponent extends HtmlComponent
     }
 
     /**
-     * @return string
-     */
-    final protected function parentClass(): string
-    {
-        $parent = $this->parent();
-        return $parent === null ? '' : get_class($parent);
-    }
-
-    /**
-     * @return array<HtmlElement>
-     */
-    final public function wrappers(): array
-    {
-        return $this->wrappers;
-    }
-
-    /**
      * @return array<HtmlElement>
      */
     final public function prevSiblings(): array
@@ -230,7 +223,7 @@ abstract class UiComponent extends HtmlComponent
      *
      * @return static
      */
-    final protected function addWrapper(HtmlElement $wrapper): static
+    final protected function wrapElement(HtmlElement $wrapper): static
     {
         $this->wrappers[] = $wrapper;
         return $this;
@@ -243,7 +236,11 @@ abstract class UiComponent extends HtmlComponent
      */
     final protected function wrapper(int $index): HtmlElement|null
     {
-        return $this->wrappers[$index] ?? null;
+        return match(true) {
+            $index > 0 => $this->elementWrappers[$index - 1] ?? null,
+            $index < 0 => $this->childrenWrappers[$index + 1] ?? null,
+            default => null,
+        };
     }
 
     /**
@@ -258,16 +255,6 @@ abstract class UiComponent extends HtmlComponent
     }
 
     /**
-     * @param int $index
-     *
-     * @return Element|null
-     */
-    final protected function prevSibling(int $index): Element|null
-    {
-        return $this->prevSiblings[$index] ?? null;
-    }
-
-    /**
      * @param Element $sibling
      *
      * @return static
@@ -279,23 +266,13 @@ abstract class UiComponent extends HtmlComponent
     }
 
     /**
-     * @param int $index
-     *
-     * @return Element|null
-     */
-    final protected function nextSibling(int $index): Element|null
-    {
-        return $this->nextSiblings[$index] ?? null;
-    }
-
-    /**
      * @param array<Element> $children
      *
      * @return array<HtmlElement>
      */
     final public function build(array $children): array
     {
-        foreach ($this->builders['before'] as $builder) {
+        foreach ($this->beforeBuilders as $builder) {
             $builder($children);
         }
 
@@ -303,18 +280,23 @@ abstract class UiComponent extends HtmlComponent
         // Update the element classes.
         $element->setRawClasses($this->classes + $element->getRawClasses());
 
+        // Nest the component children into their wrappers.
+        foreach ($this->childrenWrappers as $wrapper) {
+            $element->wrapChildren($wrapper);
+        }
+        // Append and prepend the component siblings.
         $elements = [
             ...$this->prevSiblings(),
             $element,
             ...$this->nextSiblings(),
         ];
         // Nest the component element into its wrappers.
-        foreach ($this->wrappers() as $wrapper) {
+        foreach ($this->elementWrappers as $wrapper) {
             $wrapper->addChildren($elements);
             $elements = [$wrapper];
         }
 
-        foreach ($this->builders['after'] as $builder) {
+        foreach ($this->afterBuilders as $builder) {
             $builder($elements);
         }
 

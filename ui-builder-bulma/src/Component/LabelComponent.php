@@ -16,7 +16,7 @@ class LabelComponent extends BaseComponent
     protected function onBuild(): void
     {
         if (is_a($this->parent(), InputGroupComponent::class)) {
-            $this->addWrapper($this->newElement('p', ['class' => 'control']));
+            $this->wrapElement($this->newElement('p', ['class' => 'control']));
             $this->element()->setTag('a')->addClass('button is-static');
             return;
         }

@@ -24,8 +24,8 @@ class FormFieldComponent extends BaseComponent
         $wrapper = $this->element();
         if ($this->isHorizontal()) {
             $wrapper = $this->newElement('div', ['class' => 'field is-horizontal']);
-            $this->addWrapper($this->newElement('div', ['class' => 'field-body']))
-                ->addWrapper($wrapper);
+            $this->wrapElement($this->newElement('div', ['class' => 'field-body']))
+                ->wrapElement($wrapper);
         }
         if ($this->label !== null) {
             if ($this->isHorizontal()) {

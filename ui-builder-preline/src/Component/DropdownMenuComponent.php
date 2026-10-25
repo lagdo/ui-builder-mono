@@ -30,7 +30,7 @@ class DropdownMenuComponent extends BaseComponent
                 // Todo: set this to the dropdown button id.
                 // 'aria-labelledby' => 'hs-dropdown-default',
             ]);
-        $this->addWrapper($wrapper);
+        $this->wrapElement($wrapper);
         $this->element()->addClass('p-1 space-y-0.5');
     }
 }

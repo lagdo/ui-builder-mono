@@ -30,7 +30,9 @@ class RadioComponent extends BaseComponent
     {
         $parent = $this->parent();
         if (is_a($parent, InputGroupComponent::class)) {
-            $this->addWrapper($this->newElement('div', ['class' => 'input-group-text']));
+            $this->wrapElement($this->newElement('div', [
+                'class' => 'input-group-text bg-white',
+            ]));
             $this->element()->addClass('mt-0');
             return;
         }
@@ -38,7 +40,7 @@ class RadioComponent extends BaseComponent
         $wrapperClass = is_a($parent, RadioGroupComponent::class) &&
             ($parent->prop('horizontal', false)) ?
                 'form-check form-check-inline' : 'form-check';
-        $this->addWrapper($this->newElement('div', ['class' =>  $wrapperClass]));
+        $this->wrapElement($this->newElement('div', ['class' =>  $wrapperClass]));
     }
 
     /**

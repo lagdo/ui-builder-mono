@@ -19,7 +19,7 @@ class DropdownMenuComponent extends BaseComponent
     protected function onCreate(): void
     {
         $this->addBaseClass('dropdown-content')
-            ->addWrapper($this->newElement('div', [
+            ->wrapElement($this->newElement('div', [
                 'id' => 'dropdown-menu',
                 'class' => 'dropdown-menu',
                 'role' => 'menu',

@@ -13,6 +13,6 @@ class CardImageComponent extends BaseComponent
      */
     protected function onCreate(): void
     {
-        $this->addWrapper($this->newElement('figure'));
+        $this->wrapElement($this->newElement('figure'));
     }
 }

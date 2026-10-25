@@ -15,7 +15,7 @@ class SwitchComponent extends BaseComponent
      */
     protected function onCreate(): void
     {
-        $this->addWrapper($this->newElement('label', [
+        $this->wrapElement($this->newElement('label', [
             'class' => 'inline-flex items-center cursor-pointer',
         ]));
         $this->appendSibling($this->newElement('div', [

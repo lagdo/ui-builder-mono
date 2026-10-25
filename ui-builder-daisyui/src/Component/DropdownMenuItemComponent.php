@@ -18,6 +18,6 @@ class DropdownMenuItemComponent extends BaseComponent
      */
     protected function onCreate(): void
     {
-        $this->addWrapper($this->newElement('li'));
+        $this->wrapElement($this->newElement('li'));
     }
 }

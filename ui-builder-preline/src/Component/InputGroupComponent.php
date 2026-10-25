@@ -13,7 +13,7 @@ class InputGroupComponent extends BaseComponent
      */
     protected function onCreate(): void
     {
-        $this->addWrapper($this->newElement('div'));
+        $this->wrapElement($this->newElement('div'));
         $this->element()->addClass('sm:flex rounded-lg');
     }
 }

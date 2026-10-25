@@ -14,7 +14,7 @@ class PaginationComponent extends BaseComponent
     protected function onCreate(): void
     {
         $this->addBaseClass('pagination-list');
-        $this->addWrapper($this->newElement('nav', [
+        $this->wrapElement($this->newElement('nav', [
             'class' => 'pagination',
             'role' => 'navigation',
             'aria-label' => 'pagination',

@@ -37,6 +37,6 @@ class SwitchComponent extends BaseComponent
     protected function setLabel(HtmlElement $label, Html $html): void
     {
         $label->addClass('label');
-        $this->addWrapper($label)->appendSibling($html);
+        $this->wrapElement($label)->appendSibling($html);
     }
 }

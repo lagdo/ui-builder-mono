@@ -21,7 +21,7 @@ class RadioComponent extends BaseComponent
         if (is_a($this->parent(), InputGroupComponent::class)) {
             $wrapper->addClass('is-radio');
         }
-        $this->addWrapper($wrapper);
+        $this->wrapElement($wrapper);
     }
 
     /**

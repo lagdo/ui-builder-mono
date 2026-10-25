@@ -33,7 +33,7 @@ class PaginationItemComponent extends BaseComponent
         // Enabled items are wrapped into a <li> element.
         // Disabled items are in a <span> element, without the <a> link.
         $disabled ? $this->element()->setTag('span') :
-            $this->addWrapper($this->newElement('li'));
+            $this->wrapElement($this->newElement('li'));
 
         $active = $this->prop('active', false);
         if ($active) {

@@ -55,7 +55,7 @@ class ButtonComponent extends BaseComponent
         }
 
         if (is_a($this->parent(), InputGroupComponent::class)) {
-            $this->addWrapper($this->newElement('p', ['class' => 'control']));
+            $this->wrapElement($this->newElement('p', ['class' => 'control']));
         }
     }
 }

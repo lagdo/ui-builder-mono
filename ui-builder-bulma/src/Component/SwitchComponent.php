@@ -15,7 +15,7 @@ class SwitchComponent extends BaseComponent
     protected function onCreate(): void
     {
         $this->element()->setAttribute('type', 'checkbox');
-        $this->addWrapper($this->newElement('label', [
+        $this->wrapElement($this->newElement('label', [
             'class' => 'switch is-rounded is-small',
         ]));
         $this->appendSibling($this->newElement('span', ['class' => 'check']));

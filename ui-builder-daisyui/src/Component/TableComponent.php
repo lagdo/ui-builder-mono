@@ -14,7 +14,7 @@ class TableComponent extends BaseComponent
     protected function onCreate(): void
     {
         $this->addBaseClass('table');
-        $this->addWrapper($this->newElement('div', ['class' => 'overflow-x-auto']));
+        $this->wrapElement($this->newElement('div', ['class' => 'overflow-x-auto']));
     }
 
     /**
@@ -31,7 +31,7 @@ class TableComponent extends BaseComponent
      */
     public function border(): static
     {
-        $this->wrapper(0)?->addClass('rounded-box border border-base-content/5 bg-base-100');
+        $this->wrapper(1)?->addClass('rounded-box border border-base-content/5 bg-base-100');
         return $this;
     }
 }

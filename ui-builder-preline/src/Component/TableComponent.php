@@ -27,6 +27,6 @@ class TableComponent extends BaseComponent
                 '[&::-webkit-scrollbar-thumb]:rounded-none ' .
                 '[&::-webkit-scrollbar-track]:bg-scrollbar-track ' .
                 '[&::-webkit-scrollbar-thumb]:bg-scrollbar-thumb';
-        $this->addWrapper($this->newElement('div', ['class' => $wrapperClass]));
+        $this->wrapElement($this->newElement('div', ['class' => $wrapperClass]));
     }
 }

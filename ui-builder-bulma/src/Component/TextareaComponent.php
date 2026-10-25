@@ -14,6 +14,6 @@ class TextareaComponent extends BaseComponent
     protected function onBuild(): void
     {
         $this->addBaseClass('textarea')
-            ->addWrapper($this->newElement('div', ['class' => 'control']));
+            ->wrapElement($this->newElement('div', ['class' => 'control']));
     }
 }

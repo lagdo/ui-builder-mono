@@ -14,6 +14,6 @@ class CardImageComponent extends BaseComponent
     protected function onCreate(): void
     {
         $this->element()->addClass('rounded-t-base');
-        $this->addWrapper($this->newElement('a', ['href' => '#']));
+        $this->wrapElement($this->newElement('a', ['href' => '#']));
     }
 }

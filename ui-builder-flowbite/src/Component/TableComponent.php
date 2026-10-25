@@ -25,6 +25,6 @@ class TableComponent extends BaseComponent
             'relative overflow-x-auto bg-neutral-primary-soft ' .
                 'shadow-xs rounded-base border border-default' :
             'relative overflow-x-auto';
-        $this->addWrapper($this->newElement('div', ['class' => $wrapperClass]));
+        $this->wrapElement($this->newElement('div', ['class' => $wrapperClass]));
     }
 }

@@ -18,7 +18,7 @@ class DropdownMenuItemComponent extends BaseComponent
      */
     protected function onCreate(): void
     {
-        $this->addWrapper($this->newElement('li'));
+        $this->wrapElement($this->newElement('li'));
         $this->element()->setAttribute('href', '#')
             ->addClass('inline-flex items-center w-full p-2 ' .
                 'hover:bg-neutral-tertiary-medium hover:text-heading rounded');

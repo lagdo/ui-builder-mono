@@ -18,7 +18,7 @@ class CardFooterComponent extends BaseComponent
      */
     protected function onCreate(): void
     {
-        $this->addWrapper($this->newElement('div', [
+        $this->wrapElement($this->newElement('div', [
             'class' => 'bg-surface border-t border-card-line rounded-b-xl py-3 px-4',
         ]));
         $this->element()->addClass('text-sm text-muted-foreground-1');

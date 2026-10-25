@@ -20,6 +20,6 @@ class DropdownMenuItemComponent extends BaseComponent
     {
         $this->addBaseClass('dropdown-item')
             ->setAttribute('href', '#');
-        $this->addWrapper($this->newElement('li'));
+        $this->wrapElement($this->newElement('li'));
     }
 }
