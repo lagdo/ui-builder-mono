@@ -5,14 +5,12 @@ declare(strict_types=1);
 namespace Lagdo\UiBuilder\DaisyUi\Component;
 
 use Lagdo\UiBuilder\Component\SelectComponent as BaseComponent;
-use Lagdo\HtmlBuilder\HtmlElement;
-use Lagdo\HtmlBuilder\Element\Html;
 
 use function is_a;
 
 class SelectComponent extends BaseComponent
 {
-    // use Mixin\InputValidationTrait;
+    // use Mixin\ValidationTrait;
 
     /**
      * @return void
@@ -30,14 +28,5 @@ class SelectComponent extends BaseComponent
         if (is_a($this->parent(), InputGroupComponent::class)) {
             $this->element()->addClass('join-item');
         }
-    }
-
-    /**
-     * @inheritDoc
-     */
-    protected function setLabel(HtmlElement $label, Html $html): void
-    {
-        $label->addClass('label')->addChild($html);
-        $this->prependSibling($label);
     }
 }

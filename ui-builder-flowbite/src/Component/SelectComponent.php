@@ -5,12 +5,10 @@ declare(strict_types=1);
 namespace Lagdo\UiBuilder\Flowbite\Component;
 
 use Lagdo\UiBuilder\Component\SelectComponent as BaseComponent;
-use Lagdo\HtmlBuilder\HtmlElement;
-use Lagdo\HtmlBuilder\Element\Html;
 
 class SelectComponent extends BaseComponent
 {
-    use Mixin\InputValidationTrait;
+    use Mixin\ValidationTrait;
 
     /**
      * @return void
@@ -20,14 +18,5 @@ class SelectComponent extends BaseComponent
         $this->element()->addClass('block px-3 py-2.5 bg-neutral-secondary-medium ' .
             'border border-default-medium text-heading text-sm rounded-base ' .
             'focus:ring-brand focus:border-brand shadow-xs placeholder:text-body');
-    }
-
-    /**
-     * @inheritDoc
-     */
-    protected function setLabel(HtmlElement $label, Html $html): void
-    {
-        $label->addClass('block mb-2.5 text-sm font-medium text-heading')->addChild($html);
-        $this->prependSibling($label);
     }
 }

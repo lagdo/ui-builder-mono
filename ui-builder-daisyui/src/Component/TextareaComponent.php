@@ -5,12 +5,10 @@ declare(strict_types=1);
 namespace Lagdo\UiBuilder\DaisyUi\Component;
 
 use Lagdo\UiBuilder\Component\TextareaComponent as BaseComponent;
-use Lagdo\HtmlBuilder\HtmlElement;
-use Lagdo\HtmlBuilder\Element\Html;
 
 class TextareaComponent extends BaseComponent
 {
-    // use Mixin\InputValidationTrait;
+    // use Mixin\ValidationTrait;
 
     /**
      * @return void
@@ -18,14 +16,5 @@ class TextareaComponent extends BaseComponent
     protected function onCreate(): void
     {
         $this->addBaseClass('textarea');
-    }
-
-    /**
-     * @inheritDoc
-     */
-    protected function setLabel(HtmlElement $label, Html $html): void
-    {
-        $label->addClass('label')->addChild($html);
-        $this->prependSibling($label);
     }
 }

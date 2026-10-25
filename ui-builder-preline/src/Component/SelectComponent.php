@@ -5,12 +5,10 @@ declare(strict_types=1);
 namespace Lagdo\UiBuilder\Preline\Component;
 
 use Lagdo\UiBuilder\Component\SelectComponent as BaseComponent;
-use Lagdo\HtmlBuilder\HtmlElement;
-use Lagdo\HtmlBuilder\Element\Html;
 
 class SelectComponent extends BaseComponent
 {
-    // use Mixin\InputValidationTrait;
+    // use Mixin\ValidationTrait;
 
     /**
      * @return void
@@ -20,16 +18,5 @@ class SelectComponent extends BaseComponent
         $this->element()->addClass('py-3 px-4 pe-9 block bg-layer border-layer-line ' .
             'rounded-lg text-sm text-foreground focus:border-primary-focus ' .
             'focus:ring-primary-focus disabled:opacity-50 disabled:pointer-events-none');
-    }
-
-    /**
-     * @inheritDoc
-     */
-    protected function setLabel(HtmlElement $label, Html $html): void
-    {
-        $this->addWrapper($this->newElement('div', ['class' => 'flex items-center']));
-        $label->addChild($html)
-            ->setClass('text-sm ms-3 text-muted-foreground-1');
-        $this->appendSibling($label);
     }
 }

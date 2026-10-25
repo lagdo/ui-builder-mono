@@ -5,12 +5,10 @@ declare(strict_types=1);
 namespace Lagdo\UiBuilder\Preline\Component;
 
 use Lagdo\UiBuilder\Component\TextareaComponent as BaseComponent;
-use Lagdo\HtmlBuilder\HtmlElement;
-use Lagdo\HtmlBuilder\Element\Html;
 
 class TextareaComponent extends BaseComponent
 {
-    // use Mixin\InputValidationTrait;
+    // use Mixin\ValidationTrait;
 
     /**
      * @return void
@@ -24,14 +22,5 @@ class TextareaComponent extends BaseComponent
             '[&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-none ' .
             '[&::-webkit-scrollbar-track]:bg-scrollbar-track ' .
             '[&::-webkit-scrollbar-thumb]:bg-scrollbar-thumb');
-    }
-
-    /**
-     * @inheritDoc
-     */
-    protected function setLabel(HtmlElement $label, Html $html): void
-    {
-        $label->addClass('label')->addChild($html);
-        $this->prependSibling($label);
     }
 }

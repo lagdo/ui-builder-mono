@@ -8,19 +8,10 @@ use Lagdo\UiBuilder\Component\InputComponent as BaseComponent;
 
 class InputComponent extends BaseComponent
 {
-    use Mixin\InputValidationTrait;
+    use Mixin\ValidationTrait;
 
     /**
      * @var string
      */
     protected string $tagName = 'wa-input';
-
-    /**
-     * @inheritDoc
-     */
-    public function label(string $label, array $attributes = []): static
-    {
-        $this->element()->setAttribute('label', $label);
-        return $this;
-    }
 }
