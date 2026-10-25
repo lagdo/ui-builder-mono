@@ -9,12 +9,22 @@ use Lagdo\UiBuilder\Component\BreadcrumbItemComponent as BaseComponent;
 class BreadcrumbItemComponent extends BaseComponent
 {
     /**
+     * @var string
+     */
+    protected string $tagName = 'a';
+
+    /**
      * @return void
      */
     protected function onBuild(): void
     {
+        $wrapper = $this->newElement('li');
         if ($this->prop('active', false)) {
-            $this->element()->addClass('is-active');
+            $wrapper->addClass('is-active');
         }
+        if (!$this->prop('enabled', true)) {
+            $this->element()->setTag('span');
+        }
+        $this->wrapElement($wrapper);
     }
 }
