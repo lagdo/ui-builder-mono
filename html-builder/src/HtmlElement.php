@@ -60,19 +60,24 @@ class HtmlElement extends Element
     private bool $isOpened = false;
 
     /**
-     * @var array
+     * @var array<string, string|bool>
      */
     private array $attributes = [];
 
     /**
-     * @var array
+     * @var array<string, bool>
      */
     private array $escapes = [];
 
     /**
-     * @var array
+     * @var array<string, bool>
      */
     private array $classes = [];
+
+    /**
+     * @var array<string, string>
+     */
+    private array $styles = [];
 
     /**
      * @var array<Element>
@@ -265,6 +270,31 @@ class HtmlElement extends Element
     }
 
     /**
+     * @param string $name
+     * @param string $value
+     *
+     * @return static
+     */
+    public function addStyle(string $name, string $value): static
+    {
+        $this->styles[trim($name)] = trim($value);
+        return $this;
+    }
+
+    /**
+     * @param array $styles
+     *
+     * @return static
+     */
+    public function addStyles(array $styles): static
+    {
+        foreach ($styles as $name => $value) {
+            $this->addStyle($name, $value);
+        }
+        return $this;
+    }
+
+    /**
      * @param bool $isShort
      *
      * @return static
@@ -377,6 +407,14 @@ class HtmlElement extends Element
         }
         if (($class = trim(implode(' ', $classes))) !== '') {
             $this->attributes['class'] = $class;
+        }
+
+        if (count($this->styles) > 0) {
+            $styles = isset($this->attributes['style']) ? [$this->attributes['style']] : [];
+            foreach ($this->styles as $name => $value) {
+                $styles[] = "$name: $value;";
+            }
+            $this->attributes['style'] = implode(' ', $styles);
         }
 
         $attributes = [];

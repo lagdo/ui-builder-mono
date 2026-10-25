@@ -62,7 +62,7 @@ class ButtonComponent extends BaseComponent
      */
     public function fullWidth(): static
     {
-        $this->element()->setStyle('width: 100%;');
+        $this->element()->addStyle('width', '100%');
         return $this;
     }
 }

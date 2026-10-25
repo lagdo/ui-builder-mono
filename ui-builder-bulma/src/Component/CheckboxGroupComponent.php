@@ -14,6 +14,6 @@ class CheckboxGroupComponent extends BaseComponent
     protected function onBuild(): void
     {
         $this->addBaseClass('checkboxes');
-        $this->setStyle('flex-direction: ' . ($this->isVertical() ? 'column;' : 'row;'));
+        $this->addStyle('flex-direction', $this->isVertical() ? 'column' : 'row');
     }
 }

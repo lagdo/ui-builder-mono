@@ -14,6 +14,6 @@ class TabContentItemComponent extends BaseComponent
     protected function onBuild(): void
     {
         $display = $this->prop('active', false) ? 'block' : 'none';
-        $this->element()->setStyle("display: $display;");
+        $this->element()->addStyle('display', $display);
     }
 }

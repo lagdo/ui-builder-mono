@@ -14,6 +14,6 @@ class RadioGroupComponent extends BaseComponent
     protected function onBuild(): void
     {
         $this->addBaseClass('radios');
-        $this->setStyle('flex-direction: ' . ($this->isVertical() ? 'column;' : 'row;'));
+        $this->addStyle('flex-direction', $this->isVertical() ? 'column' : 'row');
     }
 }

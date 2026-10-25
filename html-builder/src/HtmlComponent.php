@@ -261,6 +261,29 @@ class HtmlComponent extends Component
     }
 
     /**
+     * @param string $name
+     * @param string $value
+     *
+     * @return static
+     */
+    public function addStyle(string $name, string $value): static
+    {
+        $this->element->addStyle($name, $value);
+        return $this;
+    }
+
+    /**
+     * @param array $styles
+     *
+     * @return static
+     */
+    public function addStyles(array $styles): static
+    {
+        $this->element->addStyles($styles);
+        return $this;
+    }
+
+    /**
      * @param bool $condition
      * @param Closure $closure
      *
