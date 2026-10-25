@@ -18,7 +18,7 @@ class PaginationItemComponent extends BaseComponent
      */
     protected function onCreate(): void
     {
-        $this->element()->addClass('flex items-center justify-center text-body ' .
+        $this->url()->addClass('flex items-center justify-center text-body ' .
             'bg-neutral-secondary-medium box-border border border-default-medium ' .
             'hover:bg-neutral-tertiary-medium hover:text-heading font-medium text-sm ' .
             'px-3 h-10 focus:outline-none');
@@ -29,22 +29,22 @@ class PaginationItemComponent extends BaseComponent
      */
     protected function onBuild(): void
     {
-        $disabled = !$this->prop('enabled', true);
-        // Enabled items are wrapped into a <li> element.
         // Disabled items are in a <span> element, without the <a> link.
-        $disabled ? $this->element()->setTag('span') :
-            $this->wrapElement($this->newElement('li'));
+        if (!$this->prop('enabled', true)) {
+            $this->url()->addClass('bg-disabled w-28 border border-default-medium ' .
+                'text-heading text-sm rounded-base focus:ring-brand focus:border-brand ' .
+                'block px-2.5 py-2 shadow-xs placeholder:text-fg-disabled');
+            $this->wrapChildren($this->newElement('span'));
+            return;
+        }
 
+        // Enabled items are wrapped into a <li> element.
         $active = $this->prop('active', false);
         if ($active) {
-            $this->element()->setAttribute('aria-current', 'page');
+            $this->url()->setAttribute('aria-current', 'page');
         }
 
         $class = match(true) {
-            // Style for the <span> element.
-            $disabled => 'bg-disabled w-28 border border-default-medium ' .
-                'text-heading text-sm rounded-base focus:ring-brand focus:border-brand ' .
-                'block px-2.5 py-2 shadow-xs placeholder:text-fg-disabled',
             // Style for the <a> element.
             $active => 'flex items-center justify-center text-fg-brand ' .
                 'bg-neutral-tertiary-medium box-border border border-default-medium ' .
@@ -55,7 +55,7 @@ class PaginationItemComponent extends BaseComponent
                 'hover:bg-neutral-tertiary-medium hover:text-heading font-medium text-sm ' .
                 'px-3 h-10 focus:outline-none first:rounded-s-base last:rounded-e-base',
         };
-        $this->element()->addClass($class);
+        $this->wrapChildren($this->url()->addClass($class));
     }
 
     /**
@@ -65,7 +65,7 @@ class PaginationItemComponent extends BaseComponent
      */
     public function number(int $number): static
     {
-        $this->setAttribute('data-page', $number);
+        $this->setAttribute('data-page', "$number");
         return $this;
     }
 }

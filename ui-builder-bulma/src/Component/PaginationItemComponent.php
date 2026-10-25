@@ -13,20 +13,17 @@ class PaginationItemComponent extends BaseComponent
      */
     protected function onBuild(): void
     {
-        $wrapper = $this->newElement('li');
-        $this->wrapElement($wrapper);
-
-        if (!$this->prop('enabled', true)) {
-            $this->element()->setTag('span');
-            $this->addClass('pagination-ellipsis');
+        if ($this->prop('enabled', true)) {
+            $this->url()->setClass('pagination-link');
+            if ($this->prop('active', false)) {
+                $this->url()->addClass('is-current')
+                    ->setAttribute('aria-current', 'page');
+            }
+            $this->wrapChildren($this->url());
             return;
         }
 
-        $this->addClass('pagination-link');
-        if ($this->prop('active', false)) {
-            $this->addClass('is-current')
-                ->setAttribute('aria-current', 'page');
-        }
+        $this->wrapChildren($this->newElement('span', ['class' => 'pagination-ellipsis']));
     }
 
     /**
@@ -36,7 +33,8 @@ class PaginationItemComponent extends BaseComponent
      */
     public function number(int $number): static
     {
-        $this->wrapper(0)->setAttribute('data-page', "$number");
+        $this->element()->addClass('enabled')
+            ->setAttribute('data-page', "$number");
         return $this;
     }
 }

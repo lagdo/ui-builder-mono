@@ -41,7 +41,7 @@ class PaginationItemComponent extends BaseComponent
      */
     public function number(int $number): static
     {
-        $this->setAttribute('data-page', $number);
+        $this->setAttribute('data-page', "$number");
         return $this;
     }
 }
