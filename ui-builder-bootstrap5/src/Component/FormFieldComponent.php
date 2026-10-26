@@ -20,7 +20,7 @@ class FormFieldComponent extends BaseComponent
      */
     protected function onBuild(): void
     {
-        $this->addBaseClass('mb-1');
+        $this->addBaseClass('mb-2');
         if ($this->label === null) {
             return;
         }
