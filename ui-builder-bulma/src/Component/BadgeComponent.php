@@ -31,7 +31,8 @@ class BadgeComponent extends BaseComponent
             $this->element()->addClass("is-{$class}");
         }
         if (!$this->prop('top', false)) {
-            $this->element()->addClass('is-right');
+            $this->element()->addClass('is-inside-right');
+            // $this->parent()->addStyle('padding-right', '40px');
         }
     }
 
