@@ -10,7 +10,7 @@
     ],
     "homepage": "https://github.com/lagdo/ui-builder-bulma",
     "license": "MIT",
-    "keywords": ["HTML", "UI Builder", "Bootstrap"],
+    "keywords": ["HTML", "UI Builder", "Bulma"],
     "support": {
         "issues": "https://github.com/lagdo/ui-builder-bulma/issues",
         "source": "https://github.com/lagdo/ui-builder-bulma"
@@ -20,7 +20,6 @@
         "lagdo/ui-builder": "0.16.*"
     },
     "require-dev": {
-        "jaxon-php/jaxon-dialogs": "^5.1",
         "phpunit/phpunit": "^9.5",
         "php-coveralls/php-coveralls": "^2.5",
         "phpunit/phpcov": "^8.2"
