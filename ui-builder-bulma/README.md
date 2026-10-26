@@ -22,6 +22,8 @@ $builder = new Builder();
 
 See the [HTML UI builder](https://github.com/lagdo/ui-builder) documentation.
 
+>Note: In addition to the Bulma library, this package requires some custom and third-party CSS and Javascript files. They are provided in the `assets` dir.
+
 ### Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
