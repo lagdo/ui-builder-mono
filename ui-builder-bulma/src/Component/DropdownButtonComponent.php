@@ -28,6 +28,7 @@ class DropdownButtonComponent extends BaseComponent
         $this->element()
             ->addChild(new Html($icon))
             ->setAttributes([
+                'type' => 'button',
                 'aria-haspopup' => 'true',
                 'aria-controls' => 'dropdown-menu',
             ]);
