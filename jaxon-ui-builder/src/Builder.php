@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Lagdo\UiBuilder\Jaxon;
 
 use Jaxon\App\PageComponent;
+use Jaxon\App\Pagination\PaginationRenderer as Renderer;
 use Jaxon\Script\JsExpr;
 use Jaxon\Script\Call\JxnCall;
 use Lagdo\HtmlBuilder\Element\Element;
@@ -21,6 +22,7 @@ use function htmlentities;
 use function is_a;
 use function is_string;
 use function Jaxon\attr;
+use function Jaxon\jaxon;
 use function json_encode;
 use function trim;
 
@@ -145,10 +147,12 @@ class Builder
 
     /**
      * @param HtmlBuilder|BuilderInterface $builder
+     * @param bool $withPagination
      *
      * @return HtmlBuilder|BuilderInterface
      */
-    public static function init(HtmlBuilder|BuilderInterface $builder): HtmlBuilder|BuilderInterface
+    public static function init(HtmlBuilder|BuilderInterface $builder,
+        bool $withPagination = true): HtmlBuilder|BuilderInterface
     {
         // This factory adds the Jaxon jxnHtml() function to the builder interface.
         $builder->registerBuilderHelper('jxn', function(HtmlBuilder $builder,
@@ -179,6 +183,11 @@ class Builder
 
             throw new LogicException("Call to undefined method \"{$method}()\" in the HTML component.");
         });
+
+        // Register the pagination renderer.
+        if ($withPagination && is_a($builder, BuilderInterface::class)) {
+            jaxon()->di()->set(Renderer::class, fn() => new PaginationRenderer($builder));
+        }
 
         return $builder;
     }
