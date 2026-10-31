@@ -1,0 +1,27 @@
+services:
+
+  ui-builder-demo:
+    container_name: ui-builder-demo
+    build:
+      context: ./
+      dockerfile: demo/Dockerfile
+      args:
+        - PHP_USER=builder
+        - PHP_UID=${PHP_UID:-1000}
+        - PHP_GID=${PHP_GID:-1000}
+    volumes:
+      - ..:/var/www
+    ports:
+      - 7100:8080
+
+  ui-builder-php81:
+    container_name: ui-builder-php81
+    build:
+      context: ./
+      dockerfile: php81/Dockerfile
+      args:
+        - PHP_USER=builder
+        - PHP_UID=${PHP_UID:-1000}
+        - PHP_GID=${PHP_GID:-1000}
+    volumes:
+     - ..:/var/www

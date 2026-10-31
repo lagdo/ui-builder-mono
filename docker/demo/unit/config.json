@@ -1,0 +1,36 @@
+{
+    "listeners": {
+        "*:8080": {
+            "pass": "routes"
+        }
+    },
+
+    "routes": [
+        {
+            "match": {
+                "uri": "~^/.*php(.*)?$"
+            },
+            "action": {
+                "pass": "applications/demo"
+            }
+        },
+        {
+            "match": {
+                "uri": "/*"
+            },
+            "action": {
+                "share": "/var/www/demo-ui-builder/public$uri",
+                "fallback": {
+                    "pass": "applications/demo"
+                }
+            }
+        }
+    ],
+
+    "applications": {
+        "demo": {
+            "type": "php",
+            "root": "/var/www/demo-ui-builder/public/"
+        }
+    }
+}

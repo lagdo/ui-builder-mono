@@ -17,7 +17,14 @@
     },
     "require": {
         "php": ">=8.1",
-        "jaxon-php/jaxon-core": "^5.4"
+        "jaxon-php/jaxon-core": "^5.4",
+        "lagdo/facades": "^1.2"
+    },
+    "require-dev": {
+        "contao/monorepo-tools": "^0.2",
+        "php-coveralls/php-coveralls": "^2.5",
+        "phpunit/phpcov": "^8.2",
+        "phpunit/phpunit": "^9.5"
     },
     "autoload": {
         "psr-4": {
@@ -26,24 +33,27 @@
             "Lagdo\\UiBuilder\\Jaxon\\": "jaxon-ui-builder/src/",
             "Lagdo\\UiBuilder\\Bootstrap4\\": "ui-builder-bootstrap4/src/",
             "Lagdo\\UiBuilder\\Bootstrap5\\": "ui-builder-bootstrap5/src/",
+            "Lagdo\\UiBuilder\\Bulma\\": "ui-builder-bulma/src/",
             "Lagdo\\UiBuilder\\DaisyUi\\": "ui-builder-daisyui/src/",
             "Lagdo\\UiBuilder\\Flowbite\\": "ui-builder-flowbite/src/",
-            "Lagdo\\UiBuilder\\Preline\\": "ui-builder-preline/src/"
-        },
-        "files": [
-            "jaxon-ui-builder/src/register.php"
-        ]
+            "Lagdo\\UiBuilder\\Preline\\": "ui-builder-preline/src/",
+            "Lagdo\\UiBuilder\\Tailwind\\": "ui-builder-tailwind/src/",
+            "Lagdo\\UiBuilder\\WebAwesome\\": "ui-builder-webawesome/src/"
+        }
     },
     "autoload-dev": {
         "psr-4": {
-            "Lagdo\\HtmlBuilder\\Tests\\": "html-builder/tests/"
+            "Lagdo\\HtmlBuilder\\Tests\\": "html-builder/tests/",
+            "Lagdo\\UiBuilder\\Tests\\": "ui-builder/tests/",
+            "Lagdo\\UiBuilder\\Bootstrap4\\Tests\\": "ui-builder-bootstrap4/tests/",
+            "Lagdo\\UiBuilder\\Bootstrap5\\Tests\\": "ui-builder-bootstrap5/tests/",
+            "Lagdo\\UiBuilder\\Bulma\\Tests\\": "ui-builder-bulma/tests/",
+            "Lagdo\\UiBuilder\\DaisyUi\\Tests\\": "ui-builder-daisyui/tests/",
+            "Lagdo\\UiBuilder\\Flowbite\\Tests\\": "ui-builder-flowbite/tests/",
+            "Lagdo\\UiBuilder\\Preline\\Tests\\": "ui-builder-preline/tests/",
+            "Lagdo\\UiBuilder\\Tailwind\\Tests\\": "ui-builder-tailwind/tests/",
+            "Lagdo\\UiBuilder\\WebAwesome\\Tests\\": "ui-builder-webawesome/tests/"
         }
-    },
-    "require-dev": {
-        "contao/monorepo-tools": "^0.2",
-        "php-coveralls/php-coveralls": "^2.5",
-        "phpunit/phpcov": "^8.2",
-        "phpunit/phpunit": "^9.5"
     },
     "replace": {
         "lagdo/html-builder": "self.version",
@@ -51,9 +61,12 @@
         "lagdo/jaxon-ui-builder": "self.version",
         "lagdo/ui-builder-bootstrap4": "self.version",
         "lagdo/ui-builder-bootstrap5": "self.version",
+        "lagdo/ui-builder-bulma": "self.version",
         "lagdo/ui-builder-daisyui": "self.version",
         "lagdo/ui-builder-flowbite": "self.version",
-        "lagdo/ui-builder-preline": "self.version"
+        "lagdo/ui-builder-preline": "self.version",
+        "lagdo/ui-builder-tailwind": "self.version",
+        "lagdo/ui-builder-webawesome": "self.version"
     },
     "extra": {
         "contao-manager-plugin": []

@@ -1,0 +1,31 @@
+{
+    "name": "lagdo/ui-builder-demo",
+    "type": "application",
+    "description": "Simple demo for the UI Builder library",
+    "authors": [
+        {
+            "name": "Thierry Feuzeu",
+            "email": "thierry.feuzeu@gmail.com"
+        }
+    ],
+    "homepage": "https://github.com/lagdo/ui-builder-demo",
+    "license": "MIT",
+    "keywords": ["HTML", "UI Builder"],
+    "support": {
+        "issues": "https://github.com/lagdo/ui-builder-demo/issues",
+        "source": "https://github.com/lagdo/ui-builder-demo"
+    },
+    "require": {
+        "php": ">=8.1.0",
+        "lagdo/facades": "^1.2",
+        "lagdo/jaxon-ui-builder": "0.16.*",
+        "lagdo/ui-builder-bootstrap4": "0.13.*",
+        "lagdo/ui-builder-bootstrap5": "0.15.*",
+        "lagdo/ui-builder-daisyui": "0.13.*",
+        "lagdo/ui-builder-flowbite": "0.13.*",
+        "lagdo/ui-builder-preline": "0.13.*",
+        "lagdo/ui-builder-webawesome": "0.13.*"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
